@@ -1,0 +1,16 @@
+body {
+    background-color: red;
+}
+
+nav {
+    background-color: royalblue;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav li a {
+    color: saddlebrown;
+    text-decoration: none;
+}

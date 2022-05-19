@@ -2,8 +2,9 @@ const http = require('http');
 
 const homePage = require('./views/home.js');
 const addCat = require('./views/addCat.js');
-const siteCss = require('./styles/site.js')
-const cats = require('./views/cats.json')
+const siteCss = require('./styles/site.js');
+const cats = require('./views/cats.json');
+const addBreed = require('./views/addBreed.js');
 
 const catTemplate = (cat) => `
 <li>
@@ -31,13 +32,12 @@ const server = http.createServer((req,res) => {
         res.write(siteCss)
     } else if (req.url == '/cats/add-cat') {
         res.write(addCat);
+    } else if (req.url == '/cats/add-breed' && req.method === "GET") {
+        res.write(addBreed);
     } else { 
         const homePageResult = homePage.replace('{{cats}}', cats.map(x => catTemplate(x)).join(''))
         res.write(homePageResult);
     }
-
-
-
     res.end();
 });
 

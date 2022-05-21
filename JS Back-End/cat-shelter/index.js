@@ -1,24 +1,17 @@
 const http = require('http');
+const fs = require('fs/promises');
+const querystring = require('querystring');
+const {renderHome} = require('./renderHome.js')
 
-const homePage = require('./views/home.js');
-const addCat = require('./views/addCat.js');
-const siteCss = require('./styles/site.js');
-const cats = require('./views/cats.json');
+
 const addBreed = require('./views/addBreed.js');
 
-const catTemplate = (cat) => `
-<li>
-<img src="${cat.imageUrl}" alt="Black Cat">
-<h3>${cat.name}</h3>
-<p><span>Breed: </span>${cat.Breed}</p>
-<p><span>Description: </span>${cat.Description}</p>
-<ul class="buttons">
-    <li class="btn edit"><a href="">Change Info</a></li>
-    <li class="btn delete"><a href="">New Home</a></li>
-</ul>
-</li>`;
 
-const server = http.createServer((req,res) => {
+
+const server = http.createServer(async (req,res) => {
+
+    let [pathname, qs] = req.url.split('?');
+    let params = querystring.parse(qs)
 
     res.writeHead(200, {
         'Content-Type': 'text/html'
@@ -29,16 +22,22 @@ const server = http.createServer((req,res) => {
             'Content-Type': 'text/css'
         });
 
+        let siteCss = await fs.readFile('./styles/site.js')
         res.write(siteCss)
+
     } else if (req.url == '/cats/add-cat') {
-        res.write(addCat);
+        let addCatHtml = await fs.readFile('views/addCat.html', 'utf-8')
+        res.write(addCatHtml);
+
     } else if (req.url == '/cats/add-breed' && req.method === "GET") {
         res.write(addBreed);
+
     } else { 
-        const homePageResult = homePage.replace('{{cats}}', cats.map(x => catTemplate(x)).join(''))
-        res.write(homePageResult);
+        let homePage = await renderHome(params.name);
+        res.write(homePage);
     }
     res.end();
 });
+
 
 server.listen(5000, () => console.log("Server listening on port 5000"))

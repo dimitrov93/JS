@@ -1,4 +1,3 @@
-module.exports =`
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +21,9 @@ module.exports =`
             </ul>
         </nav>
         <h1>Cat Shelter</h1>
-        <form action="/search">
-            <input type="text">
-            <button type="button">Search</button>
+        <form action="/search" method="GET">
+            <input type="text" name="name">
+            <button type="submit">Search</button>
         </form>
     </header>
 

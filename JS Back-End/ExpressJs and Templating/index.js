@@ -1,19 +1,38 @@
 const express = require("express");
 const fs = require('fs')
+const path = require('path');
+const handlebars = require('express-handlebars')
+
 const app = express();
 
-const people = [];
+app.engine('hbs', handlebars.engine({
+    extname: 'hbs'
+}))
+app.set('view engine', 'hbs')
 
-app.get("/", (req,res) => {
+const {peopleMiddleware} = require('./middlewares.js')
+app.use('/static', express.static('public'));
+app.use(peopleMiddleware);
+
+
+
+app.get("/:name?", (req,res) => {
     // res.write('Hello World');
     // res.end();
-    res.send("Hello World!!!");
+
+    // res.send("Hello World!!!");
+    // res.render('home', {layout: false})
+    res.render('home', {name: req.params.name || 'Guest', people: req.people})
 });
+
+// app.get('/img/:imgName', (req,res) => {
+//     res.sendFile(path.resolve('.public/img', req.params.imgName))
+// });
 
 
 app.get('/people', (req,res) => {
-    if (people.length > 0) {
-        res.send(people.join(', '));
+    if (req.people.length > 0) {
+        res.send(req.people.join(', '));
     } else { 
         res.send('No people here')
     }
@@ -25,7 +44,7 @@ app.get('/people/:personId(\\d+)', (req,res) => {
 })
 
 app.post('/people/:personName', (req,res) => {
-    people.push(req.params.personName);
+    req.people.push(req.params.personName);
     res.status(201)
     res.send(`Add ${req.params.personName} to the collection`)
 });

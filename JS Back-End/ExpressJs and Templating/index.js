@@ -2,12 +2,42 @@ const express = require("express");
 const fs = require('fs')
 const app = express();
 
+<<<<<<< Updated upstream
 const people = [];
 
 app.get("/", (req,res) => {
     // res.write('Hello World');
     // res.end();
     res.send("Hello World!!!");
+=======
+app.engine('hbs', handlebars.engine({
+    extname: 'hbs'
+}))
+app.set('view engine', 'hbs')
+
+const {peopleMiddleware} = require('./middlewares.js')
+app.use('/static', express.static('public'));
+app.use(peopleMiddleware);
+
+const users = [
+    { name: 'Pesho', age:20},
+    { name: 'Gosho', age:21},
+    { name: 'Penka', age:22},
+]
+
+app.get("/:name?", (req,res) => {
+    // res.write('Hello World');
+    // res.end();
+
+    // res.send("Hello World!!!");
+    // res.render('home', {layout: false})
+    res.render('home', {
+        name: req.params.name || 'Guest', 
+        users,
+        isAuth: true,
+        danger: '<script>alert("You are hacked!")</script>',
+    })
+>>>>>>> Stashed changes
 });
 
 
@@ -22,6 +52,9 @@ app.get('/people', (req,res) => {
 app.get('/people/:personId(\\d+)', (req,res) => {
     let id = Number(req.params.personId);
     res.send(people[id])
+    // res.render('people', {
+    //     id: req.people[id],
+    // })
 })
 
 app.post('/people/:personName', (req,res) => {

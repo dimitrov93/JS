@@ -1,108 +1,125 @@
-const express = require("express");
-const fs = require('fs')
+const express = require('express');
+const fs = require('fs');
 const path = require('path');
-const handlebars = require('express-handlebars')
+const handlebars = require('express-handlebars');
+const { catMiddleware } = require('./middlewares');
+
+const users = [
+    { name: 'Pesho', age: 20},
+    { name: 'Gosho', age: 21},
+    { name: 'Penka', age: 19},
+];
 
 const app = express();
 
 app.engine('hbs', handlebars.engine({
-    extname: 'hbs'
-}))
-app.set('view engine', 'hbs')
+    extname: 'hbs',
+}));
+app.set('view engine', 'hbs');
 
-const {peopleMiddleware} = require('./middlewares.js')
 app.use('/static', express.static('public'));
-app.use(peopleMiddleware);
 
+app.use(catMiddleware);
 
-
-app.get("/:name?", (req,res) => {
-    // res.write('Hello World');
+app.get('/:name?', (req, res) => {
+    // res.write('Hello world!');
+    // res.write('Hello world!');
     // res.end();
-
-    // res.send("Hello World!!!");
-    // res.render('home', {layout: false})
-    res.render('home', {name: req.params.name || 'Guest', people: req.people})
+    // res.send('Hello World!');
+    
+    res.render('home', {
+        name: req.params.name || 'Guest',
+        users,
+        isAuth: true,
+        danger: '<script>alert("you are hacked!")</script>'
+    });
 });
 
-// app.get('/img/:imgName', (req,res) => {
-//     res.sendFile(path.resolve('.public/img', req.params.imgName))
+// app.get('/img/:imgName', (req, res) => {
+//     res.sendFile(path.resolve('./public/img', req.params.imgName));  
 // });
 
-
-app.get('/people', (req,res) => {
-    if (req.people.length > 0) {
-        res.send(req.people.join(', '));
-    } else { 
-        res.send('No people here')
+app.get('/cats', (req, res) => {
+    if (req.cats.length > 0) {
+        res.send(req.cats.join(', '));
+    } else {
+        res.send('No cats here!');
     }
 });
 
-app.get('/people/:personId(\\d+)', (req,res) => {
-    let id = Number(req.params.personId);
-    res.send(people[id])
-})
+app.get('/cats/:catId(\\d+)', (req, res) => {
+    let catId = Number(req.params.catId);
 
-app.post('/people/:personName', (req,res) => {
-    req.people.push(req.params.personName);
-    res.status(201)
-    res.send(`Add ${req.params.personName} to the collection`)
+    // res.send(cats[catId]);
+    res.render('cats', {
+        catName: req.cats[catId],
+    })
 });
 
+// app.get('/cats/:catName', (req, res) => {
+//     // TODO: ...
+// });
 
-app.put('/people', (req,res) => {
-    res.send('Modify existing person')
+
+app.post('/cats/:catName', (req, res) => {
+    req.cats.push(req.params.catName);
+
+    res.status(201);
+    res.send(`Add ${req.params.catName} to the collection`);
 });
 
-app.get('/people*', (req,res) => {
-    // could be /peopleblqlblqblq
-    res.send('Route staring with with people')
+app.put('/cats', (req, res) => {
+    // TODO: implement
+    res.send('Modify existing cat');
 });
 
-app.get(/[0-9]+/, (req,res) => {
-    res.send('Only numbers route')
-})
-
-
-
-app.get('/download', (req,res) => {
+// Default way
+app.get('/download', (req, res) => {
     res.writeHead(200, {
         // 'content-disposition': 'attachment; fileName="sample.pdf"'
-        'content-type':"application/pdf",
-        'content-disposition': "inline"
+        'content-type': 'application/pdf',
+        'content-disposition': 'inline'
     });
 
     const readStream = fs.createReadStream('sample.pdf');
-    readStream.pipe(res)
+
+    readStream.pipe(res);
     // readStream.on('data', (data) => {
-    //     res.write(data)
+    //     res.write(data);
     // });
 
     // readStream.on('end', () => {
     //     res.end();
-    // })
+    // });
 });
 
-app.get('/express-download', (req,res) => {
+app.get('/express-download', (req, res) => {
     res.download('sample.pdf');
-    
 });
 
-app.get('/redirect', (req,res) => {
+app.get('/redirect', (req, res) => {
     res.writeHead(302, {
-        'Location': '/people'
+        'Location': '/cats'
     });
 
     res.end();
-}); 
-
-app.get('/express-redirect', (req,res) => {
-    res.redirect('/people');
 });
 
-app.all('*', (req,res) => {
+app.get('/express-redirect', (req, res) => {
+    res.redirect('/cats');
+});
+
+app.get(/[0-9]+/, (req, res) => {
+    res.send('Only number route');
+});
+
+app.get('/cat*', (req, res) => {
+    res.send('Route starting with cat');
+});
+
+app.all('*', (req, res) => {
     res.status(404);
-    res.send('Canot find this page ------')
+    res.send('Cannot find thid page');
 });
 
-app.listen(5000, () => console.log("Server is listening on port 5000..."));
+app.listen(5000, () => console.log('Server is listening on port 5000...'));

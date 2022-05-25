@@ -1,7 +1,7 @@
-const people = [];
+const cats = [];
 
+exports.catMiddleware = (req, res, next) => {
+    req.cats = cats;
 
-exports.peopleMiddleware = (req,res,next) => {
-    req.people = people;
     next();
-}
+};

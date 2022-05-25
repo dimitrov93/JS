@@ -1,16 +1,2 @@
 <h1>Templating with HBS</h1>
 <h2>From {{name}}</h2>
-
-{{#if isAuth}}
-    <h3>Welcome user</h3>
-{{else}}
-    <h3>Welcome guest</h3>
-{{/if}}
-
-<ul>
-    {{#each users}}
-        {{>user}}
-    {{/each}}
-</ul>
-
-{{danger}}

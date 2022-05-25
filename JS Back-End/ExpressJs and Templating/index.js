@@ -2,17 +2,16 @@ const express = require("express");
 const fs = require('fs')
 const app = express();
 
-<<<<<<< Updated upstream
 const people = [];
 
 app.get("/", (req,res) => {
     // res.write('Hello World');
     // res.end();
     res.send("Hello World!!!");
-=======
-app.engine('hbs', handlebars.engine({
+    app.engine('hbs', handlebars.engine({
     extname: 'hbs'
-}))
+}));
+
 app.set('view engine', 'hbs')
 
 const {peopleMiddleware} = require('./middlewares.js')
@@ -37,7 +36,6 @@ app.get("/:name?", (req,res) => {
         isAuth: true,
         danger: '<script>alert("You are hacked!")</script>',
     })
->>>>>>> Stashed changes
 });
 
 

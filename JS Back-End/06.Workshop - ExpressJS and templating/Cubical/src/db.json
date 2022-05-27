@@ -4,23 +4,37 @@
         "imageUrl": "https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg",
         "difficultyLevel": "3"
     },
-
     {
         "name": "Eco-Dark",
         "imageUrl": "https://thingsidesire.com/wp-content/uploads/2018/06/Eco-Dark-Rubik%E2%80%99s-Cube2.jpg",
         "difficultyLevel": "6"
     },
-
     {
         "name": "Eco-Dark2",
         "imageUrl": "https://thingsidesire.com/wp-content/uploads/2018/06/Eco-Dark-Rubik%E2%80%99s-Cube2.jpg",
         "difficultyLevel": "5"
     },
-
     {
         "name": "Gan123",
         "imageUrl": "https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg",
         "difficultyLevel": "1"
+    },
+    {
+        "name": "Classic",
+        "description": "Rubic Cube",
+        "imageUrl": "https://image.shutterstock.com/image-photo/kherson-ukraine-july-16-2014-260nw-271810067.jpg",
+        "difficultyLevel": "1"
+    },
+    {
+        "name": "blq blq",
+        "description": "blqb",
+        "imageUrl": "a",
+        "difficultyLevel": "1"
+    },
+    {
+        "name": "classic2",
+        "description": "classic2",
+        "imageUrl": "classic2",
+        "difficultyLevel": "1"
     }
-    
 ]

@@ -9,6 +9,7 @@ const app = express();
 // require('./routes')(app)
 
 app.use('/static', express.static('public'));
+
 app.use(express.urlencoded({extended: false}))
 
 app.engine('hbs', handlebars.engine({

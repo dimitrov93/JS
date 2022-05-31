@@ -1,21 +1,20 @@
 const express = require("express")
 const hbs = require("express-handlebars");
+const mongoose = require('mongoose');
+const movieController = require('./Controllers/movieController')
 const app = express();
 
-const {MongoClient} = require('mongodb');
 
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
-
-client.connect()
+const url = 'mongodb://localhost:27017/moviesCollection';
+mongoose.connect(url)
         .then(() => {
-            console.log("DB connected successfully");
-        });
+            console.log("db connected");
+        })
+        .catch((err) => {
+            console.log("db error" + err);
+        })
 
-
-const db = client.db("firstDB");
-const moviesCollection = db.collection('FirstDB')
-
+app.use(express.urlencoded({extended:false}));
 
 app.engine('hbs', hbs.engine({
     extname: 'hbs'
@@ -23,14 +22,12 @@ app.engine('hbs', hbs.engine({
 
 app.set('view engine', 'hbs');
 
+
+
 app.get('/', (req,res) => {
     res.render('home')
 });
 
-app.get('/firstDB', async (req,res) => {
-    let colls = await moviesCollection.find().toArray();
-
-    res.render('collections', {colls})
-});
+app.use('/movies', movieController);
 
 app.listen(5000, () => console.log('Listening on 5000............'))

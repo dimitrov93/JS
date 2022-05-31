@@ -1,0 +1,19 @@
+const router = require('express').Router();
+const { Movie } = require('../models/Movie')
+
+router.get('/', async (req,res) => {
+    const movies = await Movie.find();
+    console.log(movies);
+    res.render('movies', {movies})
+});
+
+router.get('/create', (req,res) => {
+    res.render('createMovie');
+});
+
+router.post('/create', (req,res) => {
+    console.log(req.body);
+
+    res.redirect('/movies')
+})
+module.exports = router

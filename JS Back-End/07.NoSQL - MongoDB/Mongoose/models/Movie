@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+
+const movieSchema = new mongoose.Schema({
+        title: String,
+        imageUrl: String,
+        year: Number,
+});
+
+const Movie = mongoose.model('Movie', movieSchema);
+
+exports.Movie = Movie;
+
+// module.exports = Movie;

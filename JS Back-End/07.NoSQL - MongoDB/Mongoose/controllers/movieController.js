@@ -28,7 +28,8 @@ router.post('/create', async (req,res) => {
 });
 
 router.get('/:movieId', async (req,res) => {
-    let movie = await Movie.find({_id: req.params.movieId});
+    let movie = await Movie.findOne({_id: req.params.movieId}).lean();
+    // let movie = await Movie.findById(req.params.movieId);
     res.render('movieDetails', {movie})
 });
 

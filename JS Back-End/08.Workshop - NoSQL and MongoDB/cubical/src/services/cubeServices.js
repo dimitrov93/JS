@@ -3,8 +3,6 @@ const path = require('path');
 
 
 const Cube = require('../models/Cube')
-const cubes = require('../db.json');
-
 
 exports.getOne = (cubeId) => Cube.findById(cubeId)
 

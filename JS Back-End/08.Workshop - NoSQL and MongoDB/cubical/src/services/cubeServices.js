@@ -4,7 +4,7 @@ const path = require('path');
 
 const Cube = require('../models/Cube')
 
-exports.getOne = (cubeId) => Cube.findById(cubeId)
+exports.getOne = (cubeId) => Cube.findById(cubeId).lean()
 
 exports.getAll = async (search = '', fromInput, toInput) => {
     let cubes = await Cube.find().lean();

@@ -1,6 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-
+const {initilizeDatabase} = require('./config/database')
 const routes = require('./routes')
 const app = express();
 
@@ -21,4 +21,11 @@ app.set('views', './src/views')
 
 app.use(routes)
 
-app.listen(5000, () => console.log('Server listening on port 5000'))
+initilizeDatabase()
+        .then( () => {
+             app.listen(5000, () => console.log('Server listening on port 5000'))
+        })
+        .catch((err) => {
+            console.log('Cannot connect to db:', err);
+        });
+        

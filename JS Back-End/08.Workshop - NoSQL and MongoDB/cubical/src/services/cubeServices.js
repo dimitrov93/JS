@@ -6,7 +6,7 @@ const Accessory = require('../models/Accessory');
 
 const Cube = require('../models/Cube')
 
-exports.getOne = (cubeId) => Cube.findById(cubeId).lean()
+exports.getOne = (cubeId) => Cube.findById(cubeId).lean().populate('accessories');
 
 exports.getAll = async (search = '', fromInput, toInput) => {
     let cubes = await Cube.find().lean();

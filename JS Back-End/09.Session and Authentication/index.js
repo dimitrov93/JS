@@ -1,21 +1,29 @@
 const express = require('express');
+const hbs = require('express-handlebars');
 const app = express();
 
-const cookieParser = require('cookie-parser');
 
-app.use(cookieParser());
+app.use(express.urlencoded({extended: false}))
+app.use('/static', express.static('public'))
+app.engine('hbs', hbs.engine({
+    extname: 'hbs'
+}));
+app.set('view engine', 'hbs')
 
 app.get('/', function(req, res) {
-    res.setHeader('Set-Cookie', 'test=some')
-
-    // res.cookie('Test Cookie1', 'Coookies1')
-    // res.cookie('Test Cookie2', 'Coookies2')
-    res.send('Hello');
+    res.render('home');
 });
 
-app.get('/cats', (req,res) => {
-    console.log(req.cookies);
-    res.send('Cats FTW')
+app.get('/register', function(req, res) {
+    res.render('register');
+});
+
+app.post('/register', (req,res) => {
+    console.log(req.body);
+})
+
+app.get('/login', function(req, res) {
+    res.render('login');
 });
 
 app.listen(5000, () => console.log("Server is running on 5000"))

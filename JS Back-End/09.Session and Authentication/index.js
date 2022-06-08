@@ -1,13 +1,16 @@
 const express = require('express');
 const hbs = require('express-handlebars');
 const app = express();
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+const secret = 'mySupersecret'
 
 const userSessions = {};
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-
+app.use(cookieParser());
 app.use(express.urlencoded({extended: false}))
 app.use('/static', express.static('public'))
 app.engine('hbs', hbs.engine({
@@ -16,7 +19,20 @@ app.engine('hbs', hbs.engine({
 app.set('view engine', 'hbs')
 
 app.get('/', function(req, res) {
-    res.render('home');
+    let token = req.cookies['session'];
+
+    if (token) {
+        jwt.verify(token, secret, (err,decodedToken) => {
+            if (err) {
+                return res.status(401).send('invalid token')
+            }
+
+            res.render('home', {email: decodedToken.email || 'Guest'});
+
+        });
+    }
+
+    res.render('home', {email:'Guest'});
 });
 
 app.get('/register', function(req, res) {
@@ -44,10 +60,13 @@ app.get('/login', async function(req, res) {
 
 app.post('/login',  async function(req, res) {
     const {email,password} = req.body;
-
     const isAuthenticated = await bcrypt.compare(password, userSessions[email].password);
 
     if (isAuthenticated) {
+        const token = jwt.sign({email}, secret, {expiresIn: '2d'});
+
+        // res.cookie('session', token, {httpOnly:true}) 
+        res.cookie('session', token)
         res.redirect('/')
     } else {
         res.status(401).send('Wrong')

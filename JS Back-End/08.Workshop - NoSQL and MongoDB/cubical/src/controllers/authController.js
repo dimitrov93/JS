@@ -24,9 +24,14 @@ router.get('/login', (req,res) => {
     res.render('auth/login')
 });
 
-router.post('/login', (req,res) => {
-    console.log(req.body);
-    res.end();
+router.post('/login', async (req,res) => {
+    let token = await authService.login(req.body);
+
+    console.log(token);
+    if (!token) {
+        res.redirect('/404')
+    }
+    res.redirect('/')
 });
 
 module.exports = router;

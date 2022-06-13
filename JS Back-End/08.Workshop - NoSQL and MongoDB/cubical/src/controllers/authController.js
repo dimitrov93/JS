@@ -31,6 +31,9 @@ router.post('/login', async (req,res) => {
     if (!token) {
         res.redirect('/404')
     }
+
+    res.cookie('user', token);
+    
     res.redirect('/')
 });
 

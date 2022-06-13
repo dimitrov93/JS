@@ -1,11 +1,9 @@
 const User = require('../models/User')
 
 const bcrypt = require('bcrypt');
-const saltRounds = 4;
-
 const jwt = require('jsonwebtoken');
-const secret = "asdfdasfasdfdsafasfasdfasdf!@#asdf1";
 
+const {secret, saltRounds} = require('../config/constants')
 
 exports.register = async ({username, password, repeatPassword}) => {
     // User.create(userData)

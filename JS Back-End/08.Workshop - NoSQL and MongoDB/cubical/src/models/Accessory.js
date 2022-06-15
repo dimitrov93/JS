@@ -11,24 +11,24 @@ const accessorySchema = new mongoose.Schema({
         validate: {
             // validator: /^https?/g,
             validator: function() {
-                return this.imageUrl.startsWith('http')
+                return this.imageUrl.startsWith('http');
             },
-            message: 'Image url should be a link',
+            message: 'Image url should be a link'
         },
     },
     description: {
         type: String,
-        maxlength: 120,
+        maxLength: 120,
         required: true,
     },
     cubes: [
         {
-        type: mongoose.Types.ObjectId,
-        ref: 'Cube'
+            type: mongoose.Types.ObjectId,
+            ref: 'Cube'
         }
     ]
-    
-})
+});
 
 const Accessory = mongoose.model('Accessory', accessorySchema);
-module.exports  = Accessory;
+
+module.exports = Accessory;

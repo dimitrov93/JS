@@ -4,7 +4,6 @@ const cubeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
     },
     description: {
         type: String,
@@ -14,7 +13,6 @@ const cubeSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true,
-
     },
     difficultyLevel: {
         type: Number,
@@ -32,13 +30,12 @@ const cubeSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     }
-
 });
 
 cubeSchema.path('imageUrl').validate(function() {
     return this.imageUrl.startsWith('http');
 }, 'Image url should be a link');
 
-
 const Cube = mongoose.model('Cube', cubeSchema);
+
 module.exports = Cube;

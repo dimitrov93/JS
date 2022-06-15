@@ -1,51 +1,57 @@
 const router = require('express').Router();
+
+const { isEmail } = require('../utils/validators');
 const authService = require('../services/authService');
-const {sessionName} = require('../config/constants')
-const validator = require('validator');
+const { sessionName } = require('../constants');
 
-router.get('/register', (req,res) => {
-    res.render('auth/register')
+router.get('/register', (req, res) => {
+    res.render('auth/register');
 });
 
-router.post('/register', async (req,res) => {
+router.post('/register', async (req, res, next) => {
+    if (!isEmail(req.body.username)) {
+        // return res.status(404).send('Invalid email');
+        let error = {
+            message: 'Invalid email',
+            status: 401,
+        };
 
-    if (!validator.isEmail(req.body.username)) {
-        res.status(401).send('Invalid email')
-    }
-
-    let createdUser = await authService.register(req.body)
-
-    if (createdUser) {
-        res.redirect('/auth/login')
-    } else {
-        // res.redirect() to 404 page
-        res.redirect('404')
+        return next(error);
     }
     
-    res.redirect('register')
-});
-
-
-router.get('/login', (req,res) => {
-    res.render('auth/login')
-});
-
-router.post('/login', async (req,res) => {
-    let token = await authService.login(req.body);
-
-    console.log(token);
-    if (!token) {
-        res.redirect('/404')
+    try {
+        await authService.register(req.body);
+        
+        res.redirect('/auth/login');
+    } catch (error) {
+        // res.locals.error = error.message;
+        res.status(401).render('auth/register', {error: error.message});
     }
-
-    res.cookie(sessionName, token, {httpOnly: true});
-    
-    res.redirect('/')
 });
 
-router.get('/logout', (req,res) => {
+router.get('/login', (req, res) => {
+    res.render('auth/login');
+});
+
+router.post('/login', async (req, res) => {
+    try {
+        let token = await authService.login(req.body);
+            
+        if (!token) {
+            return res.redirect('/404');
+        }
+
+        res.cookie(sessionName, token, { httpOnly: true });
+
+        res.redirect('/');
+    } catch (error) {
+        res.status(400).render('auth/login', { error: error.message })
+    }
+});
+
+router.get('/logout', (req, res) => {
     res.clearCookie(sessionName);
-    res.redirect('/')
-})
+    res.redirect('/');
+});
 
 module.exports = router;

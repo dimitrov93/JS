@@ -3,7 +3,7 @@
 
 ## Initial setup
 1. Initilize project ---> npm init --y 
-2. Install initial dependencies ---> / nodemon, express, express-handlebars, bcrypt, jsonwebtoken, mongoose / 
+2. Install initial dependencies ---> / nodemon, express, express-handlebars, bcrypt, jsonwebtoken, mongoose, cookie-parser / 
 3. Add resourses
 4. Express Config
     * body parser ---> express.urlencoded({extended: false})
@@ -33,7 +33,10 @@
 3. Add post login and register actions
 4. Create user with register
 5. Hash password
-6. Login
+6. Login action
+7. Login service method / find user, validate password / 
+8. Generate gwt token
+    * add secret to env
 
 ## Notifications
 1. Add notification element to layout

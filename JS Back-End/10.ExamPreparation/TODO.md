@@ -1,5 +1,7 @@
 # Tasks
 
+
+## Initial setup
 1. Initilize project ---> npm init --y 
 2. Install initial dependencies ---> / nodemon, express, express-handlebars / 
 3. Add resourses
@@ -15,3 +17,17 @@
 9. add home view/template
 10. Fix static assets and paths (css)
 11. Add navigation
+
+
+## Database setup
+1. install mongoose
+2. configure mongoose
+3. create User Model
+
+## Authentication
+1. Add auth controller
+    * add controller to routes
+2. Add login and register pages
+    * modify hrefs in navigations
+    * modify names in forms
+3. Add post login and register actions

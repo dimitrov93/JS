@@ -2,6 +2,7 @@ const router = require('express').Router();
 const authService = require('../services/authService');
 const {COOKIE_SESSION_NAME} = require('../constants');
 const { isAuth, isGuests } = require('../middlewares/authMiddleware');
+const { getErrorMsg } = require('../utils/errorHelpers');
 
 
 router.get('/login', isGuests, (req,res) => {
@@ -36,7 +37,7 @@ router.post('/register', isGuests, async (req,res) => {
         res.redirect('/login')
     } catch (error) {
         // add mongoose error mapper
-        return res.render('auth/register', {error: 'Password mismatch!'})
+        return res.render('auth/register', {error: getErrorMsg(error)})
     }
     // create user
 

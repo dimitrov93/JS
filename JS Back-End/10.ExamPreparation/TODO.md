@@ -39,7 +39,13 @@
     * add secret to env
 9. LogOut
 
-## Authorization
+## Notifications
+1. Add notification element to layout
+
+## Error handling
+1. Add error mapper
+
+## Others
 1. Auth middleware
     * use httpOnlyCookie
 2. Navigation links
@@ -47,9 +53,4 @@
 4. 404 page
 5. user validation
 6. global error handling
-
-## Notifications
-1. Add notification element to layout
-
-## Error handling
-1. Add error mapper
+    * multiline errorrs

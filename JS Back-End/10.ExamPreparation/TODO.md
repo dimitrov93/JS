@@ -3,7 +3,7 @@
 
 ## Initial setup
 1. Initilize project ---> npm init --y 
-2. Install initial dependencies ---> / nodemon, express, express-handlebars / 
+2. Install initial dependencies ---> / nodemon, express, express-handlebars, bcrypt, jsonwebtoken, mongoose / 
 3. Add resourses
 4. Express Config
     * body parser ---> express.urlencoded({extended: false})
@@ -31,3 +31,12 @@
     * modify hrefs in navigations
     * modify names in forms
 3. Add post login and register actions
+4. Create user with register
+5. Hash password
+6. Login
+
+## Notifications
+1. Add notification element to layout
+
+## Error handling
+1. Add error mapper

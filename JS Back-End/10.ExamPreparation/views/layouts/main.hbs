@@ -13,9 +13,12 @@
     <div id="box">
         <!-- In case of error, you should display div with class "error-box" -->
         <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-        <!--<div class="error-box">
-            <p>Error</p>
-        </div>-->
+        {{#if error}}
+        <div class="error-box">
+            <p>{{error}}</p>
+        </div>
+        {{/if}}
+
         <nav>
             <!-- Do not forget to change the path to the image -->
             <img src="/img/art-logo.png" alt="logo">

@@ -37,6 +37,16 @@
 7. Login service method / find user, validate password / 
 8. Generate gwt token
     * add secret to env
+9. LogOut
+
+## Authorization
+1. Auth middleware
+    * use httpOnlyCookie
+2. Navigation links
+3. Route guards
+4. 404 page
+5. user validation
+6. global error handling
 
 ## Notifications
 1. Add notification element to layout

@@ -1,22 +1,27 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
+const {COOKIE_SESSION_NAME} = require('../constants');
+const { isAuth, isGuests } = require('../middlewares/authMiddleware');
 
 
-router.get('/login', (req,res) => {
+router.get('/login', isGuests, (req,res) => {
     res.render('auth/login')
 });
 
-router.post('/login', async (req,res) => {
+router.post('/login', isGuests, async (req,res) => {
     const { username, password } = req.body;
     const user = await authService.login(username, password);
     const token = await authService.createToken(user);
+
+    res.cookie(COOKIE_SESSION_NAME, token, {httpOnly: true});
+    res.redirect('/')
 });
 
-router.get('/register',  (req,res) => {
+router.get('/register',  isGuests, (req,res) => {
     res.render('auth/register')
 });
 
-router.post('/register', async (req,res) => {
+router.post('/register', isGuests, async (req,res) => {
     const  {password, repeatPassword, ...userData} = req.body
 
     if (password !== repeatPassword) {
@@ -24,7 +29,10 @@ router.post('/register', async (req,res) => {
     }
 
     try {
-        await authService.create({password, ...userData})
+        const createdUser = await authService.create({password, ...userData});
+        const token = await authService.createToken(createdUser);
+
+        res.cookie(COOKIE_SESSION_NAME, token, {httpOnly: true})
         res.redirect('/login')
     } catch (error) {
         // add mongoose error mapper
@@ -35,4 +43,8 @@ router.post('/register', async (req,res) => {
 
 });
 
+router.get('/logout', isAuth,  (req,res) => {
+    res.clearCookie(COOKIE_SESSION_NAME);
+    res.redirect('/')
+});
 module.exports = router;

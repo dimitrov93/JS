@@ -3,7 +3,7 @@ const { isAuth } = require('../middlewares/authMiddleware');
 const { preloadPublication, isPublicationAuthor } = require('../middlewares/publicationMiddleware');
 const publicationService = require('../services/publicationService');
 const {getErrorMsg} = require('../utils/errorHelpers')
-
+const {addPublication} = require('../services/userService')
 
 router.get('/', async (req,res) => {
     const publications = await publicationService.getAll().lean();
@@ -15,7 +15,6 @@ router.get('/:publicationId/details',  async (req,res) => {
     const publication = await publicationService.getOneDetailed(req.params.publicationId).lean();
     const isAuthor = publication.author._id == req.user?._id
     const isShared = publication.usersShared.includes(req.user._id)
-    console.log(req.user._id);
     res.render('publication/details', { ...publication, isAuthor, isShared });
 });
 
@@ -59,7 +58,8 @@ router.post('/create', isAuth, async (req,res) => {
     const pubData = {...req.body, author: req.user._id};
 
     try {
-        await publicationService.create(pubData)
+        const publication = await publicationService.create(pubData);
+        await userService.addPublication(req.user._id, publication._id);
         res.redirect('/publication')
     } catch (error) {
         res.render('publication/create', {...req.body, error: getErrorMsg(error)})

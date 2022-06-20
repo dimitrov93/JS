@@ -12,9 +12,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    address: {
-        type: String,
-    }
+    publications: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Publication',
+    }],
 });
 
 userSchema.pre('save', function(next) {

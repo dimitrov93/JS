@@ -9,7 +9,7 @@ exports.auth = (req,res, next) => {
             if (err) {
                 res.clearCookie(COOKIE_SESSION_NAME)
                 // return next(err);
-                res.redirect('/login');
+                return res.redirect('/auth/login');
             }
 
             req.user = decodedToken;

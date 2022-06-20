@@ -3,7 +3,7 @@
             <section id="create-container">
                 <div class="create-container-info">
                     <!-- Do not forget to change the path to the image -->
-                    <img src="./style/img/blog-img12.jpg" alt="image">
+                    <img src="/img/blog-img12.jpg" alt="image">
 
                     <form method="post" class="container-text">
 
@@ -11,16 +11,16 @@
                         <p>Add your own masterpiece!</p>
 
                         <label for="title">Title:</label>
-                        <input type="text" id="title" placeholder="Spring in the garden" name="title" value="">
+                        <input type="text" id="title" placeholder="Spring in the garden" name="title" value="{{title}}">
 
                         <label for="painting-tech">Painting technique:</label>
-                        <input type="text" id="painting-tech" placeholder="Oil paints" name="paintingTechnique" value="">
+                        <input type="text" id="painting-tech" placeholder="Oil paints" name="paintingTechnique" value="{{paintingTechnique}}">
 
                         <label for="picture">Art picture:</label>
-                        <input type="text" id="picture" placeholder="http://..." name="artPicture" value="">
+                        <input type="text" id="picture" placeholder="http://..." name="artPicture" value="{{artPicture}}">
 
                         <label for="certificate">Certificate of authenticity:</label>
-                        <input type="text" id="certificate" placeholder="Yes" name="certificate" value="">
+                        <input type="text" id="certificate" placeholder="Yes" name="certificate" value="{{certificate}}">
 
                         <button class="create-btn">Create</button>
 

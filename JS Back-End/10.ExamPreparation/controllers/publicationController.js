@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { isAuth, is } = require('../middlewares/authMiddleware');
+const { isAuth } = require('../middlewares/authMiddleware');
 const publicationService = require('../services/publicationService');
+const {getErrorMsg} = require('../utils/errorHelpers')
 
 
 router.get('/', async (req,res) => {
@@ -27,8 +28,13 @@ router.get('/:publicationId/edit', isAuth, async (req,res, next) => {
 });
 
 router.post('/:publicationId/edit', isAuth, async (req,res, next) => {
-    await publicationService.update(req.params.publicationId, req.body);
-    res.redirect(`/publication/${req.params.publicationId}/details`)
+    try {
+        await publicationService.update(req.params.publicationId, req.body);
+        res.redirect(`/publication/${req.params.publicationId}/details`)
+    } catch (error) {
+        res.render(`publication/edit`, {...req.body, error: getErrorMsg(error)});
+    }
+
 });
 
 router.get('/create', isAuth, (req,res) => {
@@ -42,7 +48,7 @@ router.post('/create', isAuth, async (req,res) => {
         await publicationService.create(pubData)
         res.redirect('/publication')
     } catch (error) {
-        res.render('publication/create')
+        res.render('publication/create', {...req.body, error: getErrorMsg(error)})
     }
 
 });

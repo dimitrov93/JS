@@ -9,4 +9,10 @@ router.get('/', async (req,res) => {
     res.render('home', {data})
 });
 
+router.get('/search', async (req,res) => {
+    console.log(req.query.text);
+    let housings = await houseService.search(req.query.text).lean();
+    res.render('home/search', {title: 'Search Housing', housings})
+})
+
 module.exports = router;

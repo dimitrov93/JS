@@ -18,3 +18,4 @@ exports.update = async (houseId, data) => {
 }
 
 exports.getHouseAndUser = (id) => Housing.findById(id).populate('rentedAHome');
+exports.search = (text) => Housing.find({type: text})

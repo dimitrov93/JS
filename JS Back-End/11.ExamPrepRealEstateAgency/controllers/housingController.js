@@ -29,12 +29,17 @@ router.get('/:houseId/details', async (req,res) => {
     const isOwner = recentHousing.owner._id == req.user?._id
 
     const data = await housingService.getHouseAndUser(req.params.houseId).lean();
+    let peopleJoined = [];
+    data.rentedAHome.map(x => peopleJoined.push(x.name));
+    const lastData = peopleJoined.join(', ');
     let isJoined = false;
+
+    console.log(lastData);
+
     if (data.rentedAHome.some(x => x._id == req.user._id)) {
         isJoined = true;
     }
-
-    res.render('housing/details', {...recentHousing, isOwner, isUser, isJoined})
+    res.render('housing/details', {...recentHousing, isOwner, isUser, isJoined, lastData})
 });
 
 router.get('/:houseId/delete', isAuth, async (req,res) => {

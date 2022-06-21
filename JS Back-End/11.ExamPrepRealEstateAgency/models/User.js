@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        validate: /^([a-zA-Z])+ ([a-zA-Z])+$/,
     },
     username:  {
         type: String,

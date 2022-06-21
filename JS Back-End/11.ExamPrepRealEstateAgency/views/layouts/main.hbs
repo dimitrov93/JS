@@ -27,11 +27,11 @@
             <a href="/">Home</a>
             <ul>
                 <!-- Guest users and Logged users -->
-                <li><a href="/forRent">Housing for rent</a></li>
+                <li><a href="/housing/recent">Housing for rent</a></li>
 
                 {{#if user}}
                 <!-- Logged users -->
-                <li><a href="#">Create offer</a></li>
+                <li><a href="/housing/create">Create offer</a></li>
                 <li><a href="#">Search</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
                 {{else}}

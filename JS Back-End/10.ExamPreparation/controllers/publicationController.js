@@ -24,14 +24,11 @@ router.get('/:publicationId/edit', isAuth, preloadPublication, isPublicationAuth
 });
 
 
-router.post('/:publicationId/edit', 
-    isAuth, 
-    preloadPublication, 
-    isPublicationAuthor, 
+router.post('/:publicationId/edit', isAuth, preloadPublication, isPublicationAuthor, 
     async (req,res) => {
 
     try {
-        await publicationService.updateOne(req.params.publicationId, req.body);
+        await publicationService.update(req.params.publicationId, req.body);
         res.redirect(`/publication/${req.params.publicationId}/details`)
     } catch (error) {
         console.log(error);
@@ -39,12 +36,7 @@ router.post('/:publicationId/edit',
     }
 });
 
-router.get(
-    '/:publicationId/delete', 
-    isAuth, 
-    preloadPublication, 
-    isPublicationAuthor, 
-    async (req,res) => {
+router.get('/:publicationId/delete', isAuth, preloadPublication, isPublicationAuthor, async (req,res) => {
         await publicationService.delete(req.params.publicationId)
         res.redirect('/publication')
 });

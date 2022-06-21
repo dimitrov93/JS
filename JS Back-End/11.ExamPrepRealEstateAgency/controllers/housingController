@@ -1,9 +1,0 @@
-const router = require('express').Router();
-const { isAuth } = require('../middlewares/authMiddleware');
-
-
-router.get('/create', isAuth, (req,res) => {
-    res.render('housing/create')
-});
-
-module.exports = router;

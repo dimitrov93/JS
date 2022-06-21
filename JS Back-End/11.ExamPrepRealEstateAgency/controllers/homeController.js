@@ -1,12 +1,12 @@
 const { isAuth } = require('../middlewares/authMiddleware');
+const houseService = require('../services/housingService');
 
 const router = require('express').Router();
 
-router.get('/', (req,res) => {
-    res.render('home')
+router.get('/', async (req,res) => {
+    const allHouses = await houseService.getAll().lean();
+    const data = allHouses.splice(-3);
+    res.render('home', {data})
 });
 
-router.get('/secret', isAuth, (req,res) => {
-    res.send('The chamber of secrets')
-});
 module.exports = router;

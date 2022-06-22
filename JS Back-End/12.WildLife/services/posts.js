@@ -6,3 +6,4 @@ exports.getAll = () => Post.find();
 exports.getOne = (postId) => Post.findById(postId);
 exports.delete = (postId) => Post.deleteOne({_id: postId})
 exports.update = (postId, postData) => Post.updateOne({_id: postId}, {$set: postData}, {runValidators: true});
+exports.FindByUser = (userId) => Post.find({author: userId}).populate('author', 'firstName lastName');

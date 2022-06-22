@@ -4,12 +4,14 @@ const {getErrorMsg} = require('../utils/errorHelpers');
 const postService = require('../services/posts');
 const userService = require('../services/user')
 
-router.get('/create', isAuth, (req,res) => {
+router.get('/create', isAuth, async (req,res) => {
+
     res.render('posts/create')
 });
 
 router.post('/create', isAuth, async (req,res) => {
     const postsData = {...req.body, author: req.user._id};
+    
     try {
         await postService.create(postsData);
         res.redirect('/')

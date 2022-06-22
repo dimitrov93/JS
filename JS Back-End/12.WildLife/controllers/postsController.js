@@ -53,7 +53,29 @@ router.get('/:postId/upVote',  async (req,res) => {
     currentPost.rating += 1;
     currentPost.save();
     console.log(currentPost);
-    res.redirect('/')
+    res.redirect('posts/details')
+});
+
+router.get('/:postId/delete',  async (req,res) => {
+    await postService.delete(req.params.postId);
+    res.redirect('/posts/all')
+});
+
+
+router.get('/:postId/edit',  async (req,res) => {
+    const currentPost = await postService.getOne(req.params.postId).lean();
+    res.render('posts/edit', {...currentPost})
+});
+
+router.post('/:postId/edit',  async (req,res) => {
+    try {
+        await postService.update(req.params.postId, {...req.body});
+        res.redirect(`/posts/${req.params.postId}/details`)
+    } catch (error) {
+        console.log(error);
+        res.render(`/posts/${req.params.postId}/edit`, {...req.body, error: getErrorMsg(error)})
+        
+    }
 });
 
 module.exports = router;

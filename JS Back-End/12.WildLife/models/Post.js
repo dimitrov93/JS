@@ -49,9 +49,9 @@ const postSchema = new mongoose.Schema({
 
 });
 
-postSchema.path('image').validate(function() {
-    return this.image.startsWith('http');
-}, 'Image url should be a link');
+// postSchema.path('image').validate(function() {
+//     return this.image.startsWith('http');
+// }, 'Image url should be a link');
 
 const Post = mongoose.model('Post', postSchema);
 module.exports = Post;

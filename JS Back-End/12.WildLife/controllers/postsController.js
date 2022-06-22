@@ -48,13 +48,18 @@ router.get('/:postId/details',  async (req,res) => {
     res.render('posts/details', {...currentPost, userName, isOwner, isLoggedUser, isLiked, votesCounter})
 });
 
-router.get('/:postId/upVote',  async (req,res) => {
+router.get('/:postId/:vote',  async (req,res) => {
+    let userVote = req.params.vote
     const currentPost = await postService.getOne(req.params.postId);
     const findUser = await userService.FindById(req.user?._id);
     currentPost.votes.push(findUser)
-    currentPost.rating += 1;
+    if (userVote === 'upVote') {
+        currentPost.rating +=1
+    } else {
+        currentPost.rating -=1
+    }
     currentPost.save();
-    res.redirect('posts/details')
+    res.redirect('/')
 });
 
 router.get('/:postId/delete',  async (req,res) => {

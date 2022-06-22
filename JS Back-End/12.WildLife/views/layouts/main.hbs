@@ -30,12 +30,15 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#">All Posts</a></li>
                 <!-- Logged users -->
+                {{#if user}}
                 <li><a href="#">Create Post</a></li>
                 <li><a href="#">Posts of {{email-of-user}}</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
+                {{else}}
                 <!-- Guest users -->
                 <li><a href="/auth/register">Register</a></li>
                 <li><a href="/auth/login">Login</a></li>
+                {{/if}}
             </ul>
 
         </nav>

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const {isEmail, isUrl} = require('validator');
 const bcrypt = require('bcrypt');
 const {SALT_ROUNDS} = require('../config/env');
+const URL_PATTERN = /^https?:\/\/(.+)/;
+
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -28,6 +30,13 @@ const postSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true,
+        // validate: /^(http|https):/g,
+        validate: {
+            validator(value) {
+                return URL_PATTERN.test(value)
+            },
+            message: 'House image url must be valid!'
+        }
     },
     description: {
         type: String,

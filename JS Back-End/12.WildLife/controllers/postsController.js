@@ -52,7 +52,6 @@ router.get('/:postId/upVote',  async (req,res) => {
     currentPost.votes.push(findUser)
     currentPost.rating += 1;
     currentPost.save();
-    console.log(currentPost);
     res.redirect('posts/details')
 });
 
@@ -72,9 +71,7 @@ router.post('/:postId/edit',  async (req,res) => {
         await postService.update(req.params.postId, {...req.body});
         res.redirect(`/posts/${req.params.postId}/details`)
     } catch (error) {
-        console.log(error);
         res.render(`/posts/${req.params.postId}/edit`, {...req.body, error: getErrorMsg(error)})
-        
     }
 });
 

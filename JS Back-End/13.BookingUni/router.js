@@ -5,7 +5,7 @@ const hotelController = require('./controllers/hotelController');
 
 router.use(homeController);
 router.use('/auth', authController)
-router.use('/add', hotelController)
+router.use('/hotel', hotelController)
 
 
 module.exports = router;

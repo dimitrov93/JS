@@ -19,4 +19,20 @@ router.post('/create', async (req,res) => {
     
 });
 
+router.get('/:hotelId/details', async (req,res) => {
+
+    try {
+        const hotels = await hotelService.getOne(req.params.hotelId).lean();
+        const isOwner = hotels.owner == req.user?._id;
+        res.render('booking/details', {...hotels, isOwner})
+    } catch (error) {
+        res.render('booking/details', {...hotels, error: getErrorMsg(error)})
+    }
+});
+
+router.get('/:hotelId/edit', async (req,res) => {
+
+    res.render('booking/edit')
+});
+
 module.exports = router;

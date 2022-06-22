@@ -11,16 +11,16 @@
 
 <body>
 
-
     <div id="box">
+    {{#if error}}
 
         <!-- In case of error, you should display div with class "error-container" -->
         <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-        <!--
+ 
         <div class="error-container">
             <p>Error</p>
-        </div>-->
-
+        </div>
+    {{/if}}
 
         <nav>
             <!-- Do not forget to change the path to the image -->
@@ -28,11 +28,11 @@
 
             <ul class="menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">All Posts</a></li>
+                <li><a href="/posts/all">All Posts</a></li>
                 <!-- Logged users -->
                 {{#if user}}
-                <li><a href="#">Create Post</a></li>
-                <li><a href="#">Posts of {{email-of-user}}</a></li>
+                <li><a href="/posts/create">Create Post</a></li>
+                <li><a href="/posts/myPosts">Posts of {{email-of-user}}</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
                 {{else}}
                 <!-- Guest users -->

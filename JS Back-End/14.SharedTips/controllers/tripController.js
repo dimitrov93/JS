@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { isAuth } = require('../middlewares/authMiddleware');
 const tripService = require('../services/tripService');
+const userService = require('../services/userService');
 const {getErrorMsg} = require('../utils/errorHelpers');
 
 
@@ -13,11 +14,20 @@ router.get('/:tripId/details', async (req,res) => {
         const loggedUser = req.user?._id;
         const tripData = await tripService.getOne(req.params.tripId).lean();
         const isOwner = tripData.creator._id == loggedUser;
+        let joinedTrip = (await tripService.isJoined(req.params.tripId).lean()).buddies;
+        console.log(...joinedTrip);
+        let hasJoinedTrip = false;
+        joinedTrip.some(x => {
+            if (x.email == req.user.email) {
+                hasJoinedTrip = true;
+            }
+        });
+
         let availableSeats = false;
         if (tripData.seats > 0) {
             availableSeats = true;
         }
-        res.render('trips/details', {...tripData, isOwner, loggedUser, availableSeats})
+        res.render('trips/details', {...tripData, isOwner, loggedUser, availableSeats, hasJoinedTrip, joinedTrip})
     } catch (error) {
         res.redirect('/trip/shared', {error: getErrorMsg(error)})
     }
@@ -29,13 +39,21 @@ router.get('/shared', async (req,res) => {
     res.render('trips/shared', {sharedTrips})
 });
 
-router.get('/:tripId/edit', async (req,res) => {
+router.get('/:tripId/edit', isAuth, async (req,res) => {
     const currentData = await tripService.getOne(req.params.tripId).lean();
     res.render('trips/edit', {...currentData})
 });
 
-router.get('/:postId/delete',  async (req,res) => {
+router.get('/:postId/delete', isAuth,  async (req,res) => {
     await tripService.delete(req.params.postId);
+    res.redirect('/trip/shared')
+});
+
+router.get('/:postId/join', isAuth,  async (req,res) => {
+    let buddies = await tripService.getOne(req.params.postId);
+    buddies.seats -= 1;
+    buddies.buddies.push(req.user);
+    buddies.save(); //// no lean !!!!!!!!!!!!!!!!!!!!!!!!!!!! //
     res.redirect('/trip/shared')
 });
 

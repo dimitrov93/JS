@@ -34,6 +34,10 @@ router.get('/:tripId/edit', async (req,res) => {
     res.render('trips/edit', {...currentData})
 });
 
+router.get('/:postId/delete',  async (req,res) => {
+    await tripService.delete(req.params.postId);
+    res.redirect('/trip/shared')
+});
 
 // ------------ POST ----------------- ///
 

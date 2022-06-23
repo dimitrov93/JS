@@ -10,8 +10,8 @@ router.get('/login', isGuests, (req,res) => {
 });
 
 router.post('/login', isGuests, async (req,res) => {
-    const { username, password } = req.body;
-    const user = await authService.login(username, password);
+    const { email , password } = req.body;
+    const user = await authService.login(email, password);
     const token = await authService.createToken(user);
 
     res.cookie(COOKIE_SESSION_NAME, token, {httpOnly: true});

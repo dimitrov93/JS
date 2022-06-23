@@ -20,7 +20,7 @@
             </div>
             <div class="right-container">
                 {{#if user}}
-                <a>{{user.username}}</a>
+                <a href="/profile" class="profile">{{user.username}}</a>
                 <a href="/auth/logout" class="log-out">Logout</a>
                 {{else}}
                 <a href="/auth/login" class="log-out">Login</a>

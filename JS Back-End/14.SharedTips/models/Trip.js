@@ -38,6 +38,8 @@ const tripSchema = new mongoose.Schema({
     seats: {
         type: Number, 
         required: true, 
+        min: 0,
+        max: 4,
     },
     price: {
         type: Number, 

@@ -3,27 +3,27 @@
             <div class="container register-page">
                 <h1>Register</h1>
                 <div class="register">
-                    <form action="" method="">
+                    <form method="post">
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="text" class="form-control" id="email" placeholder="Enter email" name=""
+                            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email"
                                 value="">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" name=""
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password"
                                 value="">
                         </div>
                         <div class="form-group">
                             <label for="rePassword">Re-Password</label>
                             <input type="password" class="form-control" id="rePassword" placeholder="Re-Password"
-                                name="" value="">
+                                name="rePassword" value="">
                         </div>
                         <label>Gender</label>
                         <div class="gender">
-                            <input type="radio" id="female" name="" value="">
+                            <input type="radio" id="female" name="gender" value="Female">
                             <label for="female">Female</label>
-                            <input type="radio" id="male" name="" value="" checked>
+                            <input type="radio" id="male" name="gender" value="Male">
                             <label for="male">Male</label>
                         </div>
                         <div class="form-group">
@@ -34,4 +34,10 @@
                 </div>
             </div>
         </section>
+
+        {{#if error}}
+        <div class="error">
+        <p>{{error}}</p>
+        </div>
+        {{/if}}
     </main>

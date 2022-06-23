@@ -3,17 +3,22 @@ const bcrypt = require('bcrypt')
 const {SALT_ROUNDS} = require('../config/env');
 
 const userSchema = new mongoose.Schema({
-    username: {
+    email: {
         type: String,
-        required: [true, 'Username is required'],
+        required: [true, 'Email is required'],
         unique: true,
     },
     password: {
         type: String,
         required: true,
     },
-    address: {
+    gender: {
         type: String,
+        enum: ["Male", "Female"],
+    },
+    tripHistory: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Trip',
     }
 });
 

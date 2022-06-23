@@ -10,10 +10,11 @@
     <!-- In case of error, you should display div with class "error" -->
     <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
 
-    <!-- <div class="error">
-        <p>Error message - 1</p>
-        <p>Error message - 2</p>
-    </div> -->
+        {{#if error}}
+        <div class="error">
+        <p>{{error}}</p>
+        </div>
+        {{/if}}
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -29,15 +30,15 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Shared Trips</a>
+                        <a class="nav-link" href="/trip/shared">Shared Trips</a>
                     </li>
                     {{#if user}}
                     <!-- Logged users -->
                     <li class="nav-item">
-                        <a class="nav-link" href="">Offer Trip</a>
+                        <a class="nav-link" href="/trip/create">Offer Trip</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Profile</a>
+                        <a class="nav-link" href="/profile">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/logout">Logout as [ {{user.email}} ]</a>

@@ -1,6 +1,7 @@
 const { isAuth } = require('../middlewares/authMiddleware');
 const router = require('express').Router();
 const publicationService = require('../services/publicationService');
+const userService = require('../services/userService');
 const { getErrorMsg } = require('../utils/errorHelpers');
 
 router.get('/gallery', async (req,res) => {
@@ -17,7 +18,8 @@ router.post('/create', isAuth, async (req,res) => {
     const data = {...req.body, author: req.user._id};
 
     try {
-        await publicationService.create(data);
+        const publication = await publicationService.create(data);
+        await userService.AddPublication(req.user._id, publication._id)
         res.redirect('/publications/gallery')
     } catch (error) {
         res.render('publications/create', {...req.body, error: getErrorMsg(error)})
@@ -34,17 +36,17 @@ router.get('/:postId/details',  async (req,res) => {
     res.render('publications/details', {...currentPost, isOwner, shared})
 });
 
-router.get('/:postId/delete',  async (req,res) => {
+router.get('/:postId/delete', isAuth,   async (req,res) => {
     await publicationService.delete(req.params.postId);
     res.redirect('/publications/gallery')
 });
 
-router.get('/:postId/edit',  async (req,res) => {
+router.get('/:postId/edit',  isAuth, async (req,res) => {
     const currentPost = await publicationService.getOne(req.params.postId).lean();
-    res.render('publications/edit', {...currentPost})
+    res.render('publications/edit', {...currentPost, title: 'Edit page'})
 });
 
-router.post('/:postId/edit',  async (req,res) => {
+router.post('/:postId/edit',  isAuth, async (req,res) => {
     try {
         await publicationService.update(req.params.postId, {...req.body});
         res.redirect(`/publications/${req.params.postId}/details`)
@@ -53,10 +55,16 @@ router.post('/:postId/edit',  async (req,res) => {
     }
 });
 
-router.get('/:postId/share',  async (req,res) => {
+router.get('/:postId/share',  isAuth, async (req,res) => {
     const currentPost = await publicationService.getOne(req.params.postId);
+    const user = await userService.withId(req.user._id);
+
     currentPost.usersShared.push(req.user._id)
+    user.shares.push(currentPost);
+
     await currentPost.save();
+    await user.save();
+    
     res.redirect(`/`)
 });
 

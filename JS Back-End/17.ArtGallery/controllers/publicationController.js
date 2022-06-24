@@ -29,11 +29,9 @@ router.post('/create', isAuth, async (req,res) => {
 router.get('/:postId/details',  async (req,res) => {
     const currentPost = await publicationService.getOneDetailed(req.params.postId).lean();
     const isOwner = currentPost.author._id == req.user?._id;
-    let shared = false;
-    if (currentPost.usersShared.some(x => x._id == req.user._id)) {
-        shared = true
-    }
-    res.render('publications/details', {...currentPost, isOwner, shared})
+    const isShared = await currentPost.usersShared.some(x => x._id == req.user._id);
+
+    res.render('publications/details', {...currentPost, isOwner, isShared})
 });
 
 router.get('/:postId/delete', isAuth,   async (req,res) => {

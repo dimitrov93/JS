@@ -4,21 +4,21 @@
                     <!-- Do not forget to change the path to the image -->
                     <img src="/img/blog-img12.jpg" alt="image">
 
-                    <form action="#" method="" class="container-text">
+                    <form method="post" class="container-text">
                         <h2>Edit</h2>
                         <p>Edit your masterpiece!</p>
 
                         <label for="title">Title:</label>
-                        <input type="text" id="title" name="" value="">
+                        <input type="text" id="title" name="title" value="{{title}}">
 
                         <label for="painting-tech">Painting technique:</label>
-                        <input type="text" id="painting-tech" name="" value="">
+                        <input type="text" id="painting-tech" name="paintingTech" value="{{paintingTech}}">
 
                         <label for="picture">Art picture:</label>
-                        <input type="text" id="picture" name="" value="">
+                        <input type="text" id="picture" name="image" value="{{image}}">
 
                         <label for="certificate">Certificate of authenticity:</label>
-                        <input type="text" id="certificate" name="" value="">
+                        <input type="text" id="certificate" name="certificate" value="{{certificate}}">
 
                         <button class="edit-btn">Edit</button>
                     </form>

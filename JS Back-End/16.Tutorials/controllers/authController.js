@@ -23,18 +23,17 @@ router.get('/register',  isGuests, (req,res) => {
 });
 
 router.post('/register', isGuests, async (req,res) => {
-    const  {password, repeatPassword, ...userData} = req.body
+    const  {username, password, rePassword} = req.body
 
-    if (password !== repeatPassword) {
+    if (password !== rePassword) {
         return res.render('auth/register', {error: 'Password mismatch!'})
     }
 
     try {
-        const createdUser = await authService.create({password, ...userData});
+        const createdUser = await authService.create({username, password});
         const token = await authService.createToken(createdUser);
-
         res.cookie(COOKIE_SESSION_NAME, token, {httpOnly: true})
-        res.redirect('/login')
+        res.redirect('/auth/login')
     } catch (error) {
         // add mongoose error mapper
         return res.render('auth/register', {error: getErrorMsg(error)})

@@ -24,9 +24,13 @@ router.get('/:postId/details',  async (req,res) => {
     const isOwner = currentPost.author._id == req.user?._id;
 
     const enrolled = await courseService.FindOneDetailed(req.params.postId).lean();
-    let hasRolled = enrolled.usersEnrolled.includes(req.user._id);
-    console.log(hasRolled);
-    res.render('course/details', {...currentPost, isOwner})
+    let hasRolled = false;
+
+    if (enrolled.usersEnrolled.some(x => x._id == req.user._id)) {
+        hasRolled = true;
+    }
+
+    res.render('course/details', {...currentPost, isOwner, hasRolled})
 });
 
 router.get('/:postId/delete',  async (req,res) => {

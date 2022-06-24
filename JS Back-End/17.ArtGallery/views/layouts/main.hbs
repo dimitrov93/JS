@@ -29,13 +29,14 @@
 
             <ul class="menu">
                 <li><a href="/publications/gallery">Gallery</a></li>
-                <!-- Logged users -->
+                {{#if user}}
                 <li><a href="/publications/create">Create Publication</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
-                <!-- Guest users -->
+                {{else}}
                 <li><a href="/auth/login">Login</a></li>
                 <li><a href="/auth/register">Register</a></li>
+                {{/if}}
             </ul>
 
         </nav>

@@ -34,7 +34,7 @@ router.post('/register', isGuests, async (req,res) => {
         const token = await authService.createToken(createdUser);
 
         res.cookie(COOKIE_SESSION_NAME, token, {httpOnly: true})
-        res.redirect('/login')
+        res.redirect('/')
     } catch (error) {
         // add mongoose error mapper
         return res.render('auth/register', {error: getErrorMsg(error)})

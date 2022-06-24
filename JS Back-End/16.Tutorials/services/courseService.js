@@ -7,3 +7,6 @@ exports.getOne = (courseId) => Course.findById(courseId);
 exports.delete = (courseId) => Course.deleteOne({_id: courseId})
 exports.update = (courseId, postData) => Course.updateOne({_id: courseId}, {$set: postData}, {runValidators: true});
 exports.FindOneDetailed = (courseId) => Course.findById(courseId).populate('usersEnrolled')
+
+
+exports.search = (text) => Course.find({duration: text})

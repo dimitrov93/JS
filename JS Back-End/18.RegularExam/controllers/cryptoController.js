@@ -27,9 +27,9 @@ router.get('/:cryptoId/details',  async (req,res) => {
     const currentCrypto = await cryptoService.getOneDetailed(req.params.cryptoId).lean();
     const isLogged = req.user?._id;
     const isOwner = currentCrypto.owner._id == isLogged;
-    console.log(isLogged);
-    // const isShared = await currentCrypto.usersShared.some(x => x._id == req.user._id);
-    res.render('crypto/details', {title:  `Detail page for ${currentCrypto.name}`, ...currentCrypto, isOwner, isLogged})
+    const hasBought = currentCrypto.buyCrypto.some(x => x._id == req.user._id);
+    console.log(hasBought);
+    res.render('crypto/details', {title:  `Detail page for ${currentCrypto.name}`, ...currentCrypto, isOwner, isLogged, hasBought})
 });
 
 router.get('/:cryptoId/delete', isAuth, async (req,res) => {
@@ -43,12 +43,23 @@ router.get('/:cryptoId/edit',  isAuth, async (req,res) => {
 });
 
 router.post('/:cryptoId/edit',  isAuth, async (req,res) => {
-
     try {
         await cryptoService.update(req.params.cryptoId, {...req.body});
         res.redirect(`/crypto/${req.params.cryptoId}/details`)
     } catch (error) {
         res.render(`crypto/${req.params.postId}/edit`, {title: `Edit page for ${currentCrypto.name}`, ...req.body})
+    }
+});
+
+
+router.get('/:cryptoId/buy',  isAuth, async (req,res) => {
+    const currentCrypto = await cryptoService.getOne(req.params.cryptoId);
+    try {
+        currentCrypto.buyCrypto.push(req.user?._id);
+        currentCrypto.save();
+        res.redirect(`/crypto/${req.params.cryptoId}/details`)
+    } catch (error) {
+        res.render(`crypto/${req.params.postId}/details`, {title: `Details page for ${currentCrypto.name}`})
     }
 });
 

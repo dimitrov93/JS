@@ -21,11 +21,13 @@
                         <a href="/crypto/{{_id}}/delete" class="btn-delete">Delete</a>
                     </div>
                     {{else}}
-                    <!-- Logged in user who has not yet buy this crypto-->
-                    <!-- <a href="/crypto/{{_id}}/buy" class="btn-buy">Buy</a> -->
-                    
-                    <!-- Logged in user who has already buy this crypto-->
-                    <p class="buy-message">You already bought these crypto coins.</p>
+                            {{#if hasBought}}
+                                 <!-- Logged in user who has already buy this crypto-->
+                                <p class="buy-message">You already bought these crypto coins.</p>
+                            {{else}}
+                                    <!-- Logged in user who has not yet buy this crypto-->
+                                <a href="/crypto/{{_id}}/buy" class="btn-buy">Buy</a>
+                            {{/if}}
                     {{/if}}
                 </div>
                 {{/if}}

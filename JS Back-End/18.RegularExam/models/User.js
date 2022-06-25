@@ -5,16 +5,19 @@ const {SALT_ROUNDS} = require('../config/env');
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
+        minLength: 5,
         required: [true, 'Username is required'],
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
     },
     address: {
         type: String,
-    }
+        minLength: 10,
+        required: [true, 'Email is required'],
+    },
+    password: {
+        type: String,
+        minLength: 4,
+        required: true,
+    },
 });
 
 userSchema.pre('save', function(next) {

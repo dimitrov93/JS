@@ -12,6 +12,7 @@
                     <p id="price"><span>Price: ${{price}}</span></p>
                     <p id="description">{{description}}</p>
                 </div>
+                {{#if isLogged}}
                 <div class="product-btn">
                     <!--Only for registered user and author of the publication -->
                     {{#if isOwner}}
@@ -21,12 +22,13 @@
                     </div>
                     {{else}}
                     <!-- Logged in user who has not yet buy this crypto-->
-                    <!-- <a href="#" class="btn-buy">Buy</a> -->
+                    <!-- <a href="/crypto/{{_id}}/buy" class="btn-buy">Buy</a> -->
                     
                     <!-- Logged in user who has already buy this crypto-->
                     <p class="buy-message">You already bought these crypto coins.</p>
                     {{/if}}
                 </div>
+                {{/if}}
             </div>
         </section>
     </main>

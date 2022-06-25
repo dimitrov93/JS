@@ -18,17 +18,38 @@ router.post('/create', isAuth, async (req,res) => {
     }
 });
 
-router.get('/catalog', isAuth, async (req,res) => {
+router.get('/catalog', async (req,res) => {
     const crypto = await cryptoService.getAll().lean();
     res.render('crypto/catalog', {title: 'Catalog Page', crypto})
 });
 
 router.get('/:cryptoId/details',  async (req,res) => {
     const currentCrypto = await cryptoService.getOneDetailed(req.params.cryptoId).lean();
-    const isOwner = currentCrypto.owner._id == req.user?._id;
+    const isLogged = req.user?._id;
+    const isOwner = currentCrypto.owner._id == isLogged;
+    console.log(isLogged);
     // const isShared = await currentCrypto.usersShared.some(x => x._id == req.user._id);
-    
-    res.render('crypto/details', {...currentCrypto, isOwner})
+    res.render('crypto/details', {title:  `Detail page for ${currentCrypto.name}`, ...currentCrypto, isOwner, isLogged})
+});
+
+router.get('/:cryptoId/delete', isAuth, async (req,res) => {
+    await cryptoService.delete(req.params.cryptoId);
+    res.redirect('/crypto/catalog')
+});
+
+router.get('/:cryptoId/edit',  isAuth, async (req,res) => {
+    const currentCrypto = await cryptoService.getOne(req.params.cryptoId).lean();
+    res.render('crypto/edit', {title:  `Edit page for ${currentCrypto.name}`, ...currentCrypto})
+});
+
+router.post('/:cryptoId/edit',  isAuth, async (req,res) => {
+
+    try {
+        await cryptoService.update(req.params.cryptoId, {...req.body});
+        res.redirect(`/crypto/${req.params.cryptoId}/details`)
+    } catch (error) {
+        res.render(`crypto/${req.params.postId}/edit`, {title: `Edit page for ${currentCrypto.name}`, ...req.body})
+    }
 });
 
 module.exports = router;

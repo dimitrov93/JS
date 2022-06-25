@@ -26,9 +26,9 @@ const cryptoSchema = new mongoose.Schema({
         minLength: 10,
         required: [true, 'Description is required'],
     },
-    paymentMethod: {
+    payment: {
         type: String,
-        enum: ['CryptoWallet', 'CreditCard', 'DebitCard', 'Paypal'],
+        enum: ['crypto-wallet', 'credit-card', 'debit-card', 'paypal'],
         required: [true, 'Payment method is required'],
     },
     buyCrypto: [{

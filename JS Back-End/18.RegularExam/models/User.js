@@ -6,12 +6,12 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         minLength: 5,
-        required: [true, 'Username is required'],
+        required: [true, 'Username is required!'],
     },
-    address: {
+    email: {
         type: String,
         minLength: 10,
-        required: [true, 'Email is required'],
+        required: [true, 'Email is required!'],
     },
     password: {
         type: String,

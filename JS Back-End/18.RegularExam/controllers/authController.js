@@ -6,12 +6,13 @@ const { getErrorMsg } = require('../utils/errorHelpers');
 
 
 router.get('/login', isGuests, (req,res) => {
-    res.render('auth/login')
+    res.render('auth/login', {title: 'Login Page'})
 });
 
 router.post('/login', isGuests, async (req,res) => {
-    const { username, password } = req.body;
-    const user = await authService.login(username, password);
+    const { email , password } = req.body;
+
+    const user = await authService.login(email, password);
     const token = await authService.createToken(user);
 
     res.cookie(COOKIE_SESSION_NAME, token, {httpOnly: true});
@@ -19,22 +20,21 @@ router.post('/login', isGuests, async (req,res) => {
 });
 
 router.get('/register',  isGuests, (req,res) => {
-    res.render('auth/register')
+    res.render('auth/register', {title: 'Registration Page'})
 });
 
 router.post('/register', isGuests, async (req,res) => {
-    const  {password, repeatPassword, ...userData} = req.body
+    const  {username, email, password, rePassword, } = req.body
 
-    if (password !== repeatPassword) {
+    if (password !== rePassword) {
         return res.render('auth/register', {error: 'Password mismatch!'})
     }
 
     try {
-        const createdUser = await authService.create({password, ...userData});
+        const createdUser = await authService.create({username, email, password});
         const token = await authService.createToken(createdUser);
-
         res.cookie(COOKIE_SESSION_NAME, token, {httpOnly: true})
-        res.redirect('/login')
+        res.redirect('/')
     } catch (error) {
         // add mongoose error mapper
         return res.render('auth/register', {error: getErrorMsg(error)})

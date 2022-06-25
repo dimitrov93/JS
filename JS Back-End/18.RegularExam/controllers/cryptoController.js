@@ -27,8 +27,7 @@ router.get('/:cryptoId/details',  async (req,res) => {
     const currentCrypto = await cryptoService.getOneDetailed(req.params.cryptoId).lean();
     const isLogged = req.user?._id;
     const isOwner = currentCrypto.owner._id == isLogged;
-    const hasBought = currentCrypto.buyCrypto.some(x => x._id == req.user._id);
-    console.log(hasBought);
+    const hasBought = currentCrypto.buyCrypto.some(x => x._id == isLogged);
     res.render('crypto/details', {title:  `Detail page for ${currentCrypto.name}`, ...currentCrypto, isOwner, isLogged, hasBought})
 });
 
@@ -47,7 +46,7 @@ router.post('/:cryptoId/edit',  isAuth, async (req,res) => {
         await cryptoService.update(req.params.cryptoId, {...req.body});
         res.redirect(`/crypto/${req.params.cryptoId}/details`)
     } catch (error) {
-        res.render(`crypto/${req.params.postId}/edit`, {title: `Edit page for ${currentCrypto.name}`, ...req.body})
+        res.render(`crypto/edit`, {title: `Edit page`, ...req.body, error: getErrorMsg(error)})
     }
 });
 
@@ -59,7 +58,7 @@ router.get('/:cryptoId/buy',  isAuth, async (req,res) => {
         currentCrypto.save();
         res.redirect(`/crypto/${req.params.cryptoId}/details`)
     } catch (error) {
-        res.render(`crypto/${req.params.postId}/details`, {title: `Details page for ${currentCrypto.name}`})
+        res.render(`crypto/${req.params.cryptoId}/details`, {title: `Details page for ${currentCrypto.name}`})
     }
 });
 

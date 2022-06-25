@@ -10,7 +10,8 @@ const {errorHandler} = require('./middlewares/errorHandlerMiddleware');
 const app = express();
 
 app.engine('hbs', hbs.engine({
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: require('./utils/paymentHelper')
 }));
 
 app.set('view engine', 'hbs');

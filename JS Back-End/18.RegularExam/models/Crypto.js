@@ -19,6 +19,7 @@ const cryptoSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
+        min: 1,
         required: [true, 'Price is required'],
     },
     description: {

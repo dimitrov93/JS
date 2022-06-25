@@ -24,11 +24,12 @@
                     <textarea name="description"
                         id="description">{{description}}</textarea>
                     <label>Payment method:</label>
-                    <select id="payment" name="payment" value="{{payment}}">
-                        <option value="crypto-wallet">Crypto Wallet</option>
-                        <option value="credit-card">Credit Card</option>
-                        <option value="debit-card">Debit Card</option>
-                        <option value="paypal" selected>PayPal</option>
+
+                    <select id="payment" name="payment">
+                        <option value="crypto-wallet" {{#ifCond payment '==' 'crypto-wallet'}} selected {{/ifCond}} >Crypto Wallet</option>
+                        <option value="credit-card" {{#ifCond payment '==' 'credit-card'}} selected {{/ifCond}} >Credit Card</option>
+                        <option value="debit-card" {{#ifCond payment '==' 'debit-card'}} selected {{/ifCond}} >Debit Card</option>
+                        <option value="paypal" {{#ifCond payment '==' 'paypal'}} selected {{/ifCond}} >PayPal</option>
                     </select>
                     <input type="submit" id="btn" value="EDIT"></input>
                 </form>

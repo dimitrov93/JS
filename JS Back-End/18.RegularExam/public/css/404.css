@@ -1,34 +1,25 @@
-.not-found-page-container {
-    width: 100%;
-    height: 285px;
-    margin: 0 auto;
-    margin-top: 9em;
-    text-align: center;
-    box-shadow: 0px 0px 80px 40px rgba(77, 77, 240, 0.315);
-    background-color: white;
+.not-found-page-container p a {
+    color: #ff960b;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.not-found-page-container>h1 {
-    font-size: 120px;
-    font-weight: 900;
-    font-family: 'Barlow', sans-serif;
-    text-align: center;
+.not-found-page-container p a:hover {
+    text-decoration: underline;
 }
 
-.not-found-page-container>h2 {
+.not-found-page-container h1 {
+    font-size: 100px;
+    margin-left: 200px;
+    margin-top: 10%;
+}
+
+.not-found-page-container h2 {
     font-size: 30px;
-    text-align: center;
-    font-family: 'Barlow', sans-serif;
-    margin-top: 8px;
+    margin-left: 170px;
+    margin-top: 1%;
 }
 
 .not-found-page-container>p {
-    text-align: center;
-    font-family: 'Barlow', sans-serif;
-    margin-top: 4px;
-    font-size: 20px;
-}
-
-.not-found-page-container>p>a {
-    font-weight: bold;
+    margin-top: 2%;
 }

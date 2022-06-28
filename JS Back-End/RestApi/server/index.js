@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('./src/middlewares/cors');
 const furnitureController = require('./src/controllers/furniture')
+const usersController = require('./src/controllers/users')
 
 
 async function start() {
@@ -20,6 +21,7 @@ async function start() {
     app.use(cors())
 
     app.use('/data/catalog', furnitureController)
+    app.use('/users', usersController)
 
     app.listen(3030, () => console.log('REST service is running on port 3000'))
 }

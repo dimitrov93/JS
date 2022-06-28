@@ -1,6 +1,10 @@
 const Item = require("../models/item");
 
-async function getAll() {
+async function getAll(query) {
+    if (query) {
+        const userId = query.split('=')[1].slice(1,-1);
+        return Item.find({_ownertId: userId})
+    }
     return Item.find({})
 }
 
@@ -12,7 +16,8 @@ async function create(item) {
         description: item.description,
         price: item.price,
         img: item.img,
-        material: item.material
+        material: item.material,
+        _ownerId: item._ownerId
     });
 
     await result.save();
@@ -23,22 +28,14 @@ async function getById(id) {
     return Item.findById(id);
 }
 
-async function updateById(id, item) {
-    const existing = await Item.findById(id);
-
-    if (existing) {
-        existing.make = item.make;
-        existing.model = item.model;
-        existing.year = item.year;
-        existing.description = item.description;
-        existing.price = item.price;
-        existing.img = item.img;
-        existing.material = item.material
-    } else {
-        const error = new Error('Not Found')
-        error._notFound = true;
-        throw error;
-    }
+async function updateById(existing, item) {
+    existing.make = item.make;
+    existing.model = item.model;
+    existing.year = item.year;
+    existing.description = item.description;
+    existing.price = item.price;
+    existing.img = item.img;
+    existing.material = item.material
 
     await existing.save();
     return existing;

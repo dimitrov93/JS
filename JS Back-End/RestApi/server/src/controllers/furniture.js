@@ -1,3 +1,4 @@
+const errorMapper = require('../../util/errorMapper');
 const api = require('../services/furniture');
 
 const router = require('express').Router();
@@ -21,7 +22,9 @@ router.post('/', async (req,res) => {
         const result = await api.create(item)
         res.json(result);
     } catch (error) {
-        res.status(400).json({message: 'Request Error'})
+        console.log(error);
+        const message = errorMapper(error)
+        res.status(400).json({message})
     }
 
 });
@@ -38,7 +41,7 @@ router.get('/:id', async (req,res) => {
 
 router.put('/:id', async (req,res) => {
     const id = req.params.id;
-    
+
     const item = {
         make: req.body.make,
         model: req.body.model,
@@ -59,6 +62,19 @@ router.put('/:id', async (req,res) => {
             console.log(err);
             res.status(400).json({message: 'Request Error'})
         }
+    }
+});
+
+router.delete('/:id', async (req,res) => {
+    const id = req.params.id;
+
+    try {
+        const result = await api.deleteById(id)
+        res.json(result);
+    } catch (err) {
+            console.log(err);
+            res.status(404).json({message: `Item ${id} not found`})
+        
     }
 });
 

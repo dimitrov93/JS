@@ -44,9 +44,14 @@ async function updateById(id, item) {
     return existing;
 }
 
+async function deleteById(id) {
+    return await Item.findByIdAndDelete(id);
+}
+
 module.exports = {
     getAll,
     create,
     getById,
-    updateById
+    updateById,
+    deleteById
 }

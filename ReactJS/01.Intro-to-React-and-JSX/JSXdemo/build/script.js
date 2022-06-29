@@ -14,7 +14,7 @@ var reactElement = React.createElement(
     React.createElement(
         'h1',
         null,
-        'Hello from JSX!!!'
+        'Hello from JSX!!!!!!!!'
     ),
     React.createElement(
         'h2',

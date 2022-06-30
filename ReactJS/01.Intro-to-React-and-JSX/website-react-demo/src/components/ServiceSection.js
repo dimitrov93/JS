@@ -17,7 +17,7 @@ export const ServiceSection = () => {
         </div>
         <div className="container">
           <div className="service_container layout_padding2">
-            <a href="">
+            <a href="/#">
               <div className="box">
                 <div className="img-box">
                   <img src="images/s-1.png" alt="" className="img-1"/>
@@ -30,7 +30,7 @@ export const ServiceSection = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="/#">
               <div className="box">
                 <div className="img-box">
                   <img src="images/s-2.png" alt="" className="img-1"/>
@@ -43,7 +43,7 @@ export const ServiceSection = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="/#">
               <div className="box">
                 <div className="img-box">
                   <img src="images/s-3.png" alt="" className="img-1"/>
@@ -56,7 +56,7 @@ export const ServiceSection = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="/#">
               <div className="box">
                 <div className="img-box">
                   <img src="images/s-4.png" alt="" className="img-1"/>
@@ -69,7 +69,7 @@ export const ServiceSection = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="/#">
               <div className="box">
                 <div className="img-box">
                   <img src="images/s-5.png" alt="" className="img-1"/>
@@ -85,7 +85,7 @@ export const ServiceSection = () => {
           </div>
         </div>
         <div className="read-btn">
-          <a href="">
+          <a href="/#">
             Read More
           </a>
         </div>

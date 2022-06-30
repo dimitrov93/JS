@@ -1,5 +1,5 @@
 # SoftUni - JavaScript 
-All homework/excercises and project from the Javascript course path with <a hre="https://softuni.bg/"> SoftUni </a>
+All homework/excercises and project from the Javascript course path with [SoftUni](https://softuni.bg/)
 
 ## :white_check_mark: JS Applications - February 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/130390?code=cc365f1b) :heavy_check_mark:
 1. HTTP and REST Services

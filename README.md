@@ -3,10 +3,9 @@ This repo contains all of my exercises and homeworks from JavaScript & Front-End
 
 
 ## :white_check_mark: Programming Fundamentals with JS - September 2021 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/119787?code=9cee819d) :heavy_check_mark:
-1.Basic Syntax, Conditional Statements and Loops
-
-2.HTTP Basics
-3.Data Types and Variables
+1. Basic Syntax, Conditional Statements and Loops
+2. HTTP Basics
+3. Data Types and Variables
 4.HTML & CSS Basics
 5.Arrays
 6.Software Development Concepts - Part 1

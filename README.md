@@ -1,5 +1,26 @@
 # SoftUni - JavaScript 
-This repo contains all of my exercises and homeworks from JavaScript & Front-End/Back-End courses at SoftUni.
+All homework/excercises and project from the Javascript course path with <a hre="https://softuni.bg/"> SoftUni </a>
+
+## :white_check_mark: JS Applications - February 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/130390?code=cc365f1b) :heavy_check_mark:
+1. HTTP and REST Services
+2. Asynchronous Programming
+3. Remote Data and Authentication
+4. Single Page Applications
+5. Architecture and Testing
+6. Client Side Rendering
+7. Routing
+8. Modular Applications
+
+## :white_check_mark: JS Advanced - January 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/126561?code=e6aa94f2) :heavy_check_mark:
+1. Syntax, Functions and Statements
+2. Arrays and Nested Arrays
+3. Objects and Composition
+4. DOM Introduction
+5. DOM Manipulations and Events
+6. Advanced Functions
+7. Unit Testing and Error Handling
+8. Classes
+9. Prototypes and Inheritance
 
 
 ## :white_check_mark: Programming Fundamentals with JS - September 2021 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/119787?code=9cee819d) :heavy_check_mark:

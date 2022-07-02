@@ -4,7 +4,11 @@ export const Timer = (props) => {
     const [time, setTime] = React.useState(0);
 
     setTimeout(() => {
-        setTime(time + 1)
+        if (time < 60) {
+             setTime(time + 1)
+        } else {
+            setTime(0)
+        }
     }, 1000)
 
     return (

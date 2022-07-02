@@ -5,6 +5,8 @@ import {BookList} from "./components/BookList";
 import React from 'react';
 import { Timer } from "./components/Timer";
 import { Clicker } from "./components/Clicker";
+import { Counter } from "./components/Counter";
+
 function App() {
     // const headerElemenet = React.createElement(Header, {title: 'Hello from props'})
     const books = [
@@ -22,6 +24,7 @@ function App() {
         {/* {headerElemenet} */}
         <Timer start={0}/>
         <Clicker />
+        <Counter />
 
         <Header>
             <span className="fancy-font">Book</span> Library

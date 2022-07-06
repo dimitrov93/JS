@@ -1,6 +1,14 @@
 # SoftUni - JavaScript 
 All homework/excercises and project from the Javascript course path with [SoftUni](https://softuni.bg/)
 
+## :white_check_mark: JS Back-end - May 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/137155?code=7cae6516) :heavy_check_mark:
+1. Intro to Node.js
+2. Node.js Streams and Utilities
+3. ExpressJS and Templating
+4. NoSQL and MongoDB
+5. Session and Authentication
+6. Validation and Error Handling
+
 ## :white_check_mark: JS Applications - February 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/130390?code=cc365f1b) :heavy_check_mark:
 1. HTTP and REST Services
 2. Asynchronous Programming

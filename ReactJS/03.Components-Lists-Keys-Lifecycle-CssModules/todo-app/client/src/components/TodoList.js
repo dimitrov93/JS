@@ -13,6 +13,22 @@ export const TodoList = () => {
             } )
     }, [])
 
+    const todoClickHandler = (todo) => {
+            fetch(`http://localhost:3030/jsonstore/todos/${todo._id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({...todo, isCompleted: !todo.isCompleted})
+            })
+            .then(res => res.json())
+            .then(modifiedTodo => {
+                setTodos(oldTodos => oldTodos.map(todo => todo._id == modifiedTodo._id ? modifiedTodo : todo))
+                // setTodos(state => state.map(x => x._id == todoId ? {...x, isCompleted: !x.isCompleted} : x))
+              })
+
+    };
+
     return (
         <table className="table">
         <thead>
@@ -23,7 +39,7 @@ export const TodoList = () => {
           </tr>
         </thead>
         <tbody>
-            {todos.map(x => <TodoItem key={x._id} {...x} />)}
+            {todos.map(x => <TodoItem key={x._id} {...x} onClick={todoClickHandler} />)}
             
         </tbody>
       </table>

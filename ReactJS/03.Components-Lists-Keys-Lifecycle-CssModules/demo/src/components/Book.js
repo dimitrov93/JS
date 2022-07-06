@@ -7,11 +7,9 @@ export const Book = (props) => {
     const [deleted, setDeleted] = useState(false)
 
     useEffect(() => {
-        console.log('mounting');
       }, [])
 
     useEffect(() => {
-        console.log('updateing');
       }, [highlited, deleted])
 
     const clickHandler = () => {

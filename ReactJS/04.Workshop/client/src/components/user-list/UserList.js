@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { UserDetails } from "./user-details/userDetails"
+import { UserDetails } from "./user-details/UserDetails"
 import { UserItem } from "./user-item/UserItem"
 import * as userService from '../services/userService'
 

@@ -65,7 +65,13 @@ export const UserList = ({
        </tr>
      </thead>
      <tbody>
-        {users.map(user => <UserItem key={user._id} {...user}/>)}
+        {users.map(user => 
+        (
+          <tr>
+          <UserItem key={user._id} {...user}/>
+          </tr>
+        )
+        )}
      </tbody>
    </table>
  </div>

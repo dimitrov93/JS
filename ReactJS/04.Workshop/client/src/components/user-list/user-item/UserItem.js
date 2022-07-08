@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 export const UserItem = ({
     firstName, 
     lastName,
@@ -9,7 +11,7 @@ export const UserItem = ({
 }) => {
     const blankUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png';
     return (
-        <tr>
+        <>
         <td>
           <img src={imageUrl || blankUrl}
             alt={`${firstName}'s profile`} className="image" />
@@ -48,6 +50,6 @@ export const UserItem = ({
             </svg>
           </button>
         </td>
-      </tr>
+        </>
     )
 }

@@ -2,29 +2,63 @@ import { useState } from "react"
 import { UserDetails } from "./user-details/UserDetails"
 import { UserItem } from "./user-item/UserItem"
 import * as userService from '../services/userService'
-
+import { UserEdit } from "./user-edit/UserEdit"
+import { UserActions } from "./UserListConstants"
 
 export const UserList = ({users}) => {
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [userAction, setUserAction] = useState({user: null, action: null});
 
-    const detailsClickHandler = (userId) => {
+    const userActionClickHandler = (userId, actionType) => {
       userService.getOne(userId)
       .then(user => {
-        setSelectedUser(user)
+        setUserAction({
+          user,
+          action: actionType
+        })
       })
     };
 
+    const editClickHandler = (userId) => {
+      userService.getOne(userId)
+      .then(user => {
+        setUserAction({
+          user,
+          action: UserActions.Edit
+        })
+      })
+    };
 
-    
+    const deleteClickHandler = (userId) => {
+      userService.getOne(userId)
+      .then(user => {
+        setUserAction({
+          user,
+          action: UserActions.Delete
+        })
+      })
+    };
+
     const onCloseHandler = (userId) => {
-        setSelectedUser(null)
+        setUserAction({user: null, action: null})
     };
 
    return (
     <div className="table-wrapper">
     
     {/* Overlap components  */}
-    {selectedUser && <UserDetails user={selectedUser} onClose={onCloseHandler}/>}
+    {userAction.action == UserActions.Details && 
+      <UserDetails 
+        user={userAction.user} 
+        onClose={onCloseHandler}
+      />
+    }
+
+    {userAction.action == UserActions.Edit &&
+      <UserEdit 
+        user={userAction.user}
+        onClose={onCloseHandler}
+      />
+    }
    <table className="table">
      <thead>
        <tr>
@@ -84,7 +118,7 @@ export const UserList = ({users}) => {
         {users.map(user => 
         (
           <tr key={user._id}>
-          <UserItem  user={user} onDetailsClick={detailsClickHandler} />
+          <UserItem  user={user} onActionClick={userActionClickHandler} />
           </tr>
         )
         )}

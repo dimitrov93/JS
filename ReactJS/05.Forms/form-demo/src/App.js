@@ -10,13 +10,14 @@
 		gender: 'f',
 		userType: 'corporate',
 		tac: false,
+		egn: '',
+		ek: '',
 	});
 
 	const changeHandler = (e) => {
-		console.log(e.target.name, ' - ' , e.target.value);
 		setValues(state => ({
 			...state, 
-			[e.target.name]: e.target.value
+			[e.target.name]: e.target.type == 'checkbox' ? e.target.checked : e.target.value
 		}))
 	}
 
@@ -27,13 +28,6 @@
 		console.log(values);
 	};
 
-	const checkboxChangeHandler = (e) => {
-		console.log(e.target.name, ' - ' , e.target.value);
-		setValues(state => ({
-			...state, 
-			[e.target.name]: !state[e.target.name]
-		}))
-	}
 
 	return (
 		<div className="App">
@@ -100,12 +94,13 @@
 			</div>
 
 			<div>
-				<label htmlFor="individual-user-type">User type:</label>
+				<label htmlFor="individual-user-type">Individual:</label>
 				<input
 				type="radio"
 				id="individual-user-type"
 				name="userType"
-				value={values.userType === "individual"}
+				value= "individual"
+				checked={values.userType === "individual"}
 				onChange={changeHandler}
 				></input>
 				<label htmlFor="corporate-user-type">Corporate:</label>
@@ -113,9 +108,18 @@
 				type="radio"
 				id="corporate-user-type"
 				name="userType"
-				value={values.userType === "corporate"}
+				value="corporate"
+				checked={values.userType === "corporate"}
 				onChange={changeHandler}
 				></input>
+			</div>
+
+			<div>
+				<label htmlFor="Identifier">{values.userType == 'individual' ? 'EGN' : "EIK"}  </label>
+					{values.userType == 'individual'
+					? <input type="text" id="Identifier" name="egn" value={values.egn} onChange={changeHandler} />
+					: <input type="text" id="Identifier" name="ek" value={values.ek} onChange={changeHandler} />
+					}
 			</div>
 
 			<div>
@@ -125,12 +129,12 @@
 				id="tac"
 				name="tac"
 				value={values.tac}
-				onChange={checkboxChangeHandler}
+				onChange={changeHandler}
 				></input>
 			</div>
 
 			<div>
-				<input type="submit" value="Login"></input>
+				<input type="submit" value="Register" disabled={!values.tac}></input>
 				{/* <button type="submit">Login</button> */}
 			</div>
 			</form>

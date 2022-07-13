@@ -26,34 +26,19 @@ export const UserList = () => {
                     action: actionType
                 });
             });
+    };
+
+    const createUserOpenHandler = () => {
+        setUserAction({
+            action: UserActions.Add
+        });
     }
 
     const closeHandler = () => {
         setUserAction({ user: null, action: null });
     };
 
-    const userCreateHandler = (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-        const {
-            firstName,
-            lastName,
-            email,
-            imageUrl,
-            phoneNumber,
-            ...address
-        } = Object.fromEntries(formData);
-
-        const userData = {
-            firstName,
-            lastName,
-            email,
-            imageUrl,
-            phoneNumber,
-            address,
-        };
-
+    const userCreateHandler = (userData) => {
         userService.create(userData)
             .then(user => {
                 setUsers(oldUsers => [...oldUsers, user]);
@@ -163,7 +148,7 @@ export const UserList = () => {
                 </table>
             </div>
 
-            <button className="btn-add btn" onClick={() => userActionClickHandler(null, UserActions.Add)}>Add new user</button>
+            <button className="btn-add btn" onClick={createUserOpenHandler}>Add new user</button>
         </>
     );
 };

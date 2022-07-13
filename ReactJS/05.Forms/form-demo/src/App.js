@@ -34,7 +34,8 @@ function App() {
 	if (values.username && values.age) {
 		infoRef.current.value = `${values.username} - ${values.age}`
 	}
-  }, [values.username, values.age])
+  }, [values.username, values.age]);
+  
 
   return (
     <div className="App">

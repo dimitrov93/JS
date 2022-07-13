@@ -43,7 +43,10 @@ export const UserList = () => {
             .then(user => {
                 setUsers(oldUsers => [...oldUsers, user]);
                 closeHandler();
-            });
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     return (

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 const Products = () => {
   const [starShip, setstarShip] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
   const { productsId } = useParams();
   //   const params = useParams();
@@ -19,6 +21,13 @@ const Products = () => {
   const nextProductHandler = () => {
     navigate(`/products/${Number(productsId) + 1}`)
   }
+//   const nextProductHandler = () => {
+//     navigate(`/products/${Number(productsId) + 1}`, {replace: true})
+//   }
+
+  const previousProductHandler = () => {
+    navigate(`/products/${Number(productsId) - 1}`)
+  }
 
   return (
     <>
@@ -30,6 +39,7 @@ const Products = () => {
         <li>Model: {starShip.model}</li>
       </ul>
 
+      <button onClick={previousProductHandler}>Previous</button>
       <button onClick={nextProductHandler}>Next</button>
     </>
   );

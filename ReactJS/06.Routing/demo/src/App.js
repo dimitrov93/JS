@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Pricing from "./components/Pricing";
@@ -14,7 +14,6 @@ function App() {
       <h1>Hello React Router</h1>
       <Navigation />
       <Routes>
-        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
@@ -22,6 +21,8 @@ function App() {
         <Route path="/pricing/*" element={<Pricing />} />
         <Route path="/pricing/premium" element={<Contacts />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/millennium-falcon" element={<Navigate to="/products/10" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

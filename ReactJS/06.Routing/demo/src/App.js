@@ -6,7 +6,8 @@ import Pricing from "./components/Pricing";
 import Contacts from "./components/Contacts";
 import NotFound from "./components/NotFound";
 import Navigation from "./components/Navigation";
-import Products from "./components/Products";
+import StarShips from "./components/StarShips";
+import StarShipsList from "./components/StarShipsList";
 
 function App() {
   return (
@@ -16,12 +17,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:productsId" element={<Products />} />
+        <Route path="/StarShips" element={<StarShipsList />} />
+        <Route path="/StarShips/:StarShipsId" element={<StarShips />} />
+        <Route path="/StarShips" element={<StarShips />} />
         <Route path="/pricing/*" element={<Pricing />} />
         <Route path="/pricing/premium" element={<Contacts />} />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="/millennium-falcon" element={<Navigate to="/products/10" replace />} />
+        <Route path="/millennium-falcon" element={<Navigate to="/StarShips/10" replace />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

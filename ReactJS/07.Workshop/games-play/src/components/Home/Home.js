@@ -3,17 +3,7 @@ import * as gameService from "../../services/gameService";
 import LatestGame from "./LatestGame";
 
 
-const Home = () => {
-  const [games, setgames] = useState([]);
-
-  useEffect(() => {
-         gameService.getAll()
-            .then(result => {
-              setgames(result)
-            })
-            .catch(err => console.log(err))
-  },[]);
-
+const Home = ({games}) => {
 
   return (
     <section id="welcome-world">

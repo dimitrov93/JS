@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 const Details = () => {
   return (
     <section id="game-details">
@@ -33,12 +36,12 @@ const Details = () => {
       </div>
       {/* Edit/Delete buttons ( Only for creator of this game )  */}
       <div className="buttons">
-        <a href="#" className="button">
+        <Link to="#" className="button">
           Edit
-        </a>
-        <a href="#" className="button">
+        </Link>
+        <Link to="#" className="button">
           Delete
-        </a>
+        </Link>
       </div>
     </div>
     {/* Bonus */}

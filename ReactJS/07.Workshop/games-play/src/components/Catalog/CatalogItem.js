@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-const CatalogItem = ({games}) => {
+const CatalogItem = ({game}) => {
   return (
     <div className="allGames">
     <div className="allGames-info">
-      <img src={games.imageUrl} />
-      <h6>{games.category}</h6>
-      <h2>{games.title}</h2>
-      <Link to="#" className="details-button">
+      <img src={game.imageUrl} />
+      <h6>{game.category}</h6>
+      <h2>{game.title}</h2>
+      <Link to={`/catalog/${game._id}`} className="details-button">
         Details
       </Link>
     </div>

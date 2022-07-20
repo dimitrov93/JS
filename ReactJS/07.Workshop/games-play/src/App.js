@@ -1,5 +1,5 @@
 import "./App.css";
-import Catalog from "./Catalog/Catalog";
+import Catalog from "../src/components/Catalog/Catalog";
 import Create from "./components/Create";
 import Details from "./components/Details";
 import Edit from "./components/Edit";
@@ -34,8 +34,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/Create" element={<Create />} />
             <Route path="/Edit" element={<Edit />} />
-            <Route path="/Details" element={<Details />} />
             <Route path="/Catalog" element={<Catalog games={games} />} />
+            <Route path="/Catalog/:id" element={<Details  />} />
         </Routes>
     </div>
   );

@@ -8,7 +8,7 @@ const Catalog = ({games}) => {
     <h1>All Games</h1>
 
     {games.length > 0
-      ? games.map(x => <CatalogItem games={x} key={x._Id} />)
+      ? games.map(x => <CatalogItem game={x} key={x._Id} />)
       :     <h3 className="no-articles">No articles yet</h3>
       }
   </section>

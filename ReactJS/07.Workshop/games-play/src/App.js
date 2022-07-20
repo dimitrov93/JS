@@ -16,6 +16,20 @@ import LatestGame from "./components/Home/LatestGame";
 function App() {
   const [games, setgames] = useState([]);
 
+  const addComment = (gameId, comment) => {
+    setgames(state => {
+        const game = state.find(x => x._id == gameId)
+
+        const comments = game.comments || [];
+        comments.push(comment);
+
+        return [
+          ...state.filter(x => x._id !== gameId),
+          {...game, comments}
+        ]
+      })
+  }
+
   useEffect(() => {
          gameService.getAll()
             .then(result => {
@@ -34,8 +48,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/Create" element={<Create />} />
             <Route path="/Edit" element={<Edit />} />
-            <Route path="/Catalog" element={<Catalog games={games} />} />
-            <Route path="/Catalog/:id" element={<Details  />} />
+            <Route path="/catalog" element={<Catalog games={games} />} />
+            <Route path="/catalog/:id" element={<Details games={games} addComment={addComment} />} />
         </Routes>
     </div>
   );

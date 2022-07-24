@@ -3,8 +3,7 @@ import styles from "./App.module.css";
 import CreateTask from "./components/CreateTask";
 import { useState, useId, useEffect } from "react";
 import useFetch from "./hooks/useFetch";
-
-
+import useTodosAPI from "./hooks/useTodos";
 
 function App() {
   // const [task, setTask] = useState([]);
@@ -17,8 +16,11 @@ function App() {
   //     });
   // }, []);
 
-  const [task, setTask] = useFetch('http://localhost:3030/jsonstore/todos', [])
-
+  const [task, setTask, isLoading] = useFetch(
+    "http://localhost:3030/jsonstore/todos",
+    []
+  );
+  const  removeTodo  = useTodosAPI();
   const taskCreateHandler = (newState) => {
     setTask((state) => [
       ...state,
@@ -29,9 +31,8 @@ function App() {
     ]);
   };
 
-  const taskDeleteHandler = (taskId) => {
-
-
+  const taskDeleteHandler = async (taskId) => {
+    await removeTodo(taskId);
     setTask((state) => state.filter((x) => x._id != taskId));
   };
 
@@ -42,7 +43,11 @@ function App() {
       </header>
 
       <main>
-        <TaskList tasks={task} taskDeleteHandler={taskDeleteHandler} />
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <TaskList tasks={task} taskDeleteHandler={taskDeleteHandler} />
+        )}
         <CreateTask taskCreateHandler={taskCreateHandler} />
       </main>
     </div>

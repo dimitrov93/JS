@@ -4,25 +4,19 @@ import CreateTask from "./components/CreateTask";
 import useFetch from "./hooks/useFetch";
 import useTodosAPI from "./hooks/useTodos";
 
-import {TaskContext} from './contexts/TastContext';
-
-
+import { TaskContext } from "./contexts/TastContext";
 
 function App() {
-
   const [task, setTask, isLoading] = useFetch(
     "http://localhost:3030/jsonstore/todos",
     []
   );
-  const  removeTodo  = useTodosAPI();
-  const taskCreateHandler = (newState) => {
-    setTask((state) => [
-      ...state,
-      {
-        _id: state[state.length - 1]?._id + 1 || 1,
-        title: newState,
-      },
-    ]);
+  const { removeTodo, createTodo, updateTodo } = useTodosAPI();
+
+  const taskCreateHandler = async (newTask) => {
+    const createdTask = await createTodo(newTask);
+
+    setTask((state) => [...state, createdTask]);
   };
 
   const taskDeleteHandler = async (taskId) => {
@@ -30,22 +24,24 @@ function App() {
     setTask((state) => state.filter((x) => x._id != taskId));
   };
 
-  return (
-    <TaskContext.Provider value={'Pesho'}>
-    <div className={styles["site-wrapper"]}>
-      <header>
-        <h1> to do App</h1>
-      </header>
+  const toggleTask = async (task) => {
+    const updatedTask = {...task, isCompleted: !task.isCompleted}
+    await updateTodo(task._id, updatedTask)
+    setTask(state => state.map(x => x._id == task._id ? updatedTask : x))
+  }
 
-      <main>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <TaskList tasks={task} taskDeleteHandler={taskDeleteHandler} />
-        )}
-        <CreateTask taskCreateHandler={taskCreateHandler} />
-      </main>
-    </div>
+  return (
+    <TaskContext.Provider value={{ task, taskDeleteHandler, toggleTask }}>
+      <div className={styles["site-wrapper"]}>
+        <header>
+          <h1> to do App</h1>
+        </header>
+
+        <main>
+          {isLoading ? <p>Loading...</p> : <TaskList tasks={task} />}
+          <CreateTask taskCreateHandler={taskCreateHandler} />
+        </main>
+      </div>
     </TaskContext.Provider>
   );
 }

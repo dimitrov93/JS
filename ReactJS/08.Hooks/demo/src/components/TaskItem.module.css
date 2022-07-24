@@ -1,0 +1,9 @@
+.task-item {
+    cursor: pointer;
+    user-select: none;
+}
+
+.completed {
+    cursor: pointer;
+    text-decoration: line-through;
+}

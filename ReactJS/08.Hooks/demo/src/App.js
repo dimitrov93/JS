@@ -20,6 +20,10 @@ function App() {
       ]);
   }
 
+  const taskDeleteHandler = (taskId) => {
+    setTask(state => state.filter(x => x._id != taskId))
+  }
+
   return (
     <div className={styles['site-wrapper']}>
       <header>
@@ -27,7 +31,7 @@ function App() {
       </header>
 
       <main>
-        <TaskList tasks={task}/>
+        <TaskList tasks={task} taskDeleteHandler={taskDeleteHandler} />
         <CreateTask taskCreateHandler={taskCreateHandler} />
       </main>
     </div>

@@ -14,7 +14,7 @@ function App() {
   const taskCreateHandler = (newState) => {
     setTask(state => [...state, 
         {
-          _id:  state[state.length -1]._id +1,
+          _id:  state[state.length -1]?._id + 1 || 1,
           title: newState
         }
       ]);

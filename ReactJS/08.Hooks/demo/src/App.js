@@ -30,8 +30,17 @@ function App() {
     setTask(state => state.map(x => x._id == task._id ? updatedTask : x))
   }
 
+  const taskEditHandler = async (task, newTitle) => {
+    const updatedTask = {...task, title: newTitle};
+
+    await updateTodo(task._id, updatedTask)
+
+    setTask(state => state.map(x => x._id == task._id ? updatedTask : x))
+
+  } 
+
   return (
-    <TaskContext.Provider value={{ task, taskDeleteHandler, toggleTask }}>
+    <TaskContext.Provider value={{ task, taskDeleteHandler, toggleTask, taskEditHandler }}>
       <div className={styles["site-wrapper"]}>
         <header>
           <h1> to do App</h1>

@@ -1,11 +1,14 @@
 import { useState } from "react";
 
-const CreateTask = () => {
+const CreateTask = ({taskCreateHandler}) => {
 
     const [task, setTask] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(task);
+        taskCreateHandler(task)
+        setTask('')
     }
 
     const onChange = (e) => {

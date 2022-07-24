@@ -1,20 +1,14 @@
 import TaskList from "./components/TaskList";
 import styles from "./App.module.css";
 import CreateTask from "./components/CreateTask";
-import { useState, useId, useEffect } from "react";
 import useFetch from "./hooks/useFetch";
 import useTodosAPI from "./hooks/useTodos";
 
-function App() {
-  // const [task, setTask] = useState([]);
+import {TaskContext} from './contexts/TastContext';
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3030/jsonstore/todos")
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       setTask(Object.values(result));
-  //     });
-  // }, []);
+
+
+function App() {
 
   const [task, setTask, isLoading] = useFetch(
     "http://localhost:3030/jsonstore/todos",
@@ -37,6 +31,7 @@ function App() {
   };
 
   return (
+    <TaskContext.Provider value={'Pesho'}>
     <div className={styles["site-wrapper"]}>
       <header>
         <h1> to do App</h1>
@@ -51,6 +46,7 @@ function App() {
         <CreateTask taskCreateHandler={taskCreateHandler} />
       </main>
     </div>
+    </TaskContext.Provider>
   );
 }
 

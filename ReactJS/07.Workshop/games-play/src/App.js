@@ -11,7 +11,6 @@ import uniqid from "uniquid";
 
 import { useEffect, useState, lazy, Suspense } from "react";
 import * as gameService from "../../games-play/src/services/gameService";
-import LatestGame from "./components/Home/LatestGame";
 
 // import Register from "./components/Register";
 const Register = lazy(() => import("./components/Register"));

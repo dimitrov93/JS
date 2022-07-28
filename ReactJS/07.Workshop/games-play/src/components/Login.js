@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
-import { login } from "../services/authService";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
+import * as authService from "../services/authService";
 
 const Login = () => {
-  
+  const {userLogin} = useContext(AuthContext)
+  const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault()
 
@@ -10,9 +13,13 @@ const Login = () => {
 
     console.log(email);
     console.log(password);
-    login(email,password)
+    authService.login(email,password)
     .then(authData => {
-      console.log(authData);
+      userLogin(authData)
+      navigate('/')
+    })
+    .catch(err => {
+      console.log('/404');
     })
     
   }

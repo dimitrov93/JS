@@ -11,6 +11,8 @@ import uniqid from "uniquid";
 
 import { useEffect, useState, lazy, Suspense } from "react";
 import * as gameService from "../../games-play/src/services/gameService";
+import { AuthContext } from "./context/authContext";
+import Logout from "./components/Logout";
 
 // import Register from "./components/Register";
 const Register = lazy(() => import("./components/Register"));
@@ -18,6 +20,15 @@ const Register = lazy(() => import("./components/Register"));
 function App() {
     const [games, setgames] = useState([]);
     const navigate = useNavigate();
+    const [auth, setAuth] = useState({});
+
+    const userLogin = (authData) => {
+      setAuth(authData)
+    } 
+
+    const userLogout = () => {
+      setAuth({})
+    }
 
     const addComment = (gameId, comment) => {
       setgames((state) => {
@@ -51,12 +62,14 @@ function App() {
     };
 
     return (
+      <AuthContext.Provider value={{user: auth, userLogin, userLogout}}>
       <div id="box">
         <Header />
         <main id="main-content"></main>
         <Routes>
           <Route path="/" element={<Home games={games} />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={
             <Suspense fallback={<span>Loading....</span>}>
               <Register />
@@ -74,6 +87,7 @@ function App() {
           />
         </Routes>
       </div>
+      </AuthContext.Provider>
     );
   }
 

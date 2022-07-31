@@ -6,33 +6,32 @@ import * as gameService from '../services/gameService'
 const GameDetails = ({
     addComment,
 }) => {
-
-    const  gameId  = useParams();
-    const [currentGame, setCurrentGame] = useState({})
+    const { gameId } = useParams();
+    const [currentGame, setCurrentGame] = useState({});
 
     const [comment, setComment] = useState({
         username: '',
         comment: '',
     });
 
-    useEffect(() => {
-           gameService.getOne(gameId)
-            .then(result => {
-                setCurrentGame(result)
-            })
-    },[]);
-
     const [error, setError] = useState({
         username: '',
         comment: '',
     });
+
+    useEffect(() => {
+        gameService.getOne(gameId)
+            .then(result => {
+                setCurrentGame(result);
+            });
+    })
 
     const addCommentHandler = (e) => {
         e.preventDefault();
 
         const result = `${comment.username}: ${comment.comment}`;
 
-        addComment(gameId.id, result);
+        addComment(gameId, result);
     }
 
     const onChange = (e) => {
@@ -72,20 +71,20 @@ const GameDetails = ({
                     {currentGame.summary}
                 </p>
 
-                {/* <div className="details-comments">
+                <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {currentGame.comments?.map(x => 
+                        {/* {game.comments?.map(x => 
                             <li className="comment">
                                 <p>{x}</p>
                             </li>
-                        )}
+                        )} */}
                     </ul>
 
-                    {!currentGame.comments &&
+                    {/* {!game.comments &&
                         <p className="no-comment">No comments.</p>
-                    }
-                </div> */}
+                    } */}
+                </div>
 
                 <div className="buttons">
                     <Link to={`/games/${gameId}/edit`} className="button">

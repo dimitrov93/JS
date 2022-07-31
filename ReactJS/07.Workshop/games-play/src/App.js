@@ -11,9 +11,8 @@ import uniqid from "uniquid";
 
 import { useEffect, useState, lazy, Suspense } from "react";
 import * as gameService from "../../games-play/src/services/gameService";
-import { AuthContext } from "./context/authContext";
+import { AuthProvider } from "./context/authContext";
 import Logout from "./components/Logout";
-import { useLocalStorage } from "./hooks/useLocalStorage";
 import { GameContext, gameContext } from "./context/GameContext";
 
 
@@ -24,15 +23,7 @@ const Register = lazy(() => import("./components/Register"));
 function App() {
     const [games, setgames] = useState([]);
     const navigate = useNavigate();
-    const [auth, setAuth] = useLocalStorage('auth', {});
 
-    const userLogin = (authData) => {
-      setAuth(authData)
-    } 
-
-    const userLogout = () => {
-      setAuth({})
-    }
 
     const addComment = (gameId, comment) => {
       setgames((state) => {
@@ -67,10 +58,9 @@ function App() {
     }
 
     return (
-      <AuthContext.Provider value={{user: auth, userLogin, userLogout}}>
+      <AuthProvider>
       <div id="box">
         <Header />
-
         <GameContext.Provider value={{games, addGameHandler , gameEdit}} >
         <main id="main-content">
         <Routes>
@@ -96,7 +86,7 @@ function App() {
         </main>
         </GameContext.Provider>
       </div>
-      </AuthContext.Provider>
+      </AuthProvider>
     );
   }
 

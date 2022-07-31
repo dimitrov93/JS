@@ -26,7 +26,7 @@ const Edit = () => {
     gameService.edit(gameId, gameData)
       .then(result => {
         gameEdit(gameId, result)
-        navigate(`/catalog/${result._id}`)
+        navigate(`/catalog/${gameId}`)
       })
   }
 

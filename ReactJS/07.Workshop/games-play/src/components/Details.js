@@ -1,22 +1,31 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+
+import * as gameService from '../services/gameService'
 
 const GameDetails = ({
-    games,
     addComment,
 }) => {
+
     const  gameId  = useParams();
+    const [currentGame, setCurrentGame] = useState({})
+
     const [comment, setComment] = useState({
         username: '',
         comment: '',
     });
 
+    useEffect(() => {
+           gameService.getOne(gameId)
+            .then(result => {
+                setCurrentGame(result)
+            })
+    },[]);
+
     const [error, setError] = useState({
         username: '',
         comment: '',
     });
-
-    const game = games.find(x => x._id == gameId.id);
 
     const addCommentHandler = (e) => {
         e.preventDefault();
@@ -54,37 +63,37 @@ const GameDetails = ({
             <h1>Game Details</h1>
             <div className="info-section">
                 <div className="game-header">
-                    <img className="game-img" src={game.imageUrl} />
-                    <h1>{game.title}</h1>
-                    <span className="levels">MaxLevel: {game.maxLevel}</span>
-                    <p className="type">{game.category}</p>
+                    <img className="game-img" src={currentGame.imageUrl} />
+                    <h1>{currentGame.title}</h1>
+                    <span className="levels">MaxLevel: {currentGame.maxLevel}</span>
+                    <p className="type">{currentGame.category}</p>
                 </div>
                 <p className="text">
-                    {game.summary}
+                    {currentGame.summary}
                 </p>
 
-                <div className="details-comments">
+                {/* <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {game.comments?.map(x => 
+                        {currentGame.comments?.map(x => 
                             <li className="comment">
                                 <p>{x}</p>
                             </li>
                         )}
                     </ul>
 
-                    {!game.comments &&
+                    {!currentGame.comments &&
                         <p className="no-comment">No comments.</p>
                     }
-                </div>
+                </div> */}
 
                 <div className="buttons">
-                    <a href="#" className="button">
+                    <Link to={`/games/${gameId}/edit`} className="button">
                         Edit
-                    </a>
-                    <a href="#" className="button">
+                    </Link>
+                    <Link to="#" className="button">
                         Delete
-                    </a>
+                    </Link>
                 </div>
             </div>
 

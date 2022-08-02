@@ -1,19 +1,18 @@
-// import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../context/authContext";
+import { Link } from 'react-router-dom';
+
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const Header = () => {
-  const { user } = useAuthContext();
+    const { user } = useAuthContext();
 
-  return (
-    <header>
-      {/* Navigation */}
-      <h1>
-        <Link className="home" to="/">
-          GamesPlay
-        </Link>
-      </h1>
-      <nav>
+    return (
+        <header>
+            <h1>
+                <Link className="home" to="/">
+                    GamesPlay
+                </Link>
+            </h1>
+            <nav>
                 {user.email && <span>{user.email}</span>}
                 <Link to="/catalog">All games</Link>
                 {user.email
@@ -27,8 +26,8 @@ const Header = () => {
                     </div>
                 }
             </nav>
-    </header>
-  );
+        </header>
+    );
 };
 
 export default Header;

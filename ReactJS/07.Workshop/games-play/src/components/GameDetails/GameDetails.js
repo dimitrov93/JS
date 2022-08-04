@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { GameContext } from '../../contexts/GameContext';
+import {useAuthContext} from '../../contexts/AuthContext';
 
 import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
@@ -9,8 +10,11 @@ const GameDetails = () => {
     const navigate = useNavigate();
     const { addComment, fetchGameDetails, selectGame, gameRemove } = useContext(GameContext);
     const { gameId } = useParams();
+    const {user} = useAuthContext()
 
     const currentGame = selectGame(gameId);
+
+    const isOwner = currentGame._ownerId === user._id
 
     useEffect(() => {
         (async () => {
@@ -74,7 +78,7 @@ const GameDetails = () => {
                         <p className="no-comment">No comments.</p>
                     }
                 </div>
-
+                {isOwner &&
                 <div className="buttons">
                     <Link to={`/games/${gameId}/edit`} className="button">
                         Edit
@@ -83,6 +87,7 @@ const GameDetails = () => {
                         Delete
                     </button>
                 </div>
+                }
             </div>
 
             <article className="create-comment">

@@ -1,6 +1,9 @@
 import { Component } from "react";
 import { TaskContext } from "../contexts/TaskContext";
+import withRouter from "../hoc/withRouter";
 import TaskItem from "./TaskItem";
+
+
 
 
 class TaskList extends Component {
@@ -95,4 +98,4 @@ class TaskList extends Component {
   }
 }
 
-export default TaskList;
+export default withRouter(TaskList);

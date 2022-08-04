@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-export const CharItem = ({name, onClick}) => {
+const CharItem = ({name, onClick}) => {
   return (
     <li onClick={() => onClick(name)}>
         {name}
     </li>
   )
 }
+
+export default memo(CharItem)

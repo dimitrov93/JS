@@ -1,4 +1,4 @@
-import { CharItem } from "./CharItem";
+import  CharItem  from "./CharItem";
 import {useState, useCallback} from 'react';
 
 const CharacterList = ({ characters }) => {

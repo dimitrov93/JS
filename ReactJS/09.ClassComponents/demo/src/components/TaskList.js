@@ -9,9 +9,11 @@ class TaskList extends Component {
       tasks: ["Task 11", "Task 22", "Task 33"],
       filter: "all",
       newTask: "",
+      character: [],
+
     };
 
-    this.onChangeHandler = this.onChangeHandler.bind(this)
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
   onChangeHandler(e) {
@@ -20,14 +22,40 @@ class TaskList extends Component {
     this.setState({ newTask: e.target.value });
   }
 
+  addNewTaskHandler(e) {
+    e.preventDefault();
+    this.setState((state) => ({
+      tasks: [...state.tasks, state.newTask],
+      newTask: "",
+    }));
+  }
+
+  componentDidMount() {
+    fetch('https://swapi.dev/api/people/4')
+        .then(res => res.json())
+        .then(result => {
+            this.setState({character: result})
+        })
+    console.log('did mount');
+  }
+
+  componentDidUpdate() { 
+    console.log('did update');
+  }
+
   render() {
     return (
-      <ul>
-        {this.state.tasks.map((x) => (
-          <TaskItem key={x} title={x} />
-        ))}
+      <>
+        <h2>Currect Character: {this.state.character.name} </h2>
 
-        <form>
+
+        <ul>
+          {this.state.tasks.map((x) => (
+            <TaskItem key={x} title={x} />
+          ))}
+        </ul>
+
+        <form onSubmit={this.addNewTaskHandler.bind(this)}>
           <label htmlFor="new-task" />
           <input
             type="text"
@@ -40,7 +68,7 @@ class TaskList extends Component {
 
           <input type="submit" value={"add"} />
         </form>
-      </ul>
+      </>
     );
   }
 }

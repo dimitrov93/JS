@@ -1,3 +1,8 @@
+1. Initial render
+2. Parent rerender
+3. Props changed
+4. Hooks changed
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

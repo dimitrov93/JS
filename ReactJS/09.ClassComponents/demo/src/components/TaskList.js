@@ -1,16 +1,21 @@
 import { Component } from "react";
+import { TaskContext } from "../contexts/TaskContext";
 import TaskItem from "./TaskItem";
+
 
 class TaskList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tasks: ["Task 11", "Task 22", "Task 33"],
+      tasks: [
+        { title: "Task 11", isCompleted: false },
+        { title: "Task 22", isCompleted: false },
+        { title: "Task 33", isCompleted: false },
+      ],
       filter: "all",
       newTask: "",
       character: [],
-
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -25,33 +30,50 @@ class TaskList extends Component {
   addNewTaskHandler(e) {
     e.preventDefault();
     this.setState((state) => ({
-      tasks: [...state.tasks, state.newTask],
+      tasks: [...state.tasks, { title: state.newTask, isCompleted: false }],
       newTask: "",
     }));
   }
 
   componentDidMount() {
-    fetch('https://swapi.dev/api/people/4')
-        .then(res => res.json())
-        .then(result => {
-            this.setState({character: result})
-        })
-    console.log('did mount');
+    fetch("https://swapi.dev/api/people/4")
+      .then((res) => res.json())
+      .then((result) => {
+        this.setState({ character: result });
+      });
+    console.log("did mount");
   }
 
-  componentDidUpdate() { 
-    console.log('did update');
+  componentDidUpdate() {
+    console.log("did update");
+  }
+
+  taskClickHandler(taskTitle) {
+    this.setState(state => ({
+        tasks: state.tasks.map(x => x.title === taskTitle ? {...x, isCompleted: !x.isCompleted} : x)
+    }))
+  }
+
+  taskDeleteHandler(e, taskTitle) {
+    e.stopPropagation()
+    this.setState(state => ({
+        tasks: state.tasks.filter(x => x.title !== taskTitle)
+    }))
   }
 
   render() {
     return (
-      <>
+      <TaskContext.Provider value={{taskDeleteHandler: this.taskDeleteHandler.bind(this)}}>
         <h2>Currect Character: {this.state.character.name} </h2>
-
 
         <ul>
           {this.state.tasks.map((x) => (
-            <TaskItem key={x} title={x} />
+            <TaskItem 
+            key={x + x.title} 
+            title={x.title} 
+            isCompleted={x.isCompleted} 
+            onClick={this.taskClickHandler.bind(this)}
+            />
           ))}
         </ul>
 
@@ -68,7 +90,7 @@ class TaskList extends Component {
 
           <input type="submit" value={"add"} />
         </form>
-      </>
+      </TaskContext.Provider>
     );
   }
 }

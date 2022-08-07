@@ -1,5 +1,5 @@
 import "./App.css";
-import RandomJoke from "./components/RandomJoke";
+import RandomJoke from "./components/common/RandomJoke";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 
 function App() {

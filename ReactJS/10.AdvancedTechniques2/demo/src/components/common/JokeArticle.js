@@ -12,7 +12,7 @@ const JokeArticle = ({ iconUrl, text }) => {
       </header>
 
       <main>
-        <p>{text}</p>
+        <p className="jokeText">{text}</p>
       </main>
     </article>
   );

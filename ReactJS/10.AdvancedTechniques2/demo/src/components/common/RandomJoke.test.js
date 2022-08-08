@@ -8,6 +8,11 @@ const fakeJoke = {
 
 afterEach(cleanup)
 
+// jest.spyOn(global, "fetch").mockImplementation(() => {
+//     Promise.resolve({
+//         json: () => Promise.resolve(fakeJoke)
+//     })
+// })
 
 test('Show fetched joke', async () => {
 

@@ -1,22 +1,23 @@
 #wrapper {
-    Width: 700px;
-    Height: 730px;
-    Border: 1px solid #000000;
-    text-align: center;
-    Padding: 10px 20px;
-    background-color: #a6e1ec;
+	width: 700px;
+	height: 730px;
+	border: 1px solid #000000;
+	margin: 0 auto;
+	padding: 10px;
+	background-color: #a6e1ec;
 }
 
 #wrapper li {
-    Width: 595px;
-    Padding: 10px;
-    margin-bottom: 5px;
-    font-size: 14px;
-    Border: 1px solid #000000;
+	width: 520px;
+	padding: 10px;
+	margin-bottom: 5px;
+	font-size: 14px;
+	border: 1px solid #000000;
+	list-style-type: none;
 }
 
 img {
-    Width: 200px;
+    width: 200px;
     margin-right: 10px;
     vertical-align: middle;
 }

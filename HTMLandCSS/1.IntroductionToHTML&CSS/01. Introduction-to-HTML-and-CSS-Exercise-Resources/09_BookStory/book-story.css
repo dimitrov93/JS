@@ -1,0 +1,11 @@
+#wrapper {
+    Width: 400px;
+    background-color: #dddddd;
+    Border: 1px solid #000000;
+    margin-left: 20px;
+    Padding: 10px;
+}
+
+#wrapper p {
+    font-size: 18px;
+}

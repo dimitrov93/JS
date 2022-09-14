@@ -1,0 +1,15 @@
+h1 {
+    color: rgb(151, 237, 45);
+}
+
+section h1{
+    color: rgb(45, 237, 186);
+}
+
+section article h1 {
+    color: rgb(55, 18, 156);
+}
+
+#news .hot-topic h1{
+    color: rgb(224, 113, 113);
+}

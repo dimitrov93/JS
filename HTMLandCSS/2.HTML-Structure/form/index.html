@@ -10,52 +10,97 @@
   <body>
     <h1>Forms example</h1>
 
-    <form action="" method="">
+    <form action="/submit.html" method="">
       <div>
         <label for="first-name">Input text</label>
         <input id="first-name" type="text" name="first-name" required />
       </div>
 
       <div>
-        <label for="number">Input text</label>
-        <input id="number" type="number" name="number"  />
+        <label for="number">Input number</label>
+        <input
+          id="number"
+          min="1"
+          max="10"
+          type="number"
+          name="number"
+          value="123"
+          disabled
+        />
       </div>
       <div>
-        <label for="password">Input text</label>
-        <input id="password" type="password" name="password" />
+        <label for="password">Input password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Input your password here"
+        />
       </div>
       <div>
         <label for="email">Input email</label>
-        <input id="email" type="email" name="email"  required />
+        <input id="email" type="email" name="email" required />
       </div>
 
       <p>Select your gender</p>
-        <label for="male">Male</label>
-        <input id="male" type="radio" name="gender" />
+      <label for="male">Male</label>
+      <input id="male" type="radio" name="gender" />
 
-        <label for="female">female</label>
-        <input id="female" type="radio" name="gender"  />
+      <label for="female">female</label>
+      <input id="female" type="radio" name="gender" />
 
-        <label for="genderNA">N/A</label>
-        <input id="genderNA" type="radio" name="gender"  />
+      <label for="genderNA">N/A</label>
+      <input id="genderNA" type="radio" name="gender" />
 
-        <p>Select your Hobies</p>
-        <label for="reading">Male</label>
-        <input id="reading" type="checkbox" name="Hobies" />
+      <p>Select your Hobies</p>
+      <label for="reading">Reading</label>
+      <input id="reading" type="checkbox" name="Hobies" value="reading" />
 
-        <label for="sports">female</label>
-        <input id="sports" type="checkbox" name="Hobies"  />
+      <label for="sports">Sports</label>
+      <input id="sports" type="checkbox" name="Hobies" value="sports" />
 
-        <label for="music">N/A</label>
-        <input id="music" type="checkbox" name="Hobies"  />
+      <label for="music">Music</label>
+      <input id="music" type="checkbox" name="Hobies" value="music" />
 
-        <br/>
-        <br/>
-        <br/>
-        
-        <!-- <input type="submit" value="Send"> -->
-        <button type="submit">Submit</button>
+      <div>
+        <label for="size">Size:</label>
+        <select id="size" name="size">
+          <option value="39">39 EU</option>
+          <option value="40">40 EU</option>
+          <option value="41">41 EU</option>
+        </select>
+      </div>
 
+      <div>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+      </div>
+      <br />
+
+      <fieldset>
+        <legend>Customer Details</legend>
+        <input id="text" type="text" name="fName" />
+        <input id="text" type="text" name="lName" />
+      </fieldset>
+      <fieldset>
+        <legend>Order Details</legend>
+        <input id="quantity" type="text" name="quantity" />
+        <textarea name="remarks"></textarea>
+      </fieldset>
+
+      <br />
+      <br />
+      <br />
+
+      <!-- <input type="submit" value="Send"> -->
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
     </form>
+
+    <div>
+        <label for="country_code">Country code:</label>
+        <input type="text" id="country_code" name="country_code"
+        pattern="[A-Za-z]{3}" title="Three letter country code"><br><br>
+        <input type="submit">      
+      </div>
   </body>
 </html>

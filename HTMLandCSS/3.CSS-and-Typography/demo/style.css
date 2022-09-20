@@ -3,9 +3,31 @@
 
 p {
     font-weight: 900;
-    font-family: 'Oswald', sans-serif;
+    /* font-family: 'Oswald', sans-serif; */
     font-style: oblique;
     font-size: 44px;
     border: 1px solid red;
     text-align: center;
+    /* line-height: 55px; */
+    letter-spacing: 5px;
+    text-decoration: line-through;
+    text-transform:capitalize;
+}
+
+a {
+    text-decoration:none;
+    text-transform: uppercase;
+}
+
+.text {
+    text-shadow: 2px 4px 14px red;
+    text-decoration: none;
+    color: rgba(192 , 249, 184, 0.5)
+}
+
+div {
+    width: 500px;
+    height: 150px;
+    /* background: linear-gradient(rgba(255,0,0,0.2), rgba(255,0,0,0.9)),url(./avatars-000003471481-cuf9jx-t500x500.jpg); */
+    border: 3px dashed blue;
 }

@@ -31,3 +31,12 @@ div {
     /* background: linear-gradient(rgba(255,0,0,0.2), rgba(255,0,0,0.9)),url(./avatars-000003471481-cuf9jx-t500x500.jpg); */
     border: 3px dashed blue;
 }
+
+i {
+    color: rgb(11, 25, 25);
+    font-size: 34px;
+}
+
+i.fa-house {
+    color: gold;
+}

@@ -1,0 +1,16 @@
+form {
+    border: 1px ridge black ;
+    width: 40%;
+    margin: auto;
+}
+
+input {
+    margin-right: 40%;
+    padding-left: 25px;
+}
+
+i {
+    position: relative;
+    left: 22px;
+    top: 1px;
+}

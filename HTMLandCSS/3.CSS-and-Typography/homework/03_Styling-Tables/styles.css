@@ -5,11 +5,11 @@ body {
     padding: 16px;
 }
 
-th {
+thead th {
     background: lightblue;
 }
 
-th, td {
+td, th {
     Width: 144px ;
     Height: 32px ;
     border: 1px solid #ccc;

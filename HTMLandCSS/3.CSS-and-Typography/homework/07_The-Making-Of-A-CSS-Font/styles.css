@@ -1,23 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orienta&display=swap');
-      
+@font-face {
+    font-family: Righteous;
+    src: url(https://fonts.googleapis.com/css2?family=Righteous&display=swap);
+}
+
+@font-face {
+    font-family: Orienta;
+    src: url(https://fonts.googleapis.com/css2?family=Orienta&display=swap);
+}
+
 body {
     
     background-color: darkred;
 }
 
-h1 {
+body h1 {
     
-    font-family: 'Righteous', cursive;
+    font-family: Righteous, cursive;
     font-size: 45px ;
     Font-weight: normal ;
     line-height: 60px ;
-    color: #fff ;
+    color: rgb(255, 255, 255);
     text-transform: uppercase ;
     text-align: center;
 }
 
-h2 {
+body h2 {
     
     Font-size: 30px ;
     line-height: 50px ;
@@ -27,9 +34,9 @@ h2 {
     text-align: center;
 }
 
-p {
+body p {
     
-    font-family: 'Orienta', sans-serif ;
+    font-family: Orienta, sans-serif ;
     font-size: 16px ;
     line-height: 24px ;
     color: #f6f6f6 ;

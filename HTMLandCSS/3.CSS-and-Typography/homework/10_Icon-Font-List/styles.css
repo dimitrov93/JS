@@ -1,4 +1,6 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+/* import for judge */
+@import url("https://use.fontawesome.com/releases/v6.1.1/css/all.css");
+
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -7,20 +9,20 @@ body {
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
 }
 
 ul.check i {
-    Color: #2fcc71 ;
+    color: #2fcc71;
     font-size: 25px;
 }
 
 ul.star i {
-    Color: coral;
+    color:coral;
     font-size: 25px;
 }
 
 ul.contact i {
-    Color: #3498da;
+    color: #3498da;
     font-size: 25px;
 }

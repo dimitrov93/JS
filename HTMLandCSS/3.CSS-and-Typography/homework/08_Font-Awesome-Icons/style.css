@@ -1,15 +1,15 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css%27);
+@import url("https://use.fontawesome.com/releases/v5.6.3/css/all.css");
 
 body {
     font-family: proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 nav {
-    Width: 200px;
+    width: 200px;
     border: 1px solid #e3e3e3;
     font-size: 14px;
     line-height: 20px;
-    Background: #f5f5f5;
+    background-color: #f5f5f5;
 }
 
 li {
@@ -20,30 +20,30 @@ li {
 
 a {
     text-decoration: none;
-    color:  #c83025;
+    color: #c83025;
 }
 
 i {
-    Width: 1.14em;
+    width: 1.14em;
     padding-right: 0.28em;
 }
 
 button {
-    padding: 4px 12px ;
+    padding: 4px 12px;
     line-height: 20px;
     color: #ffffff;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    Cursor: pointer;
+    cursor: pointer;
 }
 
-button.shopping {
+button.shopping{
     background-color: #83a94c;
 }
 
-button.info {
+button.info{
     background-color: #008ed0;
 }
 
-button.delete {
+button.delete{
     background-color: #cc4036;
 }

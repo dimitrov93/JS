@@ -1,0 +1,21 @@
+html {
+    font-family: Helvetica, sans-serif;
+
+}
+
+header {
+    border-bottom: 1px solid black;
+}
+
+header h1 {
+    display: inline-block;
+}
+
+header nav {
+    display: inline-block;
+}
+
+nav li {
+    list-style: none;
+    display: inline-block;
+}

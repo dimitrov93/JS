@@ -1,26 +1,7 @@
-html {
-    box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
-body {
-    background-color: rgb(208, 208, 208);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-img {
-    width: 100%;
-}
-
 .card { 
 
-    margin: 0 auto;
+    /* margin: 0 auto; */
 
-    max-width: 250px;
     background-color: aliceblue;
     border-radius: 12px;
     overflow: hidden;
@@ -50,6 +31,8 @@ img {
 .card .body .body__description {
     color: #605d62;
     margin-bottom: 42px;
+    font-size: 16px;
+    
 }
 
 .card .body .body__author-img {
@@ -67,6 +50,7 @@ img {
 .card .body .release .release__name,
 .card .body .release .release__date {
     margin: 0px;
+    font-size: 14px;
 }
 
 .card .body .release .release__name {

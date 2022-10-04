@@ -23,23 +23,27 @@ body {
   height: 400px;
 }
 
+
 .main__first {
-  background-color: #845ec2;
+  background-color: #845EC2;
   top: 20px;
   left: 20px;
   z-index: 10;
 }
+
 .main__second {
-  background-color: #d65db1;
+  background-color: #D65DB1;
   top: 50px;
   left: 50px;
   z-index: 13;
+
 }
+
+
 .main__third {
-  background-color: #ff6f91;
+  background-color: #FF6F91;
   top: 100px;
   left: 100px;
-
   z-index: 12;
 }
 
@@ -51,23 +55,27 @@ body {
 }
 
 .sub__first {
-  background-color: #ff9671;
+  background-color: #FF9671;
   top: 150px;
   left: 150px;
-
   z-index: 12;
+
 }
+
+
 .sub__second {
-  background-color: #ffc75f;
+  background-color: #FFC75F;
   top: 200px;
   left: 200px;
-
   z-index: 9;
+
 }
+
+
 .sub__third {
-  background-color: #008f7a;
+  background-color: #F9F871;
   top: 250px;
   left: 250px;
-
   z-index: 20;
+
 }

@@ -1,0 +1,47 @@
+.static .tags {
+  position: static;
+  top: 20px;
+  left: 20px;
+}
+
+.relative .tags {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  background-color: gray;
+  width: 94%;
+}
+
+.absolute {
+  position: relative;
+}
+
+.absolute .tags {
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+
+/*Fixed*/
+
+/* .fixed {
+  position: relative;
+}
+
+.fixed .tags {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: gray;
+  width: 100%;
+} */
+
+.sticky {
+  height: 500px;
+  overflow: auto;
+}
+
+.sticky .tags {
+  position: sticky;
+  top: 220px;
+}

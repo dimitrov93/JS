@@ -1,0 +1,38 @@
+.page-layout {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    'div1'
+    'div2'
+    ;
+} 
+
+.viewport1 {
+    grid-area: div1;
+    background-color: red;
+}
+
+.viewport2 {
+    grid-area: div2;
+    background-color: blue;
+}
+
+img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.viewport2 {
+    position: relative;
+  }
+.viewport2 .card {
+    position: absolute;
+}
+
+.viewport1 {
+    position: relative;
+  }
+.viewport1 .card {
+    position: absolute;
+}

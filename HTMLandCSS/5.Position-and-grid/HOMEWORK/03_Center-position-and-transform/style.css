@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(238, 238, 238) ;
+}
+
+.card {
+    background-color: rgb(255, 255, 255)  ;
+}
+
+button {
+    background-color: rgb(0, 153, 0)   ;
+}
+
+h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1em/1.2;
+}
+
+.card {
+    width: 60%;
+
+}
+
+section section {
+}
+
+section section img {
+    width: ;
+    position: relative;
+    top: -20px;
+
+}

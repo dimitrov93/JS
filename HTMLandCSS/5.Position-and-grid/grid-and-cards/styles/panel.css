@@ -1,0 +1,22 @@
+/* Panel */
+
+.panel {
+  background-color: lightpink;
+  border-radius: 14px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  color: #fff;
+  padding: 18px;
+  text-align: center;
+}
+
+.panel .panel__icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.panel .panel__text {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+}

@@ -1,38 +1,39 @@
-.page-layout {
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-areas: 
-    'div1'
-    'div2'
-    ;
-} 
-
-.viewport1 {
-    grid-area: div1;
-    background-color: red;
+div {
+    height: 50vh;
 }
 
-.viewport2 {
-    grid-area: div2;
-    background-color: blue;
+div:first-child {
+    background-color: green;
 }
 
-img {
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
+div:first-child img {
+    width: 300px;
 }
 
-.viewport2 {
+
+div:last-child {
+    background-color: lightpink;
+}
+
+div:last-child img {
+    width: 200px;
+}
+
+div {
     position: relative;
-  }
-.viewport2 .card {
-    position: absolute;
 }
 
-.viewport1 {
-    position: relative;
-  }
-.viewport1 .card {
+div .card {
+    display: block;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.viewport .card i {
+    color: white;
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
 }

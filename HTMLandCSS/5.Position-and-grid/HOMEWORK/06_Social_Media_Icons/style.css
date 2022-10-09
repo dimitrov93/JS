@@ -1,0 +1,35 @@
+* {
+    text-decoration-style: none;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+ul li {
+    display: inline-block;
+    font-size: 32px;
+}
+
+a {
+    color: gray;
+    border-radius: 50%;
+}
+
+.fa-facebook:hover {
+    color: blue;
+}
+
+.fa-twitter:hover {
+    color: lightskyblue;
+}
+
+.fa-google-plus-g:hover {
+    color: lightcoral;
+}
+
+.fa-linkedin:hover {
+    color: darkblue;
+}
+
+.fa-instagram:hover {
+    color: purple;
+}

@@ -5,14 +5,15 @@
 }
 
 
-
 .container-flex {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  justify-content: space-between;
 }
 
 .container-flex .item {
+  /* width: calc(100% / 3 - 16px); */
   width: 30%;
   flex-grow: 1;
 }

@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(238,238,238);
+    height: 100vh;
+    font-family: Helvetica, sans-serif;
+}
+
+body main {
+    margin: 20px;
+}
+
+body header h1 {
+    margin: 20px;
+    font-size: 54px;
+
+}
+
+body header {
+    border-bottom: 3px solid black;
+    flex-basis: 100%;
+}
+
+footer {
+    color: rgb(255,255,255);
+    background-color: rgb(102, 102, 102);
+    flex-basis: 100%;
+    height: 5%;
+}
+
+footer p {
+    margin-left: 25px;
+}

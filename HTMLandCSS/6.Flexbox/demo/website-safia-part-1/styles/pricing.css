@@ -1,13 +1,32 @@
-/* #pricing .pricing__row {
-
-} */
+#pricing .pricing__row {
+    width: calc(100% - 2 * var(--page-px-mini));
+    margin: 0px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-end;
+}
 
 #pricing .plan {
+    width: 100%;
     background-color: var(--clr-neutral-800);
     box-shadow: 0px 35px 45px rgba(7, 14, 39, 0.05);
     border-radius: 16px;
     padding: 48px;
 }
+
+#pricing .plan.plan__promoted {
+    margin-bottom: 64px;
+    background-color: var(--clr-neutral-700);
+}
+
+#pricing .plan.plan__promoted .plan__cta {
+    --btn-clr-bg: var(--clr-primary-600);
+    --btn-clr-text: var(--clr-white);
+  }
+  #pricing .plan.plan__promoted .plan__cta:hover {
+    --btn-clr-bg: var(--clr-white);
+    --btn-clr-text: var(--clr-primary-600);
+  }
 
 #pricing .plan .plan__name {
     font-size: 20px;

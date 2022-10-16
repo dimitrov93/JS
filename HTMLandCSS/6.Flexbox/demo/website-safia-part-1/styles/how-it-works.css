@@ -15,9 +15,15 @@
 }
 
 #how-it-works .hiw__row .row__img {
+    --rotate-deg: -10deg;
     width: 50%;
     max-width: 550px;
-    
+    transition: all 300ms ease-in-out;
+}
+
+#how-it-works .hiw__row .row__img:hover {
+    transform-origin: bottom left;
+    transform: scale(1.1) rotate(var(--rotate-deg));
 }
 
 

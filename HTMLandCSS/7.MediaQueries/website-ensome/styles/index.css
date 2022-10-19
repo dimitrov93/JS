@@ -9,6 +9,12 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+body.dark-theme {
+  background-color: var(--clr-black);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--clr-grey);
+}
 /* section */
 
 .section--narrow {

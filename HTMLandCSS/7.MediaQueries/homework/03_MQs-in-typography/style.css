@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+  }
+
+
+
+body {
+    background-color: rgb(238, 238, 238);
+    margin: 1% 10%;
+
+}
+
+img {
+    background-color: rgb(255, 255, 255);
+
+}
+blockquote,
+h1,h2 {
+    font-family: Georgia, serif;
+}
+
+a {
+    color: rgb(0, 153, 0);
+}
+
+header {
+    border-bottom: 3px solid black;
+    text-transform: capitalize;
+    flex-basis: 100%;
+}
+
+header .site__title {
+    font-size: 42px;
+    font-weight: bolder;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.heading1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 70%;
+}
+
+.heading1 h1 {
+    height: 5%;
+    width: 100%;
+}
+
+.heading1 img {
+    width: 20%;
+    height: 50%;
+    padding: 30px;
+    border: 3px solid black;
+}
+
+.heading1 p {
+    width: 75%;
+    height: 30%;
+
+
+}
+   
+  @media (max-width: 500px) {
+    body {
+        font-size: 12px;
+    }
+  }
+  
+   
+  @media (min-width: 500px) and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+  }
+  
+      
+  @media (min-width: 601px) and (max-width: 800) {
+    body {
+        font-size: 16px;
+    }
+  }
+  
+   
+  @media (min-width: 801px) and (max-width: 1300px) {
+    body {
+        font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 1301px) and (max-width: 1800px) {
+    body {
+        font-size: 21px;
+    }
+  }
+  
+  @media (min-width: 1801) {
+    body {
+        font-size: 23px;
+    }
+  }

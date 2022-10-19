@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(235, 230, 230);
+    font-weight: bolder;
+    color: black;
+}
+.login-section {
+    position: relative;
+    top: 25px;
+    background-color: rgb(209, 205, 205);
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 25%;
+    padding: 25px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+.login-section div {
+    padding: 15px;
+    
+}
+
+.login-section button {
+    background-color: black;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+.login-title {
+    margin-left: -14px;
+    padding: 10px;
+    width: 120px;
+    height: 15px;
+    border: 1px solid black;
+    font-size: 12px;
+    background-color: rgb(209, 205, 205);
+    border-radius: 2px;
+}
+
+.login-box p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bolder;
+    margin-left: 10px;
+}
+
+label {
+    color: black;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+ i {
+    position: relative;
+    top: 2px;
+    left: 20px;
+    
+}
+
+input {
+    padding: 5px 20px;
+}

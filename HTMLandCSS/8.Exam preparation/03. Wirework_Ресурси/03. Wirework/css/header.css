@@ -1,0 +1,67 @@
+.header {
+    background-color: var(--clr-primary-bg);
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+
+}
+
+.header .logo {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+}
+
+.header .logo .main {
+    font-weight: bold;
+    font-size: 46px;
+    line-height:1;
+}
+
+.header .logo .divider {
+    display: inline-block;
+    width: 1px;
+    background-color: var(--clr-gray);
+    height: 45px;
+}
+
+.header .logo .sub {
+    font-size: 21px;
+    line-height: 1;
+    align-self: center;
+}
+
+
+.header .nav {
+    display: flex;
+    gap: 2px;
+}
+
+.header .nav .nav-item {
+    background-color: var(--clr-header-btn);
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .nav-link {
+    color: var(--clr-primary-bg);
+}
+
+.header .nav .nav-item.active {
+    background-color: var(--clr-header-btn-act);
+    color: var(--clr-primary-bg);
+}
+
+
+.header .nav .nav-item .nav-link {
+    text-decoration: none;
+    color: inherit;
+    letter-spacing: 1.1px;
+    line-height: 1;
+}

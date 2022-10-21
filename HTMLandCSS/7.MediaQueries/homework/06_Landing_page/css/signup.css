@@ -1,0 +1,14 @@
+.sign__up {
+    display: flex;
+    background-color: purple;
+    justify-content: center;
+
+}
+
+.sign__up .devider {
+    border-bottom: 1px solid black;
+    width: 10%;
+}
+
+.sign__up__field {
+}

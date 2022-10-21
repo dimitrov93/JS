@@ -1,0 +1,52 @@
+:root {
+    --clr-body:rgb(238, 238, 238);
+    --clr-card: rgb(255, 255, 255);
+    --clr-btn: rgb(0, 153, 0);
+    --clr-btn-text: rgb(255, 255, 255);
+    --clr-primary-black: rgb(0, 0, 0);
+}
+
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: 1em/1.2;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.main__section {
+    border: 1px solid black;
+    width: 70%;
+    background-color: var(--clr-card);
+    position: relative;
+    top: 150px;
+    left: 150px;
+}
+
+.off__section {
+    margin: 20px;
+    position: relative;
+    padding-bottom: 25px;
+}
+
+.off__section .off__button {
+    background-color: var(--clr-btn);
+    width: 18%;
+    padding: 5px 15px;
+    color: var(--clr-btn-text);
+    border-radius: 5px;
+    border: none;
+    position: absolute;
+    margin-left: 300px;
+    margin-top: -10px;
+}
+
+.picture img {
+    object-fit: cover;
+    width: 100%;
+}

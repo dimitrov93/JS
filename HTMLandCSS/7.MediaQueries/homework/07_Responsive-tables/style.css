@@ -1,0 +1,29 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+    background-color: rgb(64, 62, 62);
+    color: white;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #fcf8f8;
+}
+
+@media screen and (max-width: 360px) {
+    table {
+        width: 80%;
+        margin: auto;
+    }
+
+    
+}

@@ -7,8 +7,10 @@
     --clr-header-btn-act: #e24e2a;
     --clr-red: #e24e2a;
     --clr-gray: #383838;
+    --clr-gray-text: #646463;
     --clr-green: #1b9772;
     --clr-green-btn: #1b9772;
+    --clr-green-text: #5ab499;
 }
 
 body {

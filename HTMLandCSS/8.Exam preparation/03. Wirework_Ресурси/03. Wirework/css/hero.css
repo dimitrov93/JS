@@ -1,0 +1,154 @@
+#hero .img-container .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#hero .img-container {
+    overflow: hidden;
+}
+
+.content {
+    background-color: var(--clr-red);
+    padding: 4rem;
+}
+
+.content .text {
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    color: var(--clr-primary-bg);
+    line-height: 1.5;
+    font-size: 19px;
+}
+
+.section--full {
+    padding: 6rem 4rem;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.features-list .feature-item {
+    text-align: center;
+
+}
+
+#features {
+    background-color: var(--clr-gray);
+    color: var(--clr-primary-bg);
+}
+
+
+#features .features-list .feature-icon {
+    background-color: var(--clr-red);
+    padding: 1.5rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+#features .features-list .feature-icon i {
+    font-size: 48px;
+}
+
+#features .features-list .feature-heading {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#features .features-list .feature-divider {
+    height: 1px;
+    background-color: var(--clr-gray-text);
+    margin-bottom: 1rem;
+}
+
+#features .features-list .feature-desc {
+    color: var(--clr-gray-text);
+    font-size: 20px;
+}
+
+
+/* Subscribe */
+
+#subscribe {
+    text-align: center;
+    background-color: var(--clr-primary-bg);
+}
+
+#subscribe .title {
+    color: var(--clr-gray-text);
+    font-weight: 500;
+    font-size: 42px;
+}
+
+#subscribe .desc {
+    color: var(--clr-gray-text);
+    font-size: 22px;
+    font-weight: 100;
+    margin-bottom: 2rem;
+}
+
+#subscribe .btn {
+    color: var(--clr-primary-bg);
+    background-color: var(--clr-green-btn);
+    letter-spacing: 2px;
+    padding: 1rem 3.5rem;
+    border-radius: 1px;
+    border: none;
+    font-size: 22px;
+}
+
+
+/* Advantages */
+#advantages {
+    background-color: var(--clr-gray);
+}
+
+#advantages .features-list .feature-heading {
+    margin-bottom: 2rem;
+    color: var(--clr-primary-bg);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#advantages .features-list .feature-desc {
+    color: var(--clr-grey-text);
+    font-size: 20px;
+}
+
+
+/* Footer */
+
+.footer {
+    text-align: center;
+    background-color: var(--clr-green);
+}
+
+.footer .resources {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer .resources .resource {
+    padding: 0 1rem;
+    color: var(--clr-green-text);
+}
+
+.footer .resources .divider {
+    background-color: var(--clr-green-text);
+    height: 15px;
+    width: 2px;
+}
+
+.footer a {
+    color:var(--clr-green-text);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}

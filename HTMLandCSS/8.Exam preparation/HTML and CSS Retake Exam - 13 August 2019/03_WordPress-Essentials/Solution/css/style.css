@@ -1,0 +1,383 @@
+@import url('reset.css');
+
+:root {
+    --clr-white: #ffffff;
+    --clr-nav-bg: #234465;
+    --clr-nav-btn: #ffa000;
+    --clr-nav-text: #91a1b2;
+    --clr-text-yellow: #cc851a;
+    --clr-text-blue: #234466;
+    --clr-sections-bg: #f2f2f2;
+    --clr-inner-section: #dadada;
+    --clr-numbers: #234465;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    background-color: var(--clr-nav-bg);
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 14px;
+
+}
+
+.header .logo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.header .logo .header__btn {
+    background-color: var(--clr-nav-btn);
+    color: var(--clr-white);
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    margin-left: 24px;
+    margin-top: 5px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.header .nav__container .nav__list {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav__item {
+    padding: 10px 10px;
+    line-height: 1;
+}
+
+.header .nav__container .nav__link {
+    text-decoration: none;
+    color: var(--clr-nav-text);
+    padding: 0px 5px;
+    font-size: 20px;
+}
+
+.header .nav__container .nav__item i {
+    color: var(--clr-nav-text);
+    font-size: 20px;
+    padding: 0px 5px;
+
+}
+
+.header .nav__container .nav__item .nav__btn {
+    background-color: var(--clr-nav-btn);
+    color: var(--clr-white);
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    height: 30px;
+    width: 5rem;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+
+/* Second header */
+
+
+
+.second_header_list {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.second_header_list .second_header_list_item:first-child {
+    margin-left: 300px;
+}
+
+.second__header .second_header_link {
+    text-decoration: none;
+    color: var(--clr-text-blue)
+}
+
+.second__header .second_header_link:active {
+    color: var(--clr-text-yellow);
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--clr-nav-bg);
+}
+
+
+/* Main picture */
+
+.main_picture {
+    position: relative;
+    text-align: center;
+}
+
+.main_picture .main_pic {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.main_pic_header {
+    position: relative;
+    top: 50px;
+}
+
+.main_pic_list {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    position: relative;
+    top: -150px;
+    
+    justify-content: center;
+    
+}
+
+.main_pic.item {
+    display: flex;
+    gap: 12px;
+    width: 10%;
+    height: 10%;
+
+}
+.button_size {
+    background-color: var(  --clr-nav-btn);
+    color: var(--clr-white);
+    border: none;
+    border-radius: 20px;
+    padding: 5px 55px;
+    position: relative;
+}
+
+.main_pic_btn {
+    top: -120px;
+}
+
+.main_pic_list .main_pic.item i {
+    background-color: var(--clr-white);
+    border-radius: 100%;
+    padding: 8px;
+}
+
+
+
+.main_pic_list .main_pic.item p {
+    text-align: center;
+    line-height: 2;
+    color: var(--clr-white);
+}
+
+/* ABOUT */
+.all_sections {
+    max-width: 900px;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    background-color: var(--clr-sections-bg);
+    margin-bottom: 20px;
+}
+
+#about {
+    padding: 40px;
+}
+
+.divider {
+    background-color: var(--clr-nav-btn);
+    margin-left: auto;
+    margin-right: auto;
+    height: 5px;
+}
+
+
+#about .about_info {
+    margin-bottom: 22px;
+}
+
+#about .divider {
+    width: 15%;
+}
+
+
+/* EXP */
+
+.exp_list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 0;
+    gap: 24px;
+    padding: 44px;
+}
+
+#exp .divider {
+    width: 35%;
+}
+
+.exp_list .exp_item {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.exp_list .exp_item .exp_info {
+    margin-left: 10px;
+
+}
+
+.exp_list li i {
+    color: #ffa000;
+}
+
+
+/* Тopics */
+
+.topics__list {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+    list-style-position:inside;
+    color: var(--clr-numbers);
+}
+
+.topics__list .topics__item {
+    background-color: var(--clr-inner-section);
+    border-left: 3px solid;
+    padding-left: 10px;
+    text-align: start;
+}
+
+.topics__list .topics__item span {
+    color: black;
+
+}
+
+#topics {
+    padding: 24px;
+}
+#topics .divider {
+    width: 10%;
+}
+
+#who {
+    background-color: var(--clr-nav-btn);
+    color: var(--clr-white);
+    text-align: center;
+    padding: 10px;
+}
+
+#who .divider {
+    background-color: var(--clr-white);
+    width: 50%;
+}
+
+#sign_up {
+    text-align: left;
+    padding: 20px;
+    padding-bottom: 300px;
+    position: relative;
+
+}
+
+
+.sign_up_header.main {
+    background-color: var(--clr-nav-bg);
+    color: var(--clr-white);
+    margin-bottom: 0px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.sign_up_header.main .sign_up_header {
+    height: 100%;
+
+}
+.sign_up_header.main .sign_up_item {
+
+}
+
+.sign_up_header.off {
+    background-color: var(--clr-text-yellow);
+    color: var(--clr-white);
+    position: relative;
+    top: -16px;
+}
+
+#who_to {
+    position: absolute;
+    width: 95%;
+    overflow:auto;
+    background-color:transparent;
+}
+
+
+/* Lector */
+.lector_article {
+    display: inline-block;
+    justify-content: end;
+    max-width: 600px;
+    gap: 24px;
+    margin-right: 40px;
+}
+
+.lector_div {
+    text-align: start;
+}
+
+.lector_img {
+    display: inline-block;
+    width: 25%;
+}
+.lector_img  img{
+    border-radius: 100%;
+    height: 45%;
+    width: 45%;
+    position: relative;
+    bottom: 30px;
+    left: 50px;
+}
+
+
+/* footer */
+
+#page-footer {
+    background-color: var(--clr-nav-bg);
+    position: relative;
+}
+
+.page_footer_list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page-footer ul, .page-footer ul li, .page-footer ul li a {
+    list-style: none;
+    padding: 0;
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.page_footer_list {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    position: relative;
+    top: 50px;
+    left: -100px;
+}
+
+.footer_list_item:first-child {
+    width: 250px;
+    margin-left: 400px;
+   
+}
+.heading.list-title {
+    color: #cc851a;
+}

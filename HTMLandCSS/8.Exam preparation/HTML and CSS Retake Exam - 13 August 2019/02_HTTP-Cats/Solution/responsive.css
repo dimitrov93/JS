@@ -1,0 +1,43 @@
+@media screen and (max-width: 768px) {
+    .wrapper.style2 {
+        padding: 1rem;
+    }
+
+    .wrapper.style2 header {
+        font-size: 30px;
+    }
+
+    .gallery > * {
+        width: 100%;
+    }
+
+    .spotlight > * {
+        width: 100%;
+    }
+
+    .spotlight .inner h3 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .spotlight .inner p {
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .spotlight .inner {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .spotlight.alt .inner {
+        padding: 1rem;
+        text-align: center;
+        font-size: 36px;
+    }
+
+    .spotlight.alt .inner p {
+ 
+        font-size: 24px;
+    }
+}

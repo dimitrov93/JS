@@ -1,0 +1,74 @@
+:root {
+    --clr-background: #f5f5f5;
+    --clr-container: #f6f8f9;
+}
+
+*,
+*::before,
+*::after {
+    font-family: Arial, Helvetica, sans-serif;
+    font: Helvetica;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body,
+html {
+    background-color: var(--background-color);
+}
+
+main {
+    background-color: var(--clr-background);
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+
+}
+
+.information {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-self: center;
+    text-align: start;
+    width: 35%;
+    margin-left: 5%;
+}
+
+.contact_sales_btn {
+    color: white;
+    background-color: #786eff;
+    padding: 10px 22px;
+    border: none;
+}
+
+.learn_more_btn {
+    color: #2d3845;
+    background-color: #f6f8f9;
+    padding: 9px 22px;
+    border: 1px solid black;
+}
+
+.information h3,
+.information h1,
+.information p {
+    color: #2d3845;
+}
+
+.information h3 {
+    font-size: 10px;
+}
+
+.information h1 {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.information p {
+    font-size: 16px;
+}

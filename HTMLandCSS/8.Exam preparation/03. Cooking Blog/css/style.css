@@ -1,0 +1,231 @@
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;600;700&family=Montserrat:wght@100;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-white: #fff;
+    --clr-nav-background: #e6e3de;
+    --clr-nav-h1-btn: #554938;
+    --clr-nav-text: #6f493f;
+    --clr-sections:#e6e3de;
+}
+
+body {
+    font-family: 'Gelasio', serif;
+    background-image: url("../Requirements-and-Resources/Media/background.jpg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover; /* Resize the background image to cover the entire container */
+
+
+}
+
+/* Header */
+
+#header {
+    background-color: var(--clr-nav-background);
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 3rem;
+    align-items: center;
+}
+
+#header nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 12px 3rem;
+}
+
+#header h1 {
+    color: var(--clr-nav-h1-btn);
+}
+
+#header li a {
+    color: var(--clr-nav-text);
+    text-decoration: none;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
+
+.header_btn {
+    background-color: var(--clr-nav-h1-btn);
+    color: var(--clr-white);
+    padding: 6px;
+}
+
+/* Main search */
+
+.main_search .img_container {
+    position: relative;
+}
+
+.main_search .main_img {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.search_container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    text-align: center;
+
+}
+
+.search_container h1 {
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--clr-white);
+}
+
+.search_container #search {
+    background: white; opacity: 0.75;
+    width: 80%;
+    position: relative;
+    border: none;
+    text-indent: 30px;
+}
+
+.search_container #search:focus {
+    outline: none;
+}
+
+.search_container i {
+    position: relative;
+    left: -450px;
+}
+
+
+/* Sections */
+
+.sections {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background-color: var(--clr-sections);
+}
+
+#first_section  {
+    display: flex;
+}
+
+#first_section .container_img {
+    width: 50%;
+}
+
+#first_section .container_info {
+    text-align: center;
+    margin: auto;
+    padding: 90px;
+}
+
+#first_section .container_info h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+#first_section .container_info p {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#first_section .container_btn {
+    color: var(--clr-white);
+    background-color: var(--clr-nav-h1-btn);
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
+}
+
+
+/* Third section */
+
+#third_section {
+    background-color: transparent;
+}
+
+.header_btn {
+    background-color: #dddedc;
+    color: black;
+    display: flex;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+.header_btn p {
+    padding-left: 70px;
+}
+
+#third_section .product_list {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+#third_section .product_list .product_item {
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+#third_section .product_list .product_item img {
+    width: 100%;
+}
+
+#third_section .product_list .product_item p {
+    background-color: #dddedc;
+    opacity: 0.7;
+}
+
+#third_section .shop_now {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 80px;
+    padding-right: 100px;
+    color: var(--clr-white);
+    background-color: red;
+}
+
+/* Footer */
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--clr-nav-background);
+    opacity: 0.75;
+    padding: 20px;
+}
+
+.footer .footer_list {
+    display: flex;
+    gap: 24px;
+
+}
+
+.footer .footer_list li {
+    list-style-type: none;
+    border-right: 1px solid black;
+    padding-right: 10px;
+}
+.footer .footer_list li a{
+    text-decoration: none;
+    color: black;
+}

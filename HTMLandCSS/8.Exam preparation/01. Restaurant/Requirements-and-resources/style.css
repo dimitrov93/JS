@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-background: #111111;
+    --clr-white:#fff;
+    --clr-btn: #edb77d;
+    --clr-text: #bebeae;
+}
+
+body {
+    background-color: var(--clr-background);
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    display: flex;
+    
+}
+
+.information {
+    padding: 80px;
+}
+
+.information .information_title {
+    color: var(--clr-white);
+    font-size: 24px;
+    margin-left: 13px;
+}
+
+.input_field input{
+    background-color: var(--clr-background);
+    border: none;
+    border-bottom: 1px solid white;
+    border-color: var(--clr-text);
+    width:  100%;
+    margin-top:35px;
+    padding: 10px;
+
+}
+
+.input_field input::placeholder {
+    color: var(--clr-text);
+    position: relative;
+    font-size: 16px;
+    text-align: left;
+    left: -10px;
+}
+
+.input_field input:focus {
+    outline: none;
+}
+
+.info_btn {
+    background-color: var(--clr-btn);
+    padding: 25px 70px;
+    border-radius: 10px;
+    margin-top: 25px;
+    color: var(--clr-white);
+    font-size: 20px;
+    font-weight: bold;
+}

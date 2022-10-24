@@ -1,0 +1,96 @@
+:root {
+    --background-color: #f5f5f5;
+    --accents: #03a87c;
+    --text: #666666;
+}
+
+*,
+*::before,
+*::after {
+    font-family: 'Poppins', sans-serif;
+    font: Poppins;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    color: #666666;
+}
+
+
+body {
+    font-family:  Helvetica, sans-serif;
+}
+
+.header,
+.container {
+    max-width: 1360px;
+    margin-top: 10%;
+    margin-left: 20%;
+}
+
+.header {
+    padding: 20px;
+}
+
+.header .header_title {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.header .header_info {
+    font-weight: 100;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 320px;
+    padding: 20px;
+}
+
+.container .left-container {
+    width: 50%;
+    align-self: flex-end;
+}
+
+.get-started-btn{
+    padding: 12px 72px;
+    color: white;
+    background-color: #03a87c;
+    border: none;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    width: 40%;
+
+
+}
+
+.right-container h5 {
+    font-size: 26px;
+    font-weight: 600;
+    color: black;
+}
+
+.right-container .container-info {
+    font-size: 22px;
+}
+
+.right-container .container-info span {
+    background-color: #cefde9;
+}
+
+.divider {
+    position: relative;
+    width: 20%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%,-50%);
+    border: 0.5px solid black;
+}

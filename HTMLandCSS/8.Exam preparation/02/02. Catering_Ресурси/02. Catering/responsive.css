@@ -1,1 +1,25 @@
 /* TODO: Add the responsive styles here */
+
+@media screen and (max-width: 600px) {
+    .w3-top .w3-right.w3-hide-small {
+        display: none;
+    }
+
+    .w3-row.w3-padding-64 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .w3-round.w3-image.w3-opacity-min:first {
+        display: none;
+    }
+
+    .w3-col.l6,
+    .w3-col.m6,
+    w3-container.w3-padding-64 {
+        width: 90%
+    }
+
+}

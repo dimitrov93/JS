@@ -19,7 +19,6 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     clip-path: polygon(0px 0px, 100% 0px, 100% 84%, 0px 100%);
-
 }
 
 main .left-to-right article {

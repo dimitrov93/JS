@@ -1,1 +1,74 @@
-/* TODO: Add responsive styles here... */
+@media all and (max-width: 600px) {
+    .navbar.navbar-expand-lg.navbar-light {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container-fluid.hero {
+        
+    }
+
+    .container-fluid.hero img {
+        display: none;
+    }
+
+    .container-fluid.hero .container {
+      text-align: center;
+    }
+
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: auto;
+    }
+
+    #about-us {
+        text-align: center;
+    }
+
+  
+
+    
+    #about-us h2 {
+        font-size: 52px;
+    }
+
+    #about-us .container-fluid .container .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .col-12.col-sm-6.col-lg-4 {
+        justify-content: space-evenly;
+        margin: 40px;
+        text-align:start;
+    }
+
+    .col-12.col-sm-6.col-lg-4 .service-box {
+        min-width: 400px;
+    }
+
+    .col-12.col-sm-12.col-lg-6 {
+        text-align: center;
+        padding: 70px;
+    }
+
+    .col-12 {
+        text-align: center;
+    }
+
+    #contact-us .container .row .col-12 a {
+        display: none;
+    }
+
+    footer .container {
+        padding: 40px;
+    }
+
+    footer .container ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

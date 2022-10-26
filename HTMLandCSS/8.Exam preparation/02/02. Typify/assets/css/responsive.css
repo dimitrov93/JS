@@ -1,0 +1,57 @@
+@media all and (max-width: 600px) {
+    .banner {
+        padding: 40px;
+        margin: 0px;
+    }
+
+    .banner h2 {
+        width: 100%;
+    }
+
+    /* input[type="submit"],
+.button {
+  height: 2.85em;
+  line-height: 2.95em;
+  padding: 0 9.5em; */
+
+  .actions li a {
+    width: 525px;
+  }
+
+  .wrapper.special {
+    display: flex;
+    padding: 20px;
+  }
+
+  .wrapper.special .features {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .wrapper.special .features .feature {
+    width: 90%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inner.narrow {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid-form .form-control.narrow {
+    width: 100%;
+  }
+
+
+  input[type="submit"], .button {
+    padding: 2px 10.5em;
+}
+}

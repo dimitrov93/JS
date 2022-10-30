@@ -1,0 +1,234 @@
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+:root {
+    --clr-header-red: #d01919;
+    --clr-white: #ffffff;
+    --clr-last-section-bg: #efefef;
+}
+
+
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
+
+/* Header */
+
+
+
+#header {
+    background-color: var(--clr-header-red);
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 60px;
+    font-size: 20px;
+    position: static;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    font-weight: 100;
+}
+
+
+#header .header-section {
+    align-self: center;
+}
+
+#header .social-media-list {
+    display: flex;
+    gap: 24px;
+}
+
+
+/* First Section */
+
+.first-section {
+    background: url('../image/fitness-main.jpg');
+    background-position: center center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    width: 100%;
+    height: 850px;
+    padding: 1px 60px;
+}
+
+.navigation .nav-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 200px;
+}
+
+.navigation .nav-list .nav-item .nav-link {
+    text-decoration: none;
+    color: var(--clr-white);
+    font-weight: bold;
+    letter-spacing: 1.1px;
+}
+
+.first-section-info {
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+    gap: 58px;
+}
+
+.margin-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.first-section-info h1 {
+    text-transform: uppercase;
+    font-size: 120px;
+    letter-spacing: 10px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.first-section-info h2 {
+    font-weight: 100;
+    font-size: 30px;
+    width: 55%;
+}
+
+.first-section-info button {
+    background-color: var(--clr-header-red);
+    color: var(--clr-white);
+    padding: 10px 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+/* Middle Section */
+
+
+.middle-section {
+    max-width: 1260px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divider {
+    border: 1px solid red;
+    width: 30px;
+}
+
+.middle-section .features {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+
+.middle-section .features .feature {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+}
+
+.middle-section .middle-header  {
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+}
+
+.middle-section .features .feature h2 {
+    color: var(--clr-header-red);
+}
+
+.middle-section .features .feature img {
+    width: 20%;
+    margin: auto;
+}
+
+
+/* Last section */
+
+.last-section {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--clr-last-section-bg);
+    padding: 40px;
+}
+
+.last-section .features {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.last-section .features h3 {
+    color: var(--clr-header-red);
+    font-weight: 100;
+}
+
+.last-section .features .feature img {
+    width: 90%;
+    border-radius: 10px;
+}
+
+.last-section .features .feature p {
+    font-size: 24px;
+}
+
+.last-section .features .feature {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    gap: 14px;
+    align-items: center;
+}
+
+.last-section .features .feature .feature-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.last-section .features .feature .feature-info h2 {
+    font-size: 32px;
+}
+
+.last-section .features .feature .feature-info h3 {
+    font-size: 26px;
+}
+
+
+.last-section .last-header {
+    margin-top: 50px;
+    font-size: 32px;
+    letter-spacing: 4px;
+}
+
+
+/* Footer */
+
+
+#footer {
+    background-color: var(--clr-header-red);
+    text-align: center;
+    padding: 10px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Fitness Calculator</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="left-container">
+      </div>
+
+      <div class="right-container">
+        <h1 class="heading">Fitness Calculator</h1>
+
+        <div class="right-container-btns">
+          <button class="standart-units btn-padding">Standart units (US)</button>
+          <button class="metric-units btn-padding">Metric units</button>
+        </div>
+
+        <div class="gender">
+          <p>Gender</p>
+          <div class="gender-section">
+            <select id="gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="text" class="years" placeholder="Years">
+          </div>
+
+        </div>
+
+        <div class="weight">
+            <p>Weight</p>
+            <input type="text" class="pounds" placeholder="Pounds">
+        </div>
+
+        <div class="height">
+            <p>Height</p>
+            <div class="height-section">
+              <input type="text" class="feet" placeholder="Feet...">
+              <input type="text" class="years" placeholder="Inches...">
+            </div>
+        </div>
+
+        <div class="btn">
+          <button class="calculate-btn">Calculate</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

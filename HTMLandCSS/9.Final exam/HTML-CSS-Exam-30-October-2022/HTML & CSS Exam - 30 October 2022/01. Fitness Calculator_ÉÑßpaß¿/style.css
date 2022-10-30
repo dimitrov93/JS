@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --clr-background: #ffffff;
+    --clr-section: #f6f7f8;
+    --clr-green-btn: #86d862;
+    --clr-gray-btn: #e0e0df;
+    --clr-blue-btn: #05a2d3;
+    --clr-blue-btn-text-color: #fffbf8;
+
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--clr-background);
+}
+
+.container {
+    max-width: 1260px;
+    margin: 0 auto;
+    display: flex;
+    background-color: var(--clr-section);
+    text-align: center;
+    border-radius: 40px;
+    border: 1px solid black;
+    overflow: hidden;
+    box-shadow: 6px 15px 50px 0px rgba(0,0,0,0.75);
+
+}
+
+.container .left-container{
+    background: linear-gradient(90deg, rgba(0,0,0,0.4) 100%, rgba(0,0,0,0.7960317916228992) 100%),url('image/calculator.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container .right-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.container .left-container,
+.container .right-container {
+    width: 50%;
+}
+
+.container .left-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.container .right-container p {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+
+.container .right-container .heading {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.container .right-container {
+    padding: 50px;
+}
+
+.right-container-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.btn-padding {
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.right-container-btns .standart-units {
+    background-color: var(--clr-green-btn);
+    border: 0.5px solid black;
+    cursor: pointer;
+
+}
+
+.right-container-btns .metric-units {
+    background-color: var(--clr-gray-btn);
+    border: 0.5px solid black;
+    cursor: pointer;
+
+
+}
+
+.right-container .gender {
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+#gender {
+    width: 200px;
+
+}
+
+
+.gender .gender-section,
+.height .height-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.weight .pounds {
+    width: 480px;
+}
+
+.height-section .feet,
+.height-section .years {
+    width: 15rem;
+}
+
+.calculate-btn {
+    background-color: var(--clr-blue-btn);
+    color: var(--clr-blue-btn-text-color);
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 5px 15px 38px -6px rgba(0,0,0,0.75);
+    cursor: pointer;
+
+}

@@ -1,0 +1,16 @@
+Fitness Calculator
+FITNESS CALCULATOR
+Standart units (US)
+Metric units
+Gender
+Felame -- Female
+Male
+Other
+Age
+Years...
+Weight
+Pounds...
+Height
+Feet...
+Inches...
+Calculate

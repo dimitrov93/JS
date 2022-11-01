@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/contact-us.html">Contact uS</a>
+    </nav>
+
+    <div id="app"></div>
+
+    <script>
+      const app = document.getElementById('app')
+      const routes = {
+          'index': '<h1>Home</h1>',
+          'about': '<h1>About</h1>',
+          'contact-us': '<h1>contact-us.html</h1>',
+      }
+
+      function render(path) {
+          const contentForPath = routes[path];
+          if (!contentForPath) {
+              return;
+          } else {
+              app.innerHTML = contentForPath
+          }
+      }
+
+      document.querySelectorAll("a").forEach((e) => {
+        e.addEventListener("click", (e) => {
+          e.preventDefault();
+          const { target } = e;
+          let path = target.getAttribute("href").replace('/', '').replace('.html', '')
+          console.log(path);
+          render(path)
+          location.pushState('', '', path)
+        });
+    });
+    
+    window.addEventListener('popstate', (e) => {
+        e.preventDefault()
+        render(location.pathname) // this will work only with http protocol
+    });
+
+    window.addEventListener('hashchange', (e) => {
+        e.preventDefault()
+        render(location.pathname) // this will work only with http protocol
+
+    });
+    </script>
+  </body>
+</html>

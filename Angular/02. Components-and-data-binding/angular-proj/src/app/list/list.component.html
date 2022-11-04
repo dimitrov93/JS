@@ -1,0 +1,18 @@
+
+
+<!-- <button (click)="handleClickEvent()">Toggle last name</button> -->
+
+
+<button (click)="handleClickEvent($event)">
+    <ng-container *ngIf="showLastName" class="colorBtn">Hide</ng-container>
+    <ng-container *ngIf="!showLastName" class="colorBtn">Show</ng-container>
+    last name
+</button>
+
+<div id="list-container">
+  <div *ngFor="let user of users" class="list-item">
+    <span>{{user.firstName}}</span>      -- 
+    <span *ngIf="showLastName">{{user.lastName}}</span> 
+    <!-- [user.firstName] -- [user.lastName] -->
+  </div>
+</div>

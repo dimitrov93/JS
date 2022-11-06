@@ -9,10 +9,9 @@
     last name
 </button>
 
-<div id="list-container">
-  <div *ngFor="let user of users" class="list-item">
-    <span>{{user.firstName}}</span>      -- 
-    <span *ngIf="showLastName">{{user.lastName}}</span> 
+<ul id="list-container">
+  <li *ngFor="let user of users" class="list-item">
+    <app-list-item [userItem]="user" [showLastNameItem]="showLastName"></app-list-item>
     <!-- [user.firstName] -- [user.lastName] -->
-  </div>
-</div>
+  </li>
+</ul>

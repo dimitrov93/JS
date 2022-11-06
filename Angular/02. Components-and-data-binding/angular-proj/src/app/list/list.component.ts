@@ -19,6 +19,7 @@ export class ListComponent {
       lastName: 'Ivanov'
     }
   ];
+  
   showLastName = true;
 
   

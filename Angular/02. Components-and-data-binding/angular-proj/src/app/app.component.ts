@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-proj';
+  title = 'asd';
+
+  changeTitleHandler(newTitle: string) {
+    this.title = newTitle;
+  }
 }

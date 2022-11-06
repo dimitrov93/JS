@@ -1,17 +1,23 @@
-
-
 <!-- <button (click)="handleClickEvent()">Toggle last name</button> -->
 
-
 <button (click)="handleClickEvent($event)">
-    <ng-container *ngIf="showLastName" class="colorBtn">Hide</ng-container>
-    <ng-container *ngIf="!showLastName" class="colorBtn">Show</ng-container>
-    last name
+  <ng-container *ngIf="showLastName" class="colorBtn">Hide</ng-container>
+  <ng-container *ngIf="!showLastName" class="colorBtn">Show</ng-container>
+  last name
 </button>
 
+<div *ngIf="showSelectedIndex">
+  Selected index is {{selectedUserIndex}}
+</div>
+
 <ul id="list-container">
-  <li *ngFor="let user of users" class="list-item">
-    <app-list-item [userItem]="user" [showLastNameItem]="showLastName"></app-list-item>
+  <li *ngFor="let user of users; let i = index" class="list-item">
+    <app-list-item
+      [userItem]="user"
+      [showLastNameItem]="showLastName"
+      (click)="listItemClickHandler(i)"
+      (myCustomEvent)="customEventHandler($event)"
+    ></app-list-item>
     <!-- [user.firstName] -- [user.lastName] -->
   </li>
 </ul>

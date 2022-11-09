@@ -15,7 +15,7 @@ import { myCustomToken } from '../app.module';
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss'],
-  providers: []
+  providers: [],
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestComponent implements OnInit, OnChanges {
@@ -25,15 +25,11 @@ export class TestComponent implements OnInit, OnChanges {
 
   @Input() user!: { name: string }[];
 
-  constructor(
-    private cdRef: ChangeDetectorRef,
-    private injector: Injector
-    ) {
+  constructor(private cdRef: ChangeDetectorRef, private injector: Injector) {
     this.cdRef.detach();
-    const value = this.injector.get(myCustomToken, null)
-    const appCmp = this.injector.get(AppComponent)
+    const value = this.injector.get(myCustomToken, null);
+    const appCmp = this.injector.get(AppComponent);
     console.log(value, appCmp);
-    
   }
 
   ngOnChanges(): void {
@@ -46,16 +42,3 @@ export class TestComponent implements OnInit, OnChanges {
     this.cdRef.detectChanges();
   }
 }
-
-// class Wallet {
-//   constructor(private amount: number, private test: string) {
-
-//   }
-// }
-
-// class Person {
-//   constructor(private wallet: Wallet) {}
-// }
-
-// const w = new Wallet(200, 'das');
-// const p = new Person(w)

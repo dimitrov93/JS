@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
+import { myCustomToken, useClass } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +17,18 @@ export class AppComponent {
     }
   ];
 
-  constructor() {
+  constructor(    
+    // @Inject('Test') test: String  
+    // @Inject(useClass) test: useClass  --> 
+    @Optional() @Inject(myCustomToken) test1: string,
+    test: useClass
+    ) {
     setInterval(() => {
       this.counter ++;
-    },3000)
+    },3000);
+
+    console.log(test);
+    
   }
 
   addUserHandler(nameInput: HTMLInputElement): void {

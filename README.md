@@ -2,15 +2,13 @@
 All homework/excercises and project from the Javascript course path with [SoftUni](https://softuni.bg/)
 
 ## :white_check_mark: HTML/CSS - September 2022 - [Certificated](https://softuni.bg/certificates/details/147276/8664bfb6) :heavy_check_mark:
-<ol>
-<li>Introduction to HTML & CSS<li>
-<li>HTML Structure<li>
-<li>CSS & Typography<li>
-<li>CSS Box Model<li>
-<li>Position & Grid<li>
-<li>Flexbox<li>
-<li>Media Queries3<li>
-</ol>
+1. Introduction to HTML & CSS
+2. HTML Structure
+3. CSS & Typography
+4. CSS Box Model
+5. Position & Grid
+6. Flexbox
+7. 7.Media Queries3
 
 ## :white_check_mark: JS Back-end - May 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/137155?code=7cae6516) :heavy_check_mark:
 1. Intro to Node.js

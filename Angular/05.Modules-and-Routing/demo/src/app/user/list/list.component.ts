@@ -17,6 +17,20 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(): void {
+    this.globalLoaderService.showLoader('Loading users');
+    this.userService.loadUsers().subscribe({
+      next: (userList) => {
+        this.globalLoaderService.hideLoader();
+        this.userList = userList;
+      },
+    });
+  }
+
+  reloadUsersHandler():void {
     this.globalLoaderService.showLoader('Loading users');
     this.userService.loadUsers().subscribe({
       next: (userList) => {

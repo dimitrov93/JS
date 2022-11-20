@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalLoaderService } from '../services/global-loader.service';
 
 @Component({
@@ -6,8 +6,9 @@ import { GlobalLoaderService } from '../services/global-loader.service';
   templateUrl: './global-loader.component.html',
   styleUrls: ['./global-loader.component.scss']
 })
-export class GlobalLoaderComponent {
+export class GlobalLoaderComponent  {
 
-  constructor(public globalLoaderService: GlobalLoaderService) { }
+  constructor(public globalLoaderService: GlobalLoaderService ) { }
+
 
 }

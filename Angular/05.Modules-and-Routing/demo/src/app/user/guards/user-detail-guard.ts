@@ -8,8 +8,8 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IUser } from '../shared/interfaces';
-import { UserService } from './user.service';
+import { IUser } from '../../shared/interfaces';
+import { UserService } from '../user.service';
 
 @Injectable({
   providedIn: 'root',

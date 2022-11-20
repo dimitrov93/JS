@@ -4,8 +4,8 @@ import { UserListComponent } from './list/list.component';
 import { Test } from '../test';
 import { UserDetailComponent } from './detail/detail.component';
 import { RouterModule } from '@angular/router';
-import { UserResolver } from './user-detail-resolver';
-import { AuthGuard } from './user-detail-guard';
+import { AuthGuard } from './guards/user-detail-guard';
+import { UserResolver } from './guards/user-detail-resolver';
 
 
 

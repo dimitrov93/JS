@@ -1,0 +1,10 @@
+<ng-template #myTemplate>Hello again</ng-template>
+
+<div appMyRouterLink="/path/to/something" [template]="myTemplate">HELLO WORLD</div>
+
+<div *appMyRouterLink="''" >HELLO WORLD</div>
+
+
+<div *ngIf="true">123</div>
+
+<ng-template [ngIf]="true"><div>123</div></ng-template>

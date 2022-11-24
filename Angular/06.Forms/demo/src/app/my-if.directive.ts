@@ -1,7 +1,8 @@
 import { Directive, Input, OnChanges, Optional, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appMyIf]'
+  selector: '[appMyIf]',
+  exportAs: 'appMyIf'
 })
 export class MyIfDirective implements OnChanges {
 

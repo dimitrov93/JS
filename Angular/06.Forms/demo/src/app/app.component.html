@@ -1,4 +1,13 @@
-<ng-template #myTemplate>Hello again</ng-template>
+<nav>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+
+<!-- <ng-template #myTemplate>Hello again</ng-template>
 
 <div appMyRouterLink="/path/to/something" [template]="myTemplate">
   HELLO WORLD
@@ -14,7 +23,7 @@
 
 <div *appMyIf="myIfValue">My If is working</div>
 
-<ng-template [appMyIf]="myIfValue">
+<ng-template [appMyIf]="myIfValue" #refToMyIf="appMyIf">
   <div>My If is working</div>
 </ng-template>
 
@@ -22,4 +31,4 @@
     SEPARATE TEMPLATE FOR MY IF {{value}} + {{valuee}}
 </ng-template>
 
-<ng-container [appMyIf]="myIfValue" [template]="tmp"></ng-container>
+<ng-container [appMyIf]="myIfValue" [template]="tmp"></ng-container> -->

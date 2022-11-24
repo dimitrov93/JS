@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MyRouterLinkDirective } from './my-router-link.directive';
+import { MyIfDirective } from './my-if.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyRouterLinkDirective
+    MyRouterLinkDirective,
+    MyIfDirective
   ],
   imports: [
     BrowserModule,

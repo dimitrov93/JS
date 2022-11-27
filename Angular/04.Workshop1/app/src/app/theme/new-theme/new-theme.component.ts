@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-theme',
@@ -12,4 +13,11 @@ export class NewThemeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  newThemeHandler(form: NgForm): void {
+    if (form.invalid) {
+      return
+    }
+    console.log(form.value);
+
+  }
 }

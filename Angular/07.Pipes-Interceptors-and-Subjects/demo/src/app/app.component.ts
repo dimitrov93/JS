@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { interval, map } from 'rxjs';
+import { interval, map, startWith } from 'rxjs';
+import { UserService } from './user.service';
 
 function add(a: number | string, b: number | string): number | string {
   return (a) as any + (b) as any;
@@ -12,7 +13,16 @@ function add(a: number | string, b: number | string): number | string {
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+  constructor(private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe({
+      next: (users) => console.log(users),
+      error: (err) => console.error(err),
+    })
+  }
   title = 'demo';
 
   obj = {
@@ -24,6 +34,7 @@ export class AppComponent {
   private result = 0;
 
   $time = interval(1000).pipe(
+    startWith(null),
     map(() => new Date())
   )
 

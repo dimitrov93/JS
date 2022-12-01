@@ -4,5 +4,10 @@
 
 
 {{myPromise | async}}
+<nav>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/lazy">Lazy</a>
+</nav>
 
 {{$time | async | date: 'HH:mm:ss'}}
+<router-outlet></router-outlet>

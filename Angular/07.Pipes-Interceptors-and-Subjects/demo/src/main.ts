@@ -1,7 +1,16 @@
 // import { enableProdMode } from '@angular/core';
 // import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { map, observable, Observable, of, Subject } from 'rxjs';
+import {
+  BehaviorSubject,
+  map,
+  observable,
+  Observable,
+  of,
+  ReplaySubject,
+  retry,
+  Subject,
+} from 'rxjs';
 
 // import { AppModule } from './app/app.module';
 // import { environment } from './environments/environment';
@@ -18,10 +27,14 @@ import { map, observable, Observable, of, Subject } from 'rxjs';
 
 // )
 
-function interval(delay: number) {
+function interval(delay: number, count: number | null) {
   let counter = 0;
   return new Observable((observer) => {
     const id = setInterval(() => {
+      if (count === counter) {
+        observer.complete();
+        return;
+      }
       observer.next(counter++);
     }, delay);
 
@@ -31,29 +44,64 @@ function interval(delay: number) {
   });
 }
 
-const sub = interval(1000).subscribe(console.log);
+const sub = interval(1000, 5).subscribe({
+  next(value) {
+    console.log(value);
+  },
+  error(err) {
+    console.error(err);
+  },
+  complete() {
+    console.log('Observable completed');
+  },
+});
 
-setTimeout(() => {
-  sub.unsubscribe();
-}, 1000);
+// setTimeout(() => {
+//   sub.unsubscribe();
+// }, 1000);
 
 const subj$$ = new Subject();
 
-subj$$.subscribe(console.log);
-subj$$.subscribe(console.log);
-subj$$.subscribe(console.log);
+const bSubject$$ = new BehaviorSubject(1);
 
-subj$$.next(100);
+const rSubject$$ = new ReplaySubject(20);
 
-setTimeout(() => {
-  subj$$.next(200);
+rSubject$$.next(100)
 
-  subj$$.subscribe(console.log);
+rSubject$$.subscribe(console.log);
 
-  setTimeout(() => {
-    subj$$.next(200);
-  }, 1000);
-}, 1000);
+rSubject$$.next(200)
+rSubject$$.next(300)
+rSubject$$.next(400)
+
+console.log('=====');
+rSubject$$.subscribe(console.log);
+
+
+// setTimeout(() => {
+// bSubject$$.subscribe(console.log);
+// bSubject$$.next(100);
+//   setTimeout(() => {
+//     bSubject$$.subscribe(console.log)
+//   }, 1000);
+// }, 1000);
+
+// subj$$.subscribe();
+
+// subj$$.subscribe(console.log);
+// subj$$.subscribe(console.log);
+// subj$$.subscribe(console.log);
+
+// subj$$.next(100);
+
+// setTimeout(() => {
+//   subj$$.next(200);
+//   subj$$.subscribe(console.log);
+
+//   setTimeout(() => {
+//     subj$$.next(200);
+//   }, 1000);
+// }, 1000);
 
 // const s$ = new Observable((observable) => {
 //   observable.next(100);

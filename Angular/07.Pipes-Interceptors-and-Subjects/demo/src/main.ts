@@ -1,5 +1,5 @@
-// import { enableProdMode } from '@angular/core';
-// import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import {
   BehaviorSubject,
@@ -12,70 +12,70 @@ import {
   Subject,
 } from 'rxjs';
 
-// import { AppModule } from './app/app.module';
-// import { environment } from './environments/environment';
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 
-// if (environment.production) {
-//   enableProdMode();
-// }
+if (environment.production) {
+  enableProdMode();
+}
 
-// platformBrowserDynamic().bootstrapModule(AppModule)
-//   .catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
 
 // Promise.resolve(1000)
 // of(1000, 200, 300).pipe(
 
 // )
 
-function interval(delay: number, count: number | null) {
-  let counter = 0;
-  return new Observable((observer) => {
-    const id = setInterval(() => {
-      if (count === counter) {
-        observer.complete();
-        return;
-      }
-      observer.next(counter++);
-    }, delay);
+// function interval(delay: number, count: number | null) {
+//   let counter = 0;
+//   return new Observable((observer) => {
+//     const id = setInterval(() => {
+//       if (count === counter) {
+//         observer.complete();
+//         return;
+//       }
+//       observer.next(counter++);
+//     }, delay);
 
-    return () => {
-      clearInterval(id);
-    };
-  });
-}
+//     return () => {
+//       clearInterval(id);
+//     };
+//   });
+// }
 
-const sub = interval(1000, 5).subscribe({
-  next(value) {
-    console.log(value);
-  },
-  error(err) {
-    console.error(err);
-  },
-  complete() {
-    console.log('Observable completed');
-  },
-});
+// const sub = interval(1000, 5).subscribe({
+//   next(value) {
+//     console.log(value);
+//   },
+//   error(err) {
+//     console.error(err);
+//   },
+//   complete() {
+//     console.log('Observable completed');
+//   },
+// });
 
 // setTimeout(() => {
 //   sub.unsubscribe();
 // }, 1000);
 
-const subj$$ = new Subject();
+// const subj$$ = new Subject();
 
-const bSubject$$ = new BehaviorSubject(1);
+// const bSubject$$ = new BehaviorSubject(1);
 
-const rSubject$$ = new ReplaySubject(20);
+// const rSubject$$ = new ReplaySubject(20);
 
-rSubject$$.next(100)
+// rSubject$$.next(100)
 
-rSubject$$.subscribe(console.log);
+// rSubject$$.subscribe(console.log);
 
-rSubject$$.next(200)
-rSubject$$.next(300)
-rSubject$$.next(400)
+// rSubject$$.next(200)
+// rSubject$$.next(300)
+// rSubject$$.next(400)
 
-console.log('=====');
-rSubject$$.subscribe(console.log);
+// console.log('=====');
+// rSubject$$.subscribe(console.log);
 
 
 // setTimeout(() => {

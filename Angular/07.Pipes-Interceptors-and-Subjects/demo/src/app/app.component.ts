@@ -13,16 +13,24 @@ function add(a: number | string, b: number | string): number | string {
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
+
+  user$ = this.userService.users$
+  isLoadingUsers$ = this.userService.isLoading$
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.userService.getUsers().subscribe({
-      next: (users) => console.log(users),
-      error: (err) => console.error(err),
-    })
+
+  reloadUsers(): void {
+    this.userService.loadUsers()
   }
+
+  // ngOnInit(): void {
+  //   this.userService.getUsers().subscribe({
+  //     next: (users) => console.log(users),
+  //     error: (err) => console.error(err),
+  //   })
+  // }
   title = 'demo';
 
   obj = {

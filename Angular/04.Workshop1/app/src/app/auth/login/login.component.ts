@@ -7,34 +7,44 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   appEmailDomains = appEmailDomains;
 
   // @ViewChild('files', {static: true}) files!: ElementRef<HTMLInputElement>;
   @ViewChild(
     // 'form'
-    NgForm, 
-    {static: true}) files!: ElementRef<HTMLInputElement>;
+    NgForm,
+    { static: true }
+  )
+  files!: ElementRef<HTMLInputElement>;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private authServie: AuthService) {
-
-  }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private authServie: AuthService
+  ) {}
 
   loginHandler(form: NgForm): void {
     // console.log(this.files.nativeElement.files);
-    console.log(form);
     if (form.invalid) {
       return;
     }
-    
-    this.authServie.user = {
-      username: 'John'
-    } as any;
 
-    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+    const {
+      email,
+      password
+    } = form.value;
+    this.authServie
+      .login(email!, password!)
+      .subscribe((user) => {
+        console.log(user);
+        this.router.navigate(['/theme/recent'])
+      });
+
+    const returnUrl =
+      this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
 
     this.router.navigate([returnUrl]);
   }

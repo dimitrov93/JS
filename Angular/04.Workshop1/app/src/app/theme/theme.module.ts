@@ -21,8 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedModule,
-    ThemeRoutingModule,
-    FormsModule
+    FormsModule,
+    ThemeRoutingModule
   ],
   exports: [
     ThemeListComponent

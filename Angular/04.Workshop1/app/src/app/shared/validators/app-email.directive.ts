@@ -16,17 +16,17 @@ export class AppEmailDirective implements OnChanges, Validator {
 
   @Input() appEmail: string[] = [];
 
-  validator: ValidatorFn = () => null
-  
-  constructor() { }
+  validator: ValidatorFn = () => null;
+
   ngOnChanges(changes: SimpleChanges): void {
-    const appEmailChange = changes['appEmail']
+    const appEmailChange = changes['appEmail'];
     if (appEmailChange) {
-      this.validator = appEmailValidator(appEmailChange.currentValue)
+      this.validator = appEmailValidator(appEmailChange.currentValue);
     }
   }
+
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    return this.validator(control)
+    return this.validator(control);
   }
 
 }

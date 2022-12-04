@@ -3,25 +3,21 @@
     <h2>Login Form</h2>
 
     <p class="field field-icon">
-      <label for="email"
-        ><span><i class="fas fa-envelope"></i></span
-      ></label>
-      <input
-        #emailInput="ngModel"
-        class="input-error"
-        type="text"
-        name="email"
-        id="email"
-        placeholder="john.doe"
-        ngModel
-        required
-      />
+      <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+      <input #emailInput="ngModel" class="input-error" ngModel required type="text" name="email" id="email"
+        placeholder="john.doe">
     </p>
 
-    <!-- <input #files type="file"> -->
-    <!-- {{emailInput.errors | json}} -->
+    <!-- <select ngModel="456" name="test" multiple>
+      <option value="123">123</option>
+      <option value="456">456</option>
+    </select>
+
+    {{form.value | json}} -->
+    <!-- <input #files type="file" ngModel required> -->
+
     <ng-container *ngIf="emailInput.touched">
-      <p class="error" *ngIf="emailInput.errors?.['required'] ">
+      <p class="error" *ngIf="emailInput.errors?.['required']">
         Email is required!
       </p>
       <p class="error" *ngIf="emailInput.errors?.['appEmailValidator']">
@@ -30,26 +26,16 @@
     </ng-container>
 
     <p class="field field-icon">
-      <label for="password"
-        ><span><i class="fas fa-lock"></i></span
-      ></label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="******"
-        ngModel
-        #passwordInput="ngModel"
-        required
-        [minlength]="4"
-      />
+      <label for="password"><span><i class="fas fa-lock"></i></span></label>
+      <input type="password" ngModel #passwordInput="ngModel" name="password" id="password" placeholder="******"
+        required [minlength]="5">
     </p>
     <ng-container *ngIf="passwordInput.touched">
       <p class="error" *ngIf="passwordInput.errors?.['required']">
         Password is required!
       </p>
       <p class="error" *ngIf="passwordInput.errors?.['minlength']">
-        Password must be at least 4 characters!
+        Password must be at least 5 characters!
       </p>
     </ng-container>
 
@@ -59,5 +45,6 @@
       Have an account?
       <a href="#">Register</a>
     </p>
+
   </fieldset>
 </form>

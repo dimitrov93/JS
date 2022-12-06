@@ -2,7 +2,7 @@
 // import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { state } from '@angular/animations';
-import { BehaviorSubject, distinctUntilChanged, filter, map, scan } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, filter, map, Observable, scan } from 'rxjs';
 
 // import { AppModule } from './app/app.module';
 // import { environment } from './environments/environment';
@@ -72,7 +72,13 @@ function getState(initialState: IState, reducer: any) {
 const { state$, dispatch } = getState(initialState as any, reducer);
 state$.subscribe(console.log);
 
-state$.pipe(map((state) => state.count), distinctUntilChanged()).subscribe(console.log);
+function createSelector(state$: Observable<IState> , mapFn: (state: IState) => IState[keyof IState]): Observable<IState[keyof IState]> {
+  return state$.pipe(map(mapFn), distinctUntilChanged())
+
+}
+
+const arrSelector$ = createSelector(state$, s=> s.arr)
+
 
 dispatch({ type: 'EVENT_1', value: [1, 2, 3] });
 

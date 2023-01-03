@@ -1,6 +1,15 @@
 # SoftUni - JavaScript 
 All homework/excercises and project from the Javascript course path with [SoftUni](https://softuni.bg/)
 
+## :white_check_mark: Angular - November 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/152914?code=2d6e646e) :heavy_check_mark:
+1. Intro to Angular and TypeScript
+2. Components
+3. DI, Intro to RxJS, Services
+4. Modules and Routing
+5. Forms
+6. Pipes, Interceptors and Subjects
+7. State Management 
+
 ## :white_check_mark: HTML/CSS - September 2022 - [Certificated](https://softuni.bg/certificates/details/147276/8664bfb6) :heavy_check_mark:
 1. Introduction to HTML & CSS
 2. HTML Structure
@@ -9,6 +18,15 @@ All homework/excercises and project from the Javascript course path with [SoftUn
 5. Position & Grid
 6. Flexbox
 7. 7.Media Queries3
+
+## :white_check_mark: ReactJS - June 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/140711?code=d1382017) :heavy_check_mark:
+1. Intro to React and JSX
+2. Components: Basic Idea
+3. Components: Deep Dive
+4. Forms
+5. Routing
+6. React Hooks
+7. Advanced Techniques
 
 ## :white_check_mark: JS Back-end - May 2022 - [Certificated](https://softuni.bg/certificates/certificates/converttoimage/137155?code=7cae6516) :heavy_check_mark:
 1. Intro to Node.js

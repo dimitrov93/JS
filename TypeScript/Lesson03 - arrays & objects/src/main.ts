@@ -60,3 +60,14 @@ const greetGuitarist = (guitars: Guitarist) => {
 }
 
 console.log(greetGuitarist(jp));
+
+
+// ENUMS
+
+enum Grade { 
+    U = 1,
+    D,
+    C,
+    B,
+    A
+}

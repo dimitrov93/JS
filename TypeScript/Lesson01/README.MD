@@ -1,0 +1,3 @@
+-- tsc main.js
+-- tsc main.js -w
+-- tsc --init

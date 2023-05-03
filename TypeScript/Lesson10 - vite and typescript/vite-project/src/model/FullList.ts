@@ -22,7 +22,7 @@ export default class FullList implements List {
     load(): void {
         const storedList: string | null = localStorage.getItem("myList")
         if (typeof storedList !== "string") return
-
+        
         const parsedList: { _id: string, _item: string, _checked: boolean }[] = JSON.parse(storedList)
 
         parsedList.forEach(itemObj => {

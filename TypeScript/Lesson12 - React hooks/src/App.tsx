@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useMemo, MouseEvent, KeyboardEvent, useRef } from "react";
+import Counter from "./components/Counter";
 
 interface User {
   id: number;
@@ -48,6 +49,10 @@ function App() {
       <button onClick={() => setCount((prev) => prev - 1)}>-</button>
       <h2>{result}</h2>
       <input ref={inputRef} type="text" />
+
+      <div>
+        <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
+      </div>
     </div>
   );
 }

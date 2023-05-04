@@ -1,5 +1,7 @@
 import { useEffect, useState, useCallback, useMemo, MouseEvent, KeyboardEvent, useRef } from "react";
 import Counter from "./components/Counter";
+import { CounterProvider, initState } from "./context/CounterContext";
+
 
 interface User {
   id: number;
@@ -43,17 +45,19 @@ function App() {
   const result = useMemo<number>(() => fib(myNum), [myNum])
 
   return (
-    <div className="App">
+    <>
+
       <h1>{count}</h1>
       <button onClick={addOne}>+</button>
       <button onClick={() => setCount((prev) => prev - 1)}>-</button>
       <h2>{result}</h2>
       <input ref={inputRef} type="text" />
 
-      <div>
-        <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
-      </div>
-    </div>
+
+        <CounterProvider count={initState.count} text={initState.text}>
+            <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
+        </CounterProvider>
+    </>
   );
 }
 

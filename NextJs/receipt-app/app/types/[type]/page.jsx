@@ -9,7 +9,6 @@ const getRecepies = async (type) => {
 
 const Page = async ({params}) => {
     const recipes = await getRecepies(params.type)
-    console.log(recipes);
   return (
     <div>Page</div>
   )

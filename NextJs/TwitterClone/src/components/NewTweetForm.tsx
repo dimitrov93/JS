@@ -1,33 +1,69 @@
-// @ts-nocheck
 import { useSession } from "next-auth/react";
 import { Button } from "./Button";
 import ProfileImage from "./ProfileImage";
-import { useEffect, useRef, useState } from "react";
+import {
+  FormEvent,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import { api } from "~/utils/api";
+import { EventType } from "next-auth";
 
 function updateTextAreaSize(textArea?: HTMLTextAreaElement) {
-    if (textArea == null) return;
-    textArea.style.height = "0";
-    textArea.style.height = `${textArea.scrollHeight}px`;
-  }
+  if (textArea == null) return;
+  textArea.style.height = "0";
+  textArea.style.height = `${textArea.scrollHeight}px`;
+}
 
-  
 export function NewTweetForm() {
   const seassion = useSession();
+  if (seassion.status !== "authenticated") {
+    return null;
+  }
+
+  return <Form />;
+}
+
+function Form() {
+  const seassion = useSession();
   const [inputValue, setInputValue] = useState("");
-    const textAreaRef = useRef<HTMLTextAreaElement>();
+  const textAreaRef = useRef<HTMLTextAreaElement>();
+  const inputRef = useCallback((textArea: HTMLTextAreaElement) => {
+    updateTextAreaSize(textArea);
+    textAreaRef.current = textArea;
+  }, []);
 
-  useEffect(() => {
-    updateTextAreaSize()
-  }, [inputValue])
-  
+  useLayoutEffect(() => {
+    updateTextAreaSize(textAreaRef.current);
+  }, [inputValue]);
 
-  if (seassion.status !== "authenticated") return;
+  const createTweet = api.tweet.create.useMutation({
+    onSuccess: (newTweet) => {
+      console.log(newTweet);
+      setInputValue("");
+    },
+  });
+
+  if (seassion.status !== "authenticated") return null;
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    createTweet.mutate({ content: inputValue });
+  }
 
   return (
-    <form className="flex flex-col gap-2 border-b px-4 py-2">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-2 border-b px-4 py-2"
+    >
       <div className="flex gap-4">
         <ProfileImage src={seassion.data.user.image} />
         <textarea
+          ref={inputRef}
           style={{ height: 0 }}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

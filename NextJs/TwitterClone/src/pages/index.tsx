@@ -35,9 +35,8 @@ const Home: NextPage = () => {
           </div>
         )}
       </header>
-
       <NewTweetForm />
-      {selectedTab === "Recent" ?  <RecentTweets /> : <FollowingTweets />}
+      {selectedTab === "Recent" ? <RecentTweets /> : <FollowingTweets />}
     </>
   );
 };
@@ -51,7 +50,24 @@ function RecentTweets() {
   return (
     <InfiniteTweetList
       tweets={tweets.data?.pages.flatMap((page) => page.tweets)}
-      isError={tweets.error}
+      isError={tweets.isError}
+      isLoading={tweets.isLoading}
+      hasMore={tweets.hasNextPage}
+      fetchNewTweets={tweets.fetchNextPage}
+    />
+  );
+}
+
+function FollowingTweets() {
+  const tweets = api.tweet.infiniteFeed.useInfiniteQuery(
+    { onlyFollowing: true },
+    { getNextPageParam: (lastPage) => lastPage.nextCursor }
+  );
+
+  return (
+    <InfiniteTweetList
+      tweets={tweets.data?.pages.flatMap((page) => page.tweets)}
+      isError={tweets.isError}
       isLoading={tweets.isLoading}
       hasMore={tweets.hasNextPage}
       fetchNewTweets={tweets.fetchNextPage}
@@ -60,21 +76,3 @@ function RecentTweets() {
 }
 
 export default Home;
-
-
-function FollowingTweets() {
-  const tweets = api.tweet.infiniteFeed.useInfiniteQuery(
-    {onlyFollowing: true},
-    { getNextPageParam: (lastPage) => lastPage.nextCursor }
-  );
-
-  return (
-    <InfiniteTweetList
-      tweets={tweets.data?.pages.flatMap((page) => page.tweets)}
-      isError={tweets.error}
-      isLoading={tweets.isLoading}
-      hasMore={tweets.hasNextPage}
-      fetchNewTweets={tweets.fetchNextPage}
-    />
-  );
-}

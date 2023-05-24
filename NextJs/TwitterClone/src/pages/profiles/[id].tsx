@@ -11,12 +11,12 @@ import ErrorPage from "next/error";
 import Link from "next/link";
 import { IconHoverEffect } from "~/components/IconHoverEffect";
 import { VscArrowLeft } from "react-icons/vsc";
-import ProfileImage from "~/components/ProfileImage";
+import  ProfileImage  from "~/components/ProfileImage";
 import { InfiniteTweetList } from "~/components/InfiniteTweetList";
 import { useSession } from "next-auth/react";
 import { Button } from "~/components/Button";
 
-const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticPaths>> = ({
+const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   id,
 }) => {
   const { data: profile } = api.profile.getById.useQuery({ id });
@@ -24,23 +24,38 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticPaths>> = ({
     { userId: id },
     { getNextPageParam: (lastPage) => lastPage.nextCursor }
   );
+  const trpcUtils = api.useContext();
+  const toggleFollow = api.profile.toggleFollow.useMutation({
+    onSuccess: ({ addedFollow }) => {
+      trpcUtils.profile.getById.setData({ id }, (oldData) => {
+        if (oldData == null) return;
+
+        const countModifier = addedFollow ? 1 : -1;
+        return {
+          ...oldData,
+          isFollowing: addedFollow,
+          followersCount: oldData.followersCount + countModifier,
+        };
+      });
+    },
+  });
 
   if (profile == null || profile.name == null) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
     <>
       <Head>
         <title>{`Twitter Clone - ${profile.name}`}</title>
       </Head>
-
-      <header className=" sticky top-0 z-10 flex items-center border-b bg-white px-4 py-2">
+      <header className="sticky top-0 z-10 flex items-center border-b bg-white px-4 py-2">
         <Link href=".." className="mr-2">
           <IconHoverEffect>
             <VscArrowLeft className="h-6 w-6" />
           </IconHoverEffect>
         </Link>
-        <ProfileImage src={profile.image} className=" flex-shring-0" />
+        <ProfileImage src={profile.image} className="flex-shrink-0" />
         <div className="ml-2 flex-grow">
           <h1 className="text-lg font-bold">{profile.name}</h1>
           <div className="text-gray-500">
@@ -53,14 +68,15 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticPaths>> = ({
         </div>
         <FollowButton
           isFollowing={profile.isFollowing}
+          isLoading={toggleFollow.isLoading}
           userId={id}
-          onClick={() => null}
+          onClick={() => toggleFollow.mutate({ userId: id })}
         />
       </header>
       <main>
         <InfiniteTweetList
           tweets={tweets.data?.pages.flatMap((page) => page.tweets)}
-          isError={tweets.error}
+          isError={tweets.isError}
           isLoading={tweets.isLoading}
           hasMore={tweets.hasNextPage}
           fetchNewTweets={tweets.fetchNextPage}
@@ -73,17 +89,25 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticPaths>> = ({
 function FollowButton({
   userId,
   isFollowing,
+  isLoading,
   onClick,
 }: {
   userId: string;
   isFollowing: boolean;
+  isLoading: boolean;
   onClick: () => void;
 }) {
-  const session = useSession()
+  const session = useSession();
+
   if (session.status !== "authenticated" || session.data.user.id === userId) {
-    return null
+    return null;
   }
-  return <Button onClick={onClick} small gray={isFollowing} >{isFollowing ? "Unfollow" : "Follow"}</Button>;
+
+  return (
+    <Button disabled={isLoading} onClick={onClick} small gray={isFollowing}>
+      {isFollowing ? "Unfollow" : "Follow"}
+    </Button>
+  );
 }
 
 const pluralRules = new Intl.PluralRules();
@@ -102,6 +126,7 @@ export async function getStaticProps(
   context: GetStaticPropsContext<{ id: string }>
 ) {
   const id = context.params?.id;
+
   if (id == null) {
     return {
       redirect: {
@@ -115,8 +140,8 @@ export async function getStaticProps(
 
   return {
     props: {
-      id,
       trpcState: ssg.dehydrate(),
+      id,
     },
   };
 }

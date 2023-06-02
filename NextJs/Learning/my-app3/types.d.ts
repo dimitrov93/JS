@@ -1,5 +1,11 @@
+type Meta = {
+  id: string;
+  title: string;
+  date: string;
+  tags: string[];
+};
+
 type BlogPost = {
-    id: string, 
-    title: string,
-    date: string,
-}
+  meta: Meta;
+  content: ReactElement<any, string | JSXElementConstructor<any>>;
+};

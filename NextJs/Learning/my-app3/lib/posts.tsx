@@ -1,4 +1,9 @@
 import { compileMDX } from "next-mdx-remote/rsc";
+import rehypeAutolinkHeadings from "rehype-autolink-headings/lib";
+import rehypeHighlight from "rehype-highlight/lib";
+import rehypeSlug from "rehype-slug";
+import Video from "@/app/components/Video";
+import CustomImage from "@/app/components/CustomImage";
 
 type Filetree = {
   tree: [
@@ -36,19 +41,40 @@ export async function getPostByName(
     tags: string[];
   }>({
     source: rawMDX,
+    components: {
+      Video,
+      CustomImage
+    },
     options: {
-        parseFrontmatter: true,
-    }
+      parseFrontmatter: true,
+      mdxOptions: {
+        recmaPlugins: [
+          rehypeHighlight,
+          rehypeSlug,
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: "wrap",
+            },
+          ],
+        ],
+      },
+    },
   });
 
-  const id = fileName.replace(/\.mdx$/, '')
+  const id = fileName.replace(/\.mdx$/, "");
 
   const blogPostsObj: BlogPost = {
-    meta: { id, title: frontmatter.title, date: frontmatter.date, tags: frontmatter.tags},
-    content
-  }
+    meta: {
+      id,
+      title: frontmatter.title,
+      date: frontmatter.date,
+      tags: frontmatter.tags,
+    },
+    content,
+  };
 
-  return blogPostsObj
+  return blogPostsObj;
 }
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
@@ -62,11 +88,11 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
       },
     }
   );
-  
+
   if (!res.ok) return undefined;
 
   const repoFiletree: Filetree = await res.json();
-  
+
   const filesArray = repoFiletree.tree
     .map((obj) => obj.path)
     .filter((path) => path.endsWith(".mdx"));
@@ -75,12 +101,12 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
 
   for (const file of filesArray) {
     const post = await getPostByName(file);
-    
+
     if (post) {
-      const { meta } = post;      
+      const { meta } = post;
       posts.push(meta);
     }
   }
 
-  return posts
+  return posts;
 }

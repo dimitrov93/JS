@@ -1,5 +1,6 @@
 import "./App.css";
 import Gallery from "./components/Gallery";
+import UploadAvatar from "./components/uploadAvatar/UploadAvatar";
 
 function App() {
   const galleryImages = [
@@ -36,6 +37,8 @@ function App() {
       <Gallery galleryImages={galleryImages} />
       <br />
       <br />
+
+      <UploadAvatar />
     </div>
   );
 }

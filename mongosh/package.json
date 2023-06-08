@@ -1,0 +1,26 @@
+{
+  "name": "mongosh",
+  "version": "1.0.0",
+  "description": "# cls",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimitrov93/mongosh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimitrov93/mongosh/issues"
+  },
+  "homepage": "https://github.com/dimitrov93/mongosh#readme",
+  "dependencies": {
+    "mongoose": "^7.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

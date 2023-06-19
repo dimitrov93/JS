@@ -85,6 +85,7 @@ const postsSlice = createSlice({
                 });
 
                 // Add any fetched posts to the array
+                // state.posts = state.post.concat(loadedPosts)
                 postsAdapter.upsertMany(state, loadedPosts)
             })
             .addCase(fetchPosts.rejected, (state, action) => {
@@ -103,6 +104,7 @@ const postsSlice = createSlice({
                     coffee: 0
                 }
                 console.log(action.payload)
+                // state.posts.push(action.payload)
                 postsAdapter.addOne(state, action.payload)
             })
             .addCase(updatePost.fulfilled, (state, action) => {
@@ -112,6 +114,7 @@ const postsSlice = createSlice({
                     return;
                 }
                 action.payload.date = new Date().toISOString();
+                // state.posts = [...posts,action.payload]
                 postsAdapter.upsertOne(state, action.payload)
             })
             .addCase(deletePost.fulfilled, (state, action) => {
@@ -121,6 +124,7 @@ const postsSlice = createSlice({
                     return;
                 }
                 const { id } = action.payload;
+                // state.posts = posts
                 postsAdapter.removeOne(state, id)
             })
     }
@@ -139,6 +143,7 @@ export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
 export const getCount = (state) => state.posts.count;
 
+// OPTIMIZATION - IT WILL RUN ONLY WHEN POSTS OR USERID HAS CHANGED
 export const selectPostsByUser = createSelector(
     [selectAllPosts, (state, userId) => userId],
     (posts, userId) => posts.filter(post => post.userId === userId)

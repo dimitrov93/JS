@@ -12,18 +12,18 @@
     <script src="https://unpkg.com/vue@next" defer></script>
     <script src="app.js" defer></script>
   </head>
-  <body id="body">
+  <body>
     <header>
-      <h1>Vue Course Goals</h1>
-      <p>{{ goalA }}</p>
-
+      <h1>Vue Events</h1>
     </header>
-    <section id="user-goal">
-      <h2>My Course Goal</h2>
-      <!-- <p>{{ outPutGoal() }}</p> From Methods -->
-      <!-- <p v-html=" outPutGoal() "></p> From Methods -->
-      <p>{{ outPutGoal() }}</p>
-      <p>Learn more <a v-bind:href="vueLink">About Vue</a></p>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <button @click="reset">Reset</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Schwarzmüller')">
+      <p>Your Name: {{ name }}</p>
     </section>
   </body>
 </html>

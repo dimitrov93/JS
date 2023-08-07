@@ -1,31 +1,43 @@
 <template>
   <section class="container">
-    <h2>{{ user.name }}</h2>
-    <h3>{{ uAge }}</h3>
-    <h5>{{ firstName + ' ' + lastName }}</h5>
+    <user-data
+      :first-name="firstName"
+      :last-name="lastName"
+    ></user-data>
+    <!-- <h2>{{ user.name }}</h2>
+    <h3>{{ uAge }}</h3> -->
+    <h5>{{ firstName + " " + lastName }}</h5>
     <button @click="setAge">Change age</button>
     <div>
       <input type="text" placeholder="First name" v-model="firstName" />
-      <input type="text" placeholder="Last name" v-model="lastName" />
+      <input type="text" placeholder="Last name" ref="lastNameInput" />
+      <button @click="setLastName">Set Last name</button>
     </div>
   </section>
 </template>
 
 <script>
-import { reactive, ref, isReactive, isRef, toRefs, computed, watch } from "vue";
+import { reactive, ref, isReactive, isRef, toRefs, computed, watch, provide } from "vue";
+import UserData from "@/components/UserData.vue";
 export default {
+  components: {
+    UserData,
+  },
   setup() {
-    const uAge = ref(31);
     // const uName = ref('Tseko')
     // const uAge = ref('30')
     // let uName = 'Tseko'
     // const user = ref({
-    //   name: "Tseko",
-    //   age: 30
-    // })
+      //   name: "Tseko",
+      //   age: 30
+      // })
+      
+      const firstName = ref("");
+      const lastName = ref("");
+      const lastNameInput = ref(null);
+      const uAge = ref(31);
 
-    const firstName = ref("");
-    const lastName = ref("");
+      provide('userAge', uAge)
 
     // function setFirstName(e) {
     //   firstName.value = e.target.value;
@@ -35,7 +47,9 @@ export default {
     //   lastName.value = e.target.value;
     // }
 
-
+    function setLastName() {
+      lastName.value = lastNameInput.value.value;
+    }
 
     const fullName = computed(() => {
       return firstName.value + " " + lastName.value;
@@ -50,12 +64,12 @@ export default {
       uAge.value = 32;
     }
 
-    watch([uAge, fullName], function(newValues, oldValues) {
-      console.log('Old age :' + oldValues[0]);
-      console.log('New age :' + newValues[0]);
-      console.log('Old age :' + oldValues[1]);
-      console.log('New age :' + newValues[1]);
-    })
+    watch([uAge, fullName], function (newValues, oldValues) {
+      console.log("Old age :" + oldValues[0]);
+      console.log("New age :" + newValues[0]);
+      console.log("Old age :" + oldValues[1]);
+      console.log("New age :" + newValues[1]);
+    });
     // setTimeout(() => {
     //   user.name = 'Max'
     //   user.age = 21
@@ -73,7 +87,10 @@ export default {
       user: user,
       setAge: setNewData,
       firstName,
-      lastName
+      lastName,
+      setLastName,
+      lastNameInput,
+      age: uAge
       // setFirstName,
       // setLastName,
       // fullName,

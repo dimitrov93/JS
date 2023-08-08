@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/products' },
     { path: '/products', component: AllProducts },
-    { path: '/products/:pid', component: ProductDetails },
+    { path: '/products/:pid', component: ProductDetails, props: true },
     { path: '/products/add', component: AddProduct }
   ]
 });

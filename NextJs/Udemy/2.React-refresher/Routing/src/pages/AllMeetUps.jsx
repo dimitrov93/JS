@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 const DUMMY_DATA = [
   {
@@ -21,14 +21,45 @@ const DUMMY_DATA = [
   },
 ];
 const AllMeetUps = () => {
-  fetch(
-    "https://react-refresher-a1d5e-default-rtdb.europe-west1.firebasedatabase.app/meetups.json"
-  )
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadedMeetups, setloadedMeetups] = useState([])
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(
+      "https://react-refresher-a1d5e-default-rtdb.europe-west1.firebasedatabase.app/meetups.json"
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const meetups = [];
+
+        for (const meet in data) {
+          const meetup = {
+            id: meet,
+            ...data[meet]
+          }
+          meetups.push(meetup)
+        }
+        setloadedMeetups(meetups)
+        setIsLoading(false);
+      });
+  }, [])
+  
+
+    if (isLoading) {
+      return (
+        <section>
+          <p>Loading...</p>
+        </section>
+      )
+    }
 
   return (
     <section>
       <h1>All meetups</h1>
-      <MeetupList meetups={DUMMY_DATA} />
+      <MeetupList meetups={loadedMeetups || DUMMY_DATA} />
     </section>
   );
 };

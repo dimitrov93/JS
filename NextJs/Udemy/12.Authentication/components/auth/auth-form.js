@@ -1,24 +1,7 @@
 import { useState, useRef } from "react";
 import classes from "./auth-form.module.css";
-
-async function createUser(email, password) {
-  const response = await fetch("/api/auth/signup", {
-    method: "POST",
-    body: JSON.stringify({ email, password }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  const data = await response.json();
-
-  console.log(response);
-  if (!response.ok) {
-    throw new Error(data.message || "Something went wrong");
-  }
-
-  return data;
-}
+import { signIn } from 'next-auth/react';
+import { createUser } from "../../utils/HttpRequests";
 
 function AuthForm() {
   const emailInputRef = useRef();
@@ -39,7 +22,17 @@ function AuthForm() {
     // option: Add validation
 
     if (isLogin) {
-      // log in user
+      const result = await signIn('credentials', {
+        redirect: false,
+        email: enteredEmail,
+        password: enteredPassword,
+      });
+
+      console.log(result);
+
+      if (!result.error) {
+        // set some auth state
+      }
     } else {
       try {
         const result = await createUser(enteredEmail, enteredPassword);

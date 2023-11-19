@@ -5,9 +5,6 @@ import { useSession, signOut } from "next-auth/react";
 function MainNavigation() {
   const { data: session, status } = useSession();
 
-  console.log(session);
-  console.log(status);
-
   function logoutHandler() {
     signOut();
   }

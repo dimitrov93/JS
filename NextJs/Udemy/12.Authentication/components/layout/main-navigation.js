@@ -16,18 +16,16 @@ function MainNavigation() {
       </Link>
       <nav>
         <ul>
-          {!session && (
+          {!session && status !== "loading" && (
             <li>
               <Link href="/auth">Login</Link>
             </li>
           )}
-
           {session && (
             <li>
               <Link href="/profile">Profile</Link>
             </li>
           )}
-
           {session && (
             <li>
               <button onClick={logoutHandler}>Logout</button>

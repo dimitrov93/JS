@@ -17,7 +17,7 @@ export default function MyProfilePic() {
         src={isHovered ? "/Images/2.png" : "/Images/1.jpg"}
         width={200}
         height={200}
-        alt="Tsvetomir Dimitrov"
+        alt="MyProfilePicture"
         priority={true}
       />
     </div>

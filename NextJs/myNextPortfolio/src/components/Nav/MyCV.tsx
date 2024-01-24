@@ -12,7 +12,7 @@ export default function MyCV() {
         locale={false}
         download
       >
-        Download Here
+        Download CV
       </Link>
     </div>
   );

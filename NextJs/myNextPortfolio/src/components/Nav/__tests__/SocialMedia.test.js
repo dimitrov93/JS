@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import SocialMedia from "../SocialMedia";
-import { socialMediaLinks } from "@/utils/socialMediaLinks";
+import { socialMediaLinks } from "@/utils/navBarLinks";
 
 describe("Social Media component", () => {
   it("renders the social media component", () => {

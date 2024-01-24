@@ -2,6 +2,7 @@ import MyProfilePic from "./MyProfilePic";
 import SocialMedia from "./SocialMedia";
 import Description from "./Description";
 import NavBarList from "./NavBarList";
+import MyCV from "./MyCV";
 
 export default function NavBar() {
   return (
@@ -12,7 +13,7 @@ export default function NavBar() {
           <Description />
           <SocialMedia />
           <NavBarList />
-          <button className="border-2 rounded-md py-1 px-2 text-white/90 hover:text-white">Download CV</button>
+          <MyCV />
         </div>
       </div>
     </nav>

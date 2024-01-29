@@ -7,6 +7,6 @@ export const homePage = [
   },
   {
     title:
-      "  Experienced Sales Specialist with 5 years of experience indeveloping and implementing successful sales strategies.Demonstrated ability to achieve and exceed sales targets, build andmaintain strong client relationships, and effectively manage a team.Recently elevated to the role of Team Lead, where I successfully ledtwo departments, providing guidance and direction to achieve companygoals and improve overall performance.",
+      "Experienced Sales Specialist with 5 years of experience indeveloping and implementing successful sales strategies.Demonstrated ability to achieve and exceed sales targets, build andmaintain strong client relationships, and effectively manage a team.Recently elevated to the role of Team Lead, where I successfully ledtwo departments, providing guidance and direction to achieve companygoals and improve overall performance.",
   },
 ];

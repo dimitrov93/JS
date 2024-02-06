@@ -22,19 +22,15 @@ export default function Contacts() {
   return (
     <>
       <div className=" container shadow-lg mx-auto grid grid-cols-3">
-        <div className="space-y-2 col-span-1">
-          {leftSide.map((item, index) => (
-            <div
-              key={index}
-              className="p-12 flex justify-center flex-col items-center"
-            >
-              {item.icon}
-              {item.title}
-            </div>
-          ))}
+        <div className="col-span-1 relative">
+          <Image
+            src={"/Images/contact.png"}
+            alt="contact me image"
+            fill={true}
+          />
         </div>
 
-        <div className="col-span-2  w-3/4 my-auto">
+        <div className="col-span-2  my-auto  p-6">
           <div className="flex flex-col gap-16 my-auto">
             <h1 className="text-5xl">Send me a message</h1>
 
@@ -54,8 +50,10 @@ export default function Contacts() {
                 className="p-4 shadow-lg h-3/4 focus:outline-none"
               />
             </div>
-            
-            <button className="place-self-end border border-slate-600 px-8 py-2 rounded-md bg-slate-600 text-white hover:bg-white hover:text-slate-600">Send</button>
+
+            <button className="place-self-end border border-slate-600 px-8 py-2 rounded-md bg-slate-600 text-white hover:bg-white hover:text-slate-600">
+              Send
+            </button>
           </div>
         </div>
       </div>

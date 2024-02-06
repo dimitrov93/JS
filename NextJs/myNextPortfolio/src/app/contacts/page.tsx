@@ -21,7 +21,7 @@ const leftSide = [
 export default function Contacts() {
   return (
     <>
-      <div className=" container shadow-lg mx-auto grid grid-cols-3">
+      <div className=" container shadow-lg mx-auto grid md:grid-cols-1 lg:grid-cols-3">
         <div className="col-span-1 relative">
           <Image
             src={"/Images/contact.png"}
@@ -32,7 +32,7 @@ export default function Contacts() {
 
         <div className="col-span-2  my-auto  p-6">
           <div className="flex flex-col gap-16 my-auto">
-            <h1 className="text-5xl">Send me a message</h1>
+            <h1 className="text-5xl text-center">Send me a message</h1>
 
             <div className="flex flex-col gap-2">
               <input

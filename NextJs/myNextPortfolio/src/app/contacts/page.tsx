@@ -21,12 +21,49 @@ const leftSide = [
 export default function Contacts() {
   return (
     <>
-      <h2 className="mx-auto text-center text-lx">Get In Touch</h2>
-      <h1 className="mx-auto text-center text-4xl	">Contact Me</h1>
+      <div className=" container shadow-lg mx-auto grid grid-cols-3">
+        <div className="space-y-2 col-span-1">
+          {leftSide.map((item, index) => (
+            <div
+              key={index}
+              className="p-12 flex justify-center flex-col items-center"
+            >
+              {item.icon}
+              {item.title}
+            </div>
+          ))}
+        </div>
 
-      <div className="container mx-auto mt-6">
-        <div className="grid grid-cols-5 gap-5 border-2">
-          <div className="leftSide  space-y-2 col-span-2 ">
+        <div className="col-span-2  w-3/4 my-auto">
+          <div className="flex flex-col gap-16 my-auto">
+            <h1 className="text-5xl">Send me a message</h1>
+
+            <div className="flex flex-col gap-2">
+              <input
+                type="text"
+                placeholder="Enter your name"
+                className="p-4 shadow-xl focus:outline-none"
+              />
+              <input
+                type="text"
+                placeholder="Enter your email"
+                className="p-4 shadow-lg focus:outline-none"
+              />
+              <textarea
+                placeholder="Enter your message"
+                className="p-4 shadow-lg h-3/4 focus:outline-none"
+              />
+            </div>
+            
+            <button className="place-self-end border border-slate-600 px-8 py-2 rounded-md bg-slate-600 text-white hover:bg-white hover:text-slate-600">Send</button>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="container mx-auto mt-6">
+        <div className="grid grid-cols-3 gap-5 border-2">
+          
+          <div className="leftSide  space-y-2 col-span-1  ">
             {leftSide.map((item, index) => (
               <div
                 key={index}
@@ -38,9 +75,8 @@ export default function Contacts() {
             ))}
           </div>
 
-          <div className="h-96 my-auto border-2 border-slate-500 w-0"></div>
 
-          <div className="rightSide cols-span-3 w-full ">
+          <div className="rightSide cols-span-2 bg-slate-400 w-full">
             <h1 className="text-5xl">Send me a message</h1>
 
             <div className="flex flex-col">
@@ -64,7 +100,7 @@ export default function Contacts() {
             <div className="p-6 bottom-2 border-cyan-500">Button</div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

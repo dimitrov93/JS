@@ -1,24 +1,25 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
-
-const leftSide = [
-  {
-    title: "Facebook",
-    icon: <FaFacebook size={50} />,
-  },
-  {
-    title: "LinkedIn",
-    icon: <FaLinkedin size={50} />,
-  },
-  {
-    title: "Email",
-    icon: <MdOutlineEmail size={50} />,
-  },
-];
+import { FormEvent } from "react";
 
 export default function Contacts() {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const inputName = formData.get("name");
+    const inputEmail = formData.get("email");
+    const inputMessage = formData.get("message");
+
+    try {
+      const response = await fetch('/api/contacts')
+      console.log(response);
+      
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <>
       <div className=" container shadow-lg mx-auto grid md:grid-cols-1 lg:grid-cols-3">
@@ -27,6 +28,7 @@ export default function Contacts() {
             src={"/Images/contact.png"}
             alt="contact me image"
             fill={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
 
@@ -34,26 +36,32 @@ export default function Contacts() {
           <div className="flex flex-col gap-16 my-auto">
             <h1 className="text-5xl text-center">Send me a message</h1>
 
-            <div className="flex flex-col gap-2">
+            <form className="flex flex-col gap-2" onSubmit={onSubmit}>
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your name"
                 className="p-4 shadow-xl focus:outline-none"
               />
               <input
                 type="text"
+                name="email"
                 placeholder="Enter your email"
                 className="p-4 shadow-lg focus:outline-none"
               />
               <textarea
+                name="message"
                 placeholder="Enter your message"
                 className="p-4 shadow-lg h-3/4 focus:outline-none"
               />
-            </div>
 
-            <button className="place-self-end border border-slate-600 px-8 py-2 rounded-md bg-slate-600 text-white hover:bg-white hover:text-slate-600">
-              Send
-            </button>
+              <button
+                type="submit"
+                className="mt-4 place-self-end border border-slate-600 px-8 py-2 rounded-md bg-slate-600 text-white hover:bg-white hover:text-slate-600"
+              >
+                Send
+              </button>
+            </form>
           </div>
         </div>
       </div>

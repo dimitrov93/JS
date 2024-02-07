@@ -2,23 +2,39 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent } from "react";
+import emailjs from "@emailjs/browser";
+import React, { useRef } from "react";
 
 export default function Contacts() {
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const inputName = formData.get("name");
-    const inputEmail = formData.get("email");
-    const inputMessage = formData.get("message");
+  const form = useRef(null);
 
-    try {
-      const response = await fetch('/api/contacts')
-      console.log(response);
-      
-    } catch (error) {
-      
+  const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
+      process.env.NEXT_PUBLIC_EMAILJS_USER_ID &&
+      form.current
+    ) {
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          form.current,
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+        )
+        .then(
+          (result) => {
+            alert("Thank you, your message was sent!");
+          },
+          (error) => {
+            alert(error.text);
+          }
+        );
+      event.currentTarget.reset();
     }
-  }
+  };
 
   return (
     <>
@@ -36,7 +52,11 @@ export default function Contacts() {
           <div className="flex flex-col gap-16 my-auto">
             <h1 className="text-5xl text-center">Send me a message</h1>
 
-            <form className="flex flex-col gap-2" onSubmit={onSubmit}>
+            <form
+              ref={form}
+              className="flex flex-col gap-2"
+              onSubmit={sendEmail}
+            >
               <input
                 type="text"
                 name="name"

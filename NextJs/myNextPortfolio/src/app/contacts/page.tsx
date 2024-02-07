@@ -1,14 +1,16 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import emailjs from "@emailjs/browser";
-import React, { useRef } from "react";
+import { useRef } from "react";
+import CustomSnackbar from "@/components/SnackBar/SnackBar";
 
 export default function Contacts() {
   const form = useRef(null);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (
@@ -26,16 +28,16 @@ export default function Contacts() {
         )
         .then(
           (result) => {
-            alert("Thank you, your message was sent!");
+            setSnackbarOpen(true);
           },
           (error) => {
             alert(error.text);
           }
         );
       event.currentTarget.reset();
+      setSnackbarOpen(false);
     }
   };
-
   return (
     <>
       <div className=" container shadow-lg mx-auto grid md:grid-cols-1 lg:grid-cols-3">
@@ -64,7 +66,7 @@ export default function Contacts() {
                 className="p-4 shadow-xl focus:outline-none"
               />
               <input
-                type="text"
+                type="email"
                 name="email"
                 placeholder="Enter your email"
                 className="p-4 shadow-lg focus:outline-none"
@@ -86,47 +88,12 @@ export default function Contacts() {
         </div>
       </div>
 
-      {/* <div className="container mx-auto mt-6">
-        <div className="grid grid-cols-3 gap-5 border-2">
-          
-          <div className="leftSide  space-y-2 col-span-1  ">
-            {leftSide.map((item, index) => (
-              <div
-                key={index}
-                className="p-20 border-2 border-slate-500 rounded-md w-full flex justify-center flex-col items-center"
-              >
-                {item.icon}
-                {item.title}
-              </div>
-            ))}
-          </div>
-
-
-          <div className="rightSide cols-span-2 bg-slate-400 w-full">
-            <h1 className="text-5xl">Send me a message</h1>
-
-            <div className="flex flex-col">
-              <input
-                type="text"
-                placeholder="Enter your name"
-                className="p-4 border-2"
-              />
-              <input
-                type="text"
-                placeholder="Enter your email"
-                className="p-4"
-              />
-              <input
-                type="text"
-                placeholder="Enter your message"
-                className="p-4"
-              />
-            </div>
-
-            <div className="p-6 bottom-2 border-cyan-500">Button</div>
-          </div>
-        </div>
-      </div> */}
+      {snackbarOpen && (
+        <CustomSnackbar
+          alertText="Message is successfully sent!"
+          severity="success"
+        />
+      )}
     </>
   );
 }

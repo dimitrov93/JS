@@ -1,9 +1,8 @@
-// CustomSnackbar.js
 import React, { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
-interface CustomSnackbarProps {
+export interface CustomSnackbarProps {
   alertText: string;
   severity?: "success" | "error" | "info" | "warning";
 }

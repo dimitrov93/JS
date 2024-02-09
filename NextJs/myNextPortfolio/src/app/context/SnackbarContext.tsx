@@ -13,6 +13,10 @@ export const SnackbarProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   const showSnackbar = (options: CustomSnackbarProps) => {
     setSnackbarOptions(options);
+
+    setTimeout(() => {      
+      setSnackbarOptions(null)
+    }, 4000);
   };  
 
   return (

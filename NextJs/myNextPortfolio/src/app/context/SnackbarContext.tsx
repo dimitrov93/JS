@@ -13,7 +13,7 @@ export const SnackbarProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   const showSnackbar = (options: CustomSnackbarProps) => {
     setSnackbarOptions(options);
-  };
+  };  
 
   return (
     <SnackbarContext.Provider value={{ showSnackbar }}>

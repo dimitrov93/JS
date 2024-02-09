@@ -8,7 +8,6 @@ import { useSnackbar } from "@/app/context/SnackbarContext";
 export default function ContactsForm() {
   const { showSnackbar } = useSnackbar();
 
-
   const form = useRef(null);
   const sendEmail = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -24,7 +23,7 @@ export default function ContactsForm() {
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           form.current,
-          'process.env.NEXT_PUBLIC_EMAILJS_USER_ID'
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID
         )
         .then(
           (result) => {
@@ -48,7 +47,6 @@ export default function ContactsForm() {
     <>
       <form ref={form} className="flex flex-col gap-2" onSubmit={sendEmail}>
         <ContactsInput />
-
         <PrimaryButton text="Send" />
       </form>
     </>

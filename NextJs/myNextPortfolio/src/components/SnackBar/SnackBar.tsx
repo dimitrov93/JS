@@ -9,7 +9,8 @@ export interface CustomSnackbarProps {
 
 const CustomSnackbar: React.FC<CustomSnackbarProps> = ({alertText, severity = "success"}) => {
   const [open, setOpen] = useState(true);
-
+  
+  
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
       return;
@@ -19,7 +20,6 @@ const CustomSnackbar: React.FC<CustomSnackbarProps> = ({alertText, severity = "s
   };
 
   return (
-    <div>
       <Snackbar
         open={open}
         autoHideDuration={4000}
@@ -35,7 +35,6 @@ const CustomSnackbar: React.FC<CustomSnackbarProps> = ({alertText, severity = "s
           {alertText}
         </Alert>
       </Snackbar>
-    </div>
   );
 };
 

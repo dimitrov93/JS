@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/Nav/NavBar";
+import { SnackbarProvider } from "./context/SnackbarContext";
 
 export const metadata: Metadata = {
   title: "Tsvetomir's Portfolio",
@@ -14,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="dark:bg-slate-800">
-        <NavBar />
-        <main>{children}</main>
+      <body className="dark:bg-slate-800" suppressHydrationWarning={true}>
+        <SnackbarProvider>
+          <NavBar />
+          <main>{children}</main>
+        </SnackbarProvider>
       </body>
     </html>
   );

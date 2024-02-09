@@ -1,4 +1,4 @@
-export async function GET() {
 
-    return Response.json({ message: 'Hello world' })
-  }
+export async function POST(req: Request, res: Response) {
+
+}

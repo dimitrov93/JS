@@ -1,5 +1,5 @@
 import { connectDb } from "../../../../../db";
-import Portfolio from "../../../../../models/Portfolio";
+import  Portfolio  from "../../../../../models/Portfolio";
 
 export async function GET(
   req: Request,

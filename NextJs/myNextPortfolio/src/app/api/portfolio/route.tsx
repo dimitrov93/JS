@@ -2,6 +2,8 @@ import { connectDb } from "../../../../db";
 import  Portfolio  from "../../../../models/Portfolio";
 
 export async function GET(req: Request, res: Response) {
+  console.log(process.env.mongodb_url);
+  
   try {
     await connectDb();
     const projects = await Portfolio.find();    

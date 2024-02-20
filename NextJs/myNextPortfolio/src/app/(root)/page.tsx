@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { homePageTitle, homePage } from "../data";
+import { homePageTitle, homePage } from "../../data";
 import Link from "next/link";
 
 export default function Home() {

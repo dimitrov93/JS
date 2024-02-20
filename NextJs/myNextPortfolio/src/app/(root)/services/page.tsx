@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useSnackbar } from "../context/SnackbarContext";
+import { useSnackbar } from "../../context/SnackbarContext";
 
 export default function ServicesPage() {
   const { showSnackbar } = useSnackbar();

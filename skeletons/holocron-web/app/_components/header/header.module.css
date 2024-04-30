@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: -64px;
+  gap: 32px;
+  padding-bottom: 24px;
+  margin-bottom: 42px;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.topBar {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.topBar .left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.logo {
+  width: 21px;
+  height: 26px;
+}
+
+.divider {
+  width: 1px;
+  height: 34px;
+  background: var(--es-color-text-primary);
+}
+
+.title {
+  text-transform: uppercase;
+}

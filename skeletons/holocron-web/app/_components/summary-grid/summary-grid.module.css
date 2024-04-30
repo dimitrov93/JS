@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+/* .title {
+  flex: 0;
+} */
+
+.filters {
+  flex: 0;
+  display: flex;
+  gap: 24px;
+}
+
+.summaryGrid {
+  grid-row-gap: var(--es-grid-gutter-small) !important;
+  grid-column-gap: var(--es-grid-gutter-small) !important;
+}
+.section {
+  background-color: var(--es-color-background-surface);
+  padding: 24px;
+}
+
+.noData {
+  color: var(--es-color-text-secondary);
+}
+.arraySectionNoData {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionHeader {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  text-transform: uppercase;
+}
+
+.dataItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tooltipIconHolder {
+  height: 24px;
+}

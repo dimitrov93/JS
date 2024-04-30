@@ -1,0 +1,66 @@
+.container {
+  background-color: var(--es-color-background-surface);
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 44px;
+}
+
+.dataSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.dataTitlesContainer {
+  display: flex;
+  gap: 20px;
+}
+.dataTitle {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.dataTitleColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.chartContainer {
+  height: 226px;
+  margin: 0 -20px -20px -20px;
+  position: relative;
+}
+
+.loaderContainer {
+  display: flex;
+  height: calc(226px - 20px);
+  align-items: center;
+  justify-content: center;
+}
+.loader > span {
+  width: 20px;
+  height: 20px;
+}
+
+.noData {
+  color: var(--es-color-text-secondary);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: calc(100% - 45px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

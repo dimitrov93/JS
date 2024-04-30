@@ -1,0 +1,73 @@
+{
+  "fields-error": {
+    "amount-unavailable": "Insufficient stock in the vault!"
+  },
+  "errors": {
+    "no-default-vault": "No default vault found!"
+  },
+  "fields": {
+    "type": "Type",
+    "status": "Status",
+    "amount": "Amount",
+    "vault": "Vault",
+    "deleted": "Deleted",
+    "description": "Description",
+    "documentId": "Document Id",
+    "approvedById": "Approved by (Id)",
+    "approvedBy": "Approved by",
+    "action": "Action",
+    "empty": "Empty",
+    "date": "Date",
+    "attached-files": "Attached files",
+    "files": "Files"
+  },
+  "alerts": {
+    "new-row": {
+      "error": "Error occurred trying to create an expense.",
+      "success": "New expense added successfully!"
+    },
+    "edit-row": {
+      "error": "Error occurred trying to update an expense.",
+      "success": "Expense updated successfully!"
+    },
+    "delete-row": {
+      "question": "Are you sure you want to delete this expense",
+      "error": "Error occurred trying to delete an expense.",
+      "success": "Expense was deleted successfully!"
+    },
+    "delete-rows": {
+      "question": "Are you sure you want to delete multiple expenses",
+      "error": "Error occurred trying to delete multiple expenses.",
+      "success": "Expenses were deleted successfully!!"
+    },
+    "delete": "Deleted expense",
+    "no-files-uploaded": "No files uploaded"
+  },
+  "btns": {
+    "add": "Add",
+    "save": "Save",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "headings": {
+    "add": "Add expense",
+    "edit": "Edit expense",
+    "expenses": "Expenses",
+    "info": "Expense information"
+  },
+  "description": "All expenses",
+  "reported": "Total reported",
+  "uploaded-documents": "Uploaded documents",
+  "uploaded-files": "Uploaded files",
+  "new-files": "New files",
+  "deleteTitle": "Delete expense file?",
+  "tooltips": {
+    "add": "Add",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "download": "Download"
+  }
+}

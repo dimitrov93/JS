@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": {
+      "about-project": "The project",
+      "about-us": "About us",
+      "who-are-we": "Who are we?",
+      "support_us": "Support us",
+      "support-us": "Join us",
+      "reports": "Reports",
+      "contacts": "Contacts",
+      "partners": "Партньори"
+    },
+    "campaigns": {
+      "index": "Campaigns",
+      "all-campaigns": "All campaigns",
+      "create": "Suggest a campaign",
+      "faq": "Frequently asked questions"
+    },
+    "admin": {
+      "index": "Administration",
+      "info-requests": "Contact requests",
+      "supporters": "Volunteers"
+    },
+    "dev": {
+      "index": "Development",
+      "contribute": "How to Contribute",
+      "project-docs": "Project Docs",
+      "open-source": "Open Source",
+      "open-data": "Open Data"
+    },
+    "donate": "Donate",
+    "donation-menu": "Campaigns",
+    "blog": "Blog",
+    "support_us_button": "Support us",
+    "profile": "Profile",
+    "login": "Login",
+    "login-with": "Login with",
+    "logout": "Logout",
+    "register": "Signup",
+    "changePassword": "Change your password",
+    "forgottenPassword": "Forgotten password?",
+    "go-back": "Go back"
+  },
+  "meta": {
+    "title": "Podkrepi.bg"
+  },
+  "alerts": {
+    "message-sent": "Your message has been sent!",
+    "message-copy": "Message was successfully copied to your clipboard!",
+    "error": "There was an error processing your message!",
+    "noselected": "Please, select at least one row!",
+    "success": "Successfully saved!",
+    "success-deleted": "Successfully deleted!"
+  },
+  "close": "Close",
+  "link": "Link",
+  "components": {
+    "footer": {
+      "donatе": "Donate",
+      "about-us": "About us",
+      "resources": "Resources",
+      "others": "Others",
+      "all-campaigns": "All campaigns",
+      "who-are-we": "Who are we?",
+      "suggest-campaign": "Suggest a campaign",
+      "about-project": "About the project",
+      "support-us": "Support us",
+      "become-a-volunteer": "Become a volunteer",
+      "reports": "Reports",
+      "contact": "Contact",
+      "faq": "Frequently asked questions",
+      "privacy-policy": "Privacy Policy",
+      "terms-of-service": "Terms of Service",
+      "copyrights": "Podkrepi.bg ©2023 All rights reserved.",
+      "hosting-partner": "Hosting partner:",
+      "partners": "Partners",
+      "social": {
+        "facebook": "Facebook",
+        "linkedin": "Linkedin",
+        "youtube": "YouTube",
+        "instagram": "Instagram"
+      }
+    }
+  },
+  "or": "or",
+  "errors": {
+    "404Message": "Sorry, you landed on a non-existent page ...",
+    "backButtonLabel": "Back"
+  },
+  "fields": {
+    "currency": "Currency",
+    "personId": "Person",
+    "sourceCampaignId": "Source campaign",
+    "targetCampaignId": "Target campaign"
+  },
+  "cta": {
+    "read-more": "Read more",
+    "see-profile": "See profile",
+    "question": "Have a question?"
+  }
+}

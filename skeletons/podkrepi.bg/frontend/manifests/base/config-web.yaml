@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-web
+data:
+  app-url: https://podkrepi.bg
+  api-url: https://podkrepi.bg/api/v1
+  image-host: podkrepi.bg
+  ghost-api-url: https://blog.podkrepi.bg
+  ghost-content-key: 25c1a5e998fcc38362d9271909

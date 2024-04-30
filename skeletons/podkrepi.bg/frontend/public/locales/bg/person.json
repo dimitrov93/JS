@@ -1,0 +1,43 @@
+{
+  "personSelect": "Изберете потребител",
+  "emptySelectItem": "Не е избран",
+  "selectDialog": {
+    "notSelected": "Не сте избрали потребител",
+    "select": "Избиране",
+    "confirm": "Потвърждавам"
+  },
+  "autocomplete": {
+    "personSearch": "Намерете потребител"
+  },
+  "info": {
+    "tel": "Тел",
+    "contact": "Контакти",
+    "address": "Адрес",
+    "email": "Имейл",
+    "general": "Обща информация",
+    "createdAt": "Създаден в",
+    "company": "Компания",
+    "confirmedEmail": "Потвърден имейл"
+  },
+  "admin": {
+    "headings": {
+      "info": "Потребители",
+      "all": "Всички потребители",
+      "create": "Създаване на потребител",
+      "edit": "Промяна на потребител"
+    },
+    "fields": {
+      "actions": "Действия",
+      "name": "Име",
+      "first-name": "Име",
+      "last-name": "Фамилия",
+      "email": "Имейл",
+      "phone": "Телефон",
+      "createdAt": "Създаден на"
+    },
+    "cta": {
+      "create": "Създай",
+      "edit": "Запиши"
+    }
+  }
+}

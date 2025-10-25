@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.primary-color {
+    @apply bg-slate-600
+}
+
+
+.grid-card { 
+    @apply container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-4
+}

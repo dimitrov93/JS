@@ -1,10 +1,31 @@
-import { navItemLinks } from "@/utils/navBarLinks";
 import Link from "next/link";
-
 interface NavItem {
   title: string;
   href: string;
 }
+
+ const navItemLinks = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Certificates",
+    href: "/certificates",
+  },
+  {
+    title: "Portfolio",
+    href: "/portfolio",
+  },
+  {
+    title: "Services",
+    href: "/services",
+  },
+  {
+    title: "Contacts",
+    href: "/contacts",
+  },
+];
 
 export default function NavBarList() {
   return (

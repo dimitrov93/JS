@@ -1,0 +1,8 @@
+.wrapperComponentText {
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.link {
+  color: --pds-color-white;
+}

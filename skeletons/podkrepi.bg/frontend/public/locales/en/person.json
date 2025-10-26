@@ -1,0 +1,43 @@
+{
+  "personSelect": "Person Select",
+  "emptySelectItem": "Not selected",
+  "selectDialog": {
+    "notSelected": "You haven't chosen a person",
+    "select": "Select",
+    "confirm": "Confirm"
+  },
+  "autocomplete": {
+    "personSearch": "Find a person"
+  },
+  "info": {
+    "tel": "Тел",
+    "contact": "Contact info",
+    "address": "Address",
+    "email": "Email",
+    "general": "General information",
+    "createdAt": "Created at",
+    "company": "Company",
+    "confirmedEmail": "Confirmed email"
+  },
+  "admin": {
+    "headings": {
+      "info": "Users",
+      "all": "All users",
+      "create": "Create new user",
+      "edit": "Edit user"
+    },
+    "fields": {
+      "actions": "Actions",
+      "name": "Name",
+      "create-heading": "Create a new person",
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "phone": "phone"
+    },
+    "cta": {
+      "create": "Create",
+      "edit": "Save"
+    }
+  }
+}

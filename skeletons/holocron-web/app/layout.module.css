@@ -1,0 +1,6 @@
+.container {
+  background: var(--es-color-background-base); 
+  margin: 100px auto;
+  width: 1440px;
+  padding: 64px;
+}

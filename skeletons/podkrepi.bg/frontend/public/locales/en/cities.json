@@ -1,0 +1,36 @@
+{
+  "form-heading": "Add new city",
+  "edit-form-heading": "Edit city",
+  "all": "All City",
+  "cities": "City",
+  "name": "Name",
+  "postalCode": "Postal Code",
+  "countryId": "Country Code",
+  "createdAt": "Created at",
+  "updatedAt": "Updated at",
+  "campaignId": "Campaign ID",
+  "deleteTitle": "Are you sure?",
+  "deleteContent": "This action will delete this item permanently!",
+  "deleteAllContent": "This action will delete selected items permanently!",
+  "actions": "Actions",
+  "alerts": {
+    "selectRow": "Please choose a row",
+    "create": "City has been created successfully!",
+    "edit": "City has been edited successfully!",
+    "delete": "City has been deleted successfully!",
+    "deleteAll": "City have been deleted successfully!",
+    "error": "An error has occured! Please try again later."
+  },
+  "cta": {
+    "add": "Add",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleteSelected": "Delete selected rows",
+    "edit": "Edit",
+    "details": "Details",
+    "submit": "Submit"
+  },
+  "city-label": "City",
+  "select-city": "Select city"
+}

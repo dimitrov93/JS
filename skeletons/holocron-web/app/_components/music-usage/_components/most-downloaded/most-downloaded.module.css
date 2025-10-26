@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  min-height: 48px;
+
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--es-color-border-tertiary);
+}
+.sortContainer {
+
+}
+.title {
+  color: var(--es-color-text-primary);
+}
+.subtitle {
+  margin-top: 4px;
+  color: var(--es-color-text-secondary);
+}
+
+.trackContainer {
+  padding-bottom: 8px;
+  display: flex;
+  gap: 24px;
+}
+.trackPopularity {
+  display: flex;
+  gap: 4px;
+  padding: 12px 8px;
+  flex: 0 0 65px;
+  align-items: center;
+  /* background: var(--es-color-background-surface);
+  padding: 4px 8px;
+  align-items: flex-start;
+  align-self: stretch;
+  margin-bottom: 8px; */
+}
+.popularityScore {
+  text-transform: uppercase;
+}
+
+.pager {
+  text-align: right;
+}
+.page {
+  color: var(--es-color-text-secondary);
+  cursor: pointer;
+}
+.pageActive {
+  color: var(--es-color-text-primary);
+}

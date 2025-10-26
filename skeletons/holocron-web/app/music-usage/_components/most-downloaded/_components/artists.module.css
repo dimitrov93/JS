@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.artistListContainer {
+  display: flex;
+  gap: 11.75px;
+}
+
+.artistContainer {
+  flex: 1;
+  background: var(--background-surface, rgba(207, 214, 229, 0.08));
+  padding: 16px;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  flex: 0 0 253px;
+}
+
+.imageContainer {
+  width: 237px;
+  height: 237px;
+  border-radius: 300px;
+  background-color: var(--es-color-text-secondary);
+  background-position: center;
+  background-size: cover;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.titleContainer {
+  width: 100%;
+}
+
+.titleContainer > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 221px;
+}

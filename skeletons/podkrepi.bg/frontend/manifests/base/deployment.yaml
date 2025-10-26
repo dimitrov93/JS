@@ -1,0 +1,155 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+  annotations:
+    app.komodor.com/app: https://github.com/podkrepi-bg/frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      automountServiceAccountToken: false
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: nextjs-cache
+          emptyDir: {}
+        - name: npm-logs
+          emptyDir: {}
+        - name: cacache
+          emptyDir: {}
+      containers:
+        - name: frontend
+          image: ghcr.io/podkrepi-bg/frontend
+          imagePullPolicy: Always
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+            runAsGroup: 1001
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - NET_RAW
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: nextjs-cache
+              mountPath: /app/.next/cache
+            - name: npm-logs
+              mountPath: /home/nextjs/.npm/_logs
+            - name: cacache
+              mountPath: /home/nextjs/.npm/_cacache
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: TARGET_ENV
+              value: production
+            - name: APP_ENV
+              value: production
+            - name: APP_PORT
+              value: '3040'
+            - name: REST_API_PORT
+              value: '80'
+            - name: APP_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-web
+                  key: app-url
+            - name: NEXTAUTH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-web
+                  key: app-url
+            - name: NEXTAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-web
+                  key: next-auth-secret
+            - name: GOOGLE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-web
+                  key: google-id
+            - name: GOOGLE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-web
+                  key: google-secret
+            - name: API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-web
+                  key: api-url
+            - name: IMAGE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: config-web
+                  key: image-host
+            - name: KEYCLOAK_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-config-web
+                  key: url
+            - name: KEYCLOAK_REALM
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-config-web
+                  key: realm
+            - name: KEYCLOAK_CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-config-web
+                  key: client-id
+            - name: PAYPAL_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-web
+                  key: paypal-client-id
+            - name: GHOST_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-web
+                  key: ghost-api-url
+            - name: GHOST_CONTENT_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: config-web
+                  key: ghost-content-key
+          ports:
+            - containerPort: 3040
+          resources:
+            limits:
+              memory: 350Mi
+              cpu: 500m
+            requests:
+              memory: 256Mi
+              cpu: 200m
+          livenessProbe:
+            httpGet:
+              path: /api/healthcheck
+              port: 3040
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /api/healthcheck
+              port: 3040
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          startupProbe:
+            httpGet:
+              path: /api/healthcheck
+              port: 3040
+            failureThreshold: 12
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 1

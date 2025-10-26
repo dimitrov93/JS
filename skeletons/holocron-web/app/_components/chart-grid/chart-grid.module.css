@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+.charts {
+  grid-row-gap: var(--es-grid-gutter-small) !important;
+  grid-column-gap: var(--es-grid-gutter-small) !important;
+}
+.chartGrid {
+  grid-row-gap: var(--es-grid-gutter-small) !important;
+  grid-column-gap: var(--es-grid-gutter-small) !important;
+}

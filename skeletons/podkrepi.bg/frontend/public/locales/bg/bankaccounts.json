@@ -1,0 +1,42 @@
+{
+  "headings": {
+    "add": "Добави нова сметка",
+    "edit": "Редактирай сметка"
+  },
+  "fields": {
+    "status": "Статус",
+    "ibanNumber": "IBAN",
+    "accountHolderName": "Собственик",
+    "accountHolderType": "Вид акаунт",
+    "bankName": "Име на банка",
+    "bankIdCode": "BIC/SWIFT",
+    "fingerprint": "Е-Подпис"
+  },
+  "status": {
+    "new": "Нов",
+    "validated": "Валидиран",
+    "verified": "Верифициран",
+    "verification_failed": "Неуспешна верификация",
+    "errored": "С грешки"
+  },
+  "accountHolderType": {
+    "individual": "Индивидуален",
+    "company": "Компания"
+  },
+  "withdrawals": "Извлечения",
+  "actions": "Действия",
+  "alerts": {
+    "selectRow": "Моля изберете ред",
+    "create": "Сметката беше създадена успешно!",
+    "edit": "Сметката беше редактирана успешно!",
+    "delete": "Сметката беше изтрита успешно!",
+    "deleteAll": "Сметките бяха изтрити успешно!",
+    "error": "Възникна грешка! Моля опитайте отново по-късно."
+  },
+  "cta": {
+    "add": "Добави",
+    "delete": "Изтрий",
+    "deleteSelected": "Изтрий избраните редове",
+    "edit": "Редактирай"
+  }
+}

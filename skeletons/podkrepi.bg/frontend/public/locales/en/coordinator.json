@@ -1,0 +1,19 @@
+{
+  "headings": {
+    "info": "Information"
+  },
+  "fields": {
+    "name": "Name"
+  },
+  "btns": {
+    "add": "Add",
+    "save": "Save",
+    "close": "Close"
+  },
+  "create": {
+    "heading": "Add new coordinator",
+    "info": "Coordinator can be any registered user in the platform",
+    "personSelect": "Select user",
+    "submitButton": "Create"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules
+.next
+yarn.lock
+package-lock.json
+public/fonts
+public/img
+manifests
+.github
+!.github/workflows
+.yarn

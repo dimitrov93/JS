@@ -1,0 +1,49 @@
+{
+  "all": "Всички бенефициенти",
+  "grid": {
+    "id": "ID",
+    "individual": "Личност",
+    "company": "Юридическо лице",
+    "coordinator": "Координатор",
+    "organizer": "Организатор",
+    "countryCode": "Код на държава",
+    "not-person": "Не е личност",
+    "not-company": "Не е компания",
+    "city": "Град",
+    "coordinatorRelation": "Отношения с координатор",
+    "organizerRelation": "Отношения с организатор",
+    "type": "Тип на бенефициента",
+    "description": "Описание",
+    "campaigns-count": "Брой кампании",
+    "public-data": "Публични данни",
+    "private-data": "Лични данни"
+  },
+  "cta": {
+    "details": "Детайли за бенефициента",
+    "submit": "Потвърди",
+    "cancel": "Отмяна",
+    "delete": "Изтрий",
+    "add": "Добави"
+  },
+  "forms": {
+    "add-heading": "Добави бенефициент",
+    "edit-heading": "Редактирай бенефициент",
+    "info": "Бенефициент може да бъде всеки потребител или юридическо лице регистрирано в платформата",
+    "labels": {
+      "type": {
+        "individual": "Личност",
+        "company": "Юридическо лице"
+      },
+      "person-select": "Изберете потребител или",
+      "company-select": "Изберете ЮЛНЦ или",
+      "organizer-select": "Изберете организатор или",
+      "create-new": "създайте нов",
+      "person-label": "Потребител",
+      "company-label": "ЮЛНЦ",
+      "organizer-label": "Организатор"
+    }
+  },
+  "actions": "Действия",
+  "deleteContent": "Сигурни ли сте, че искате да изтриете тези запис/и?",
+  "deleteTitle": "Изтриване"
+}

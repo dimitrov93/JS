@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  position: relative;
+}
+
+.filtersContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -1,0 +1,11 @@
+.pager {
+  text-align: right;
+  height: 24px;
+}
+.page {
+  color: var(--es-color-text-secondary);
+  cursor: pointer;
+}
+.pageActive {
+  color: var(--es-color-text-primary);
+}

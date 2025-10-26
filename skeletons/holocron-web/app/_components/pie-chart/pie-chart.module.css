@@ -1,0 +1,58 @@
+.container {
+  background-color: var(--es-color-background-surface);
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+
+.dataContainer {
+  display: flex;
+  margin-bottom: 18px;
+}
+
+.dataTitlesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+  padding-left: 32px;
+}
+.dataTitle {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.dataTitleColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.chartContainer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chart {
+  width: 180px;
+  height: 180px;
+}
+
+.loaderContainer {
+  display: flex;
+  height: calc(226px - 20px - 10px);
+  align-items: center;
+  justify-content: center;
+}
+.loader > span {
+  width: 20px;
+  height: 20px;
+}

@@ -1,39 +1,41 @@
+import "server-only";
+import fs from "fs/promises";
+import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
-import rehypeAutolinkHeadings from "rehype-autolink-headings/lib";
-import rehypeHighlight from "rehype-highlight/lib";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 import Video from "@/app/components/Video";
 import CustomImage from "@/app/components/CustomImage";
 
-type Filetree = {
-  tree: [
-    {
-      path: string;
-    }
-  ];
+const POSTS_DIR = path.join(process.cwd(), "blogposts");
+
+type Meta = {
+  id: string;
+  title: string;
+  date: string;
+  tags: string[];
+};
+type BlogPost = {
+  meta: Meta;
+  content: React.ReactNode;
 };
 
-export async function getPostByName(
-  fileName: string
-): Promise<BlogPost | undefined> {
-  const res = await fetch(
-    `https://raw.githubusercontent.com/dimitrov93/test-repo/main/${fileName}`,
-    {
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    }
-  );
+export async function getPostByName(fileName: string): Promise<BlogPost | undefined> {
+  const base = fileName.replace(/\.(md|mdx)$/i, "");
+  const candidates = [`${base}.mdx`, `${base}.md`].map((f) => path.join(POSTS_DIR, f));
 
-  if (!res.ok) return undefined;
-
-  const rawMDX = await res.text();
-
-  if (rawMDX === "404: Not Found") {
-    return undefined;
+  let filePath: string | undefined;
+  for (const c of candidates) {
+    try {
+      await fs.access(c);
+      filePath = c;
+      break;
+    } catch {}
   }
+  if (!filePath) return undefined;
+
+  const rawMDX = await fs.readFile(filePath, "utf8");
 
   const { frontmatter, content } = await compileMDX<{
     title: string;
@@ -41,72 +43,48 @@ export async function getPostByName(
     tags: string[];
   }>({
     source: rawMDX,
-    components: {
-      Video,
-      CustomImage
-    },
+    components: { Video, CustomImage },
     options: {
       parseFrontmatter: true,
       mdxOptions: {
-        recmaPlugins: [
+        rehypePlugins: [
           rehypeHighlight,
           rehypeSlug,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behavior: "wrap",
-            },
-          ],
+          [rehypeAutolinkHeadings, { behavior: "wrap" }],
         ],
       },
     },
   });
 
-  const id = fileName.replace(/\.mdx$/, "");
+  const id = path.basename(base);
 
-  const blogPostsObj: BlogPost = {
+  return {
     meta: {
       id,
       title: frontmatter.title,
       date: frontmatter.date,
-      tags: frontmatter.tags,
+      tags: frontmatter.tags ?? [],
     },
     content,
   };
-
-  return blogPostsObj;
 }
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
-  const res = await fetch(
-    `https://api.github.com/repos/dimitrov93/test-repo/git/trees/main?recursive=1`,
-    {
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    }
-  );
-
-  if (!res.ok) return undefined;
-
-  const repoFiletree: Filetree = await res.json();
-
-  const filesArray = repoFiletree.tree
-    .map((obj) => obj.path)
-    .filter((path) => path.endsWith(".mdx"));
-
-  const posts: Meta[] = [];
-
-  for (const file of filesArray) {
-    const post = await getPostByName(file);
-
-    if (post) {
-      const { meta } = post;
-      posts.push(meta);
-    }
+  let entries: string[];
+  try {
+    entries = await fs.readdir(POSTS_DIR);
+  } catch {
+    return undefined;
   }
 
-  return posts;
+  const files = entries.filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
+
+  const metas: Meta[] = [];
+  for (const f of files) {
+    const post = await getPostByName(f);
+    if (post) metas.push(post.meta);
+  }
+
+  metas.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return metas;
 }

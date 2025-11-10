@@ -1,6 +1,6 @@
-import { getCategories } from "@/actions/categories";
-import { cacheLife } from "next/cache";
-import { Suspense } from "react";
+import { getCategories } from '@/actions/categories';
+import { cacheLife } from 'next/cache';
+import { Suspense } from 'react';
 
 export async function generateStaticParams() {
   const categories = await getCategories();
@@ -20,9 +20,9 @@ export default function CategoriesPage({ params }: any) {
 }
 
 const Dynamic = async ({ params }: any) => {
-  "use cache";
-  cacheLife("max");
+  'use cache';
+  cacheLife('max');
   const { category } = await params;
 
-  return <div>{category || "default"}</div>;
+  return <div>{category || 'default'}</div>;
 };

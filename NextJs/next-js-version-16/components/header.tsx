@@ -16,7 +16,7 @@ export default async function Header() {
         <a href="/client" className="hover:text-clr-lightBlue transition-colors">
           Client
         </a>
-        <a href="/category" className="hover:text-clr-lightBlue transition-colors">
+        <a href="/category/categories" className="hover:text-clr-lightBlue transition-colors">
           Category
         </a>
         <a href="/terms-of-use" className="hover:text-clr-lightBlue transition-colors">

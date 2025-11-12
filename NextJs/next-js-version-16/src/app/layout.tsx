@@ -1,5 +1,6 @@
 import Header from '@/components/header';
 import './globals.css';
+import { MetaTags } from './lib/MetaTags';
 
 export default function RootLayout({
   children,
@@ -8,6 +9,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <MetaTags />
+      </head>
       <body>
         <Header />
         {children}

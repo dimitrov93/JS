@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "Здравей Свят!"
+  },
+  "Manifest": {
+    "name": "cacheComponents with next-intl bg"
+  },
+  "NotFoundPage": {
+    "description": "BG Please double-check the browser address bar or use the navigation to go to a known page.",
+    "title": "BG Page not found"
+  }
+}

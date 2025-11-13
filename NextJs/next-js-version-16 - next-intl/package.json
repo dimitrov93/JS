@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "start-dev": "npm run build && npm run start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check-scripts": "npx npm-check-updates"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -15,8 +16,8 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.547.0",
-    "next": "16.0.0",
-    "next-intl": "^4.5.2",
+    "next": "^16.0.1",
+    "next-intl": "^4.4.0",
     "next-themes": "^0.4.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
@@ -27,11 +28,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "^16.0.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }

@@ -2,11 +2,29 @@ import { getCategories } from '@/actions/categories';
 import { cacheLife } from 'next/cache';
 import { Suspense } from 'react';
 
+// export async function generateStaticParams() {
+//   // const categories = await getCategories();
+//   // return categories.items.map((category: any) => ({
+//   //   category: category.name.toLowerCase(),
+//   // }));
+// }
+
 export async function generateStaticParams() {
-  const categories = await getCategories();
-  return categories.items.map((category: any) => ({
-    category: category.name.toLowerCase(),
-  }));
+  const locales = ['en', 'bg'];
+
+  const params: { locale: string; category: string }[] = [];
+
+  for (const locale of locales) {
+    const categories = await getCategories(locale);
+    for (const category of categories.items) {
+      params.push({
+        locale,
+        category: category.name.toLowerCase(),
+      });
+    }
+  }
+
+  return params;
 }
 
 export default function CategoriesPage({ params }: any) {

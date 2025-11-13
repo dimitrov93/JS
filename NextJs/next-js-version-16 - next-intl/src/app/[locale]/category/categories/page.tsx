@@ -1,6 +1,6 @@
-import React, { Suspense } from "react";
-import Link from "next/link";
-import { getCategories } from "@/actions/categories";
+import React, { Suspense } from 'react';
+import Link from 'next/link';
+import { getCategories } from '@/actions/categories';
 
 export default function CategoriesPage() {
   return (
@@ -12,8 +12,8 @@ export default function CategoriesPage() {
 }
 
 const CachedComponent = async () => {
-  "use cache";
-  const categories = await getCategories();
+  'use cache';
+  const categories = await getCategories('en');
 
   return (
     <div className="flex flex-col gap-4">
